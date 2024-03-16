@@ -5,7 +5,7 @@ public class Main {
 
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo");
 
-        Monstro monstro = new Monstro();
+        Monstro monstro = new Monstro("Creeper", 1000, 10, 100);
 
         System.out.println(jogador1.toString());
         System.out.println(jogador2.toString());
