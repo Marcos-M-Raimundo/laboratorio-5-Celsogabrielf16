@@ -10,4 +10,20 @@ public class Monstro {
         this.quantidadeDeTesouros = quantidadeDeTesouros;
         this.niveisPerdidos = niveisPerdidos;
     }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public int getPoder() {
+        return this.poder;
+    }
+
+    public int getQuantidadeDeTesouros() {
+        return this.quantidadeDeTesouros;
+    }
+
+    public int getNiveisPerdidos() {
+        return this.niveisPerdidos;
+    }
 }
