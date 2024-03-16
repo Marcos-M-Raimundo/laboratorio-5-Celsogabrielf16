@@ -8,9 +8,34 @@ public class Jogador {
     private String itemMaoDireita;
     private String itemMaoEsquerda;
     private String itemPe;
+    
+    public Jogador(String nome, int nivel, String raca, String classe, String itemCabeca, String itemCorpo, String itemMaoDireita, String itemMaoEsquerda, String itemPe) {
+        this.nome = nome;
+        this.nivel = nivel;
+        this.raca = raca;
+        this.classe = classe;
+        this.itemCabeca = itemCabeca;
+        this.itemCorpo = itemCorpo;
+        this.itemMaoDireita = itemMaoDireita;
+        this.itemMaoEsquerda = itemMaoEsquerda;
+        this.itemPe = itemPe;
+    }
 
-    public Jogador() {
-        System.out.println("Classe jogador criada!");
+    public Jogador(String nome) {
+        this.nome = nome;
+        this.nivel = 1;
+        this.raca = "Humano";
+        this.classe = "";
+        this.itemCabeca = "";
+        this.itemCorpo = "";
+        this.itemMaoDireita = "";
+        this.itemMaoEsquerda = "";
+        this.itemPe = "";
+    }
+    
+    // Retorna uma String com todos os atributos da classe instanciada
+    public String toString() {
+        return "Classe: Jogador, propridades do jogador " + nome + ":\n" + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe;
     }
 
     public String getNome() {
