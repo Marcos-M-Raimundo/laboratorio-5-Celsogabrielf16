@@ -1,5 +1,5 @@
 public class Jogador {
-    public static void jogador(String[] args) {
+    public Jogador() {
         System.out.println("Classe jogador criada!");
     }
 }
