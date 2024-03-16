@@ -11,6 +11,10 @@ public class Item {
         this.tipo = tipo;
     }
 
+    public String toString() {
+        return "Classe: Item, propridades do item " + nome + ": " + bonusPoder + " " + valor + " " + tipo + "\n";
+    }
+
     public String getNome() {
         return this.nome;
     }
@@ -30,7 +34,7 @@ public class Item {
     public int getValor() {
         return this.valor;
     }
-    
+
     public void setValor(int valor) {
         this.valor = valor;
     }

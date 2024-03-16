@@ -37,7 +37,7 @@ public class Jogador {
     
     // Retorna uma String com todos os atributos da classe instanciada
     public String toString() {
-        return "Classe: Jogador, propridades do jogador " + nome + ":\n" + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe;
+        return "Classe: Jogador, propridades do jogador " + nome + ": " + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe + "\n";
     }
 
     // Com um operador ternário, verifica se alguma das mãos do jogador está vazia
