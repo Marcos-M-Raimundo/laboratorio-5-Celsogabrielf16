@@ -13,5 +13,7 @@ public class Main {
         System.out.println("Jogador2 posssui mão vazia? " + jogador2.possuiMaoVazia() + "\n"); // True
 
         System.out.println(item.toString());
+
+        System.out.println(monstro.toString());
     }
 }

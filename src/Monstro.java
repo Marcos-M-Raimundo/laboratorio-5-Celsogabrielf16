@@ -11,6 +11,10 @@ public class Monstro {
         this.niveisPerdidos = niveisPerdidos;
     }
 
+    public String toString() {
+        return "Classe: Monstro, propridades do monstro " + nome + ": " + poder + " " + quantidadeDeTesouros + " " + niveisPerdidos + "\n";
+    }
+
     public String getNome() {
         return this.nome;
     }
