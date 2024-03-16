@@ -1,5 +1,5 @@
 public class Monstro {
-    public static void monstro(String[] args) {
+    public Monstro() {
         System.out.println("Classe monstro criada!");
     }
 }
