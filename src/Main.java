@@ -7,5 +7,7 @@ public class Main {
 
         System.out.println(jogador1.toString());
         System.out.println(jogador2.toString());
+        System.out.println(jogador1.possuiMaoVazia()); // False
+        System.out.println(jogador2.possuiMaoVazia()); // True
     }
 }

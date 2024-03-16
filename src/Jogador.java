@@ -9,6 +9,7 @@ public class Jogador {
     private String itemMaoEsquerda;
     private String itemPe;
     
+    // Construtor que recebe todas as propriedades
     public Jogador(String nome, int nivel, String raca, String classe, String itemCabeca, String itemCorpo, String itemMaoDireita, String itemMaoEsquerda, String itemPe) {
         this.nome = nome;
         this.nivel = nivel;
@@ -21,6 +22,7 @@ public class Jogador {
         this.itemPe = itemPe;
     }
 
+    // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
     public Jogador(String nome) {
         this.nome = nome;
         this.nivel = 1;
@@ -36,6 +38,11 @@ public class Jogador {
     // Retorna uma String com todos os atributos da classe instanciada
     public String toString() {
         return "Classe: Jogador, propridades do jogador " + nome + ":\n" + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe;
+    }
+
+    // Com um operador ternário, verifica se alguma das mãos do jogador está vazia
+    public boolean possuiMaoVazia() {
+        return ((this.itemMaoDireita.length() == 0) || (this.itemMaoEsquerda.length() == 0)) ? true : false;
     }
 
     public String getNome() {
