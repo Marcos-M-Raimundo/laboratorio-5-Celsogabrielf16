@@ -1,5 +1,5 @@
 public class Item {
-    public static void item(String[] args) {
+    public Item() {
         System.out.println("Classe item criada!");
     }
 }
