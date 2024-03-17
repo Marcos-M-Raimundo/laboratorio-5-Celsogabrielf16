@@ -9,7 +9,7 @@ public class Jogador {
     private String itemMaoEsquerda;
     private String itemPe;
     
-    // Construtor que recebe todas as propriedades
+    // Construtor que recebe todos os atributos do jogador
     public Jogador(String nome, int nivel, String raca, String classe, String itemCabeca, String itemCorpo, String itemMaoDireita, String itemMaoEsquerda, String itemPe) {
         this.nome = nome;
         this.nivel = nivel;
@@ -35,7 +35,7 @@ public class Jogador {
         this.itemPe = "";
     }
     
-    // Retorna uma String com todos os atributos da classe instanciada
+    // Retorna uma String com todos os atributos do jogador
     public String toString() {
         return "Classe: Jogador, propridades do jogador " + nome + ": " + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe + "\n";
     }
@@ -45,6 +45,7 @@ public class Jogador {
         return ((this.itemMaoDireita.length() == 0) || (this.itemMaoEsquerda.length() == 0)) ? true : false;
     }
 
+    // Getters e setters para cada atributo do jogador
     public String getNome() {
         return this.nome;
     }

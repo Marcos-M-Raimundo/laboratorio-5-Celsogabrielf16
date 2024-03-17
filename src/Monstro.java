@@ -4,6 +4,7 @@ public class Monstro {
     private int quantidadeDeTesouros;
     private int niveisPerdidos;
 
+    // Construtor que recebe todos os atributos do monstro
     public Monstro(String nome, int poder, int quantidadeDeTesouros, int niveisPerdidos) {
         this.nome = nome;
         this.poder = poder;
@@ -11,10 +12,12 @@ public class Monstro {
         this.niveisPerdidos = niveisPerdidos;
     }
 
+    // Retorna uma String com todos os atributos do monstro
     public String toString() {
         return "Classe: Monstro, propridades do monstro " + nome + ": " + poder + " " + quantidadeDeTesouros + " " + niveisPerdidos + "\n";
     }
 
+    // Getters e setters para cada atributo do monstro
     public String getNome() {
         return this.nome;
     }

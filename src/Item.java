@@ -4,6 +4,7 @@ public class Item {
     private int valor;
     private String tipo;
 
+    // Construtor que recebe todos os atributos do item
     public Item(String nome, int bonusPoder, int valor, String tipo) {
         this.nome = nome;
         this.bonusPoder = bonusPoder;
@@ -11,10 +12,12 @@ public class Item {
         this.tipo = tipo;
     }
 
+    // Retorna uma String com todos os atributos do item
     public String toString() {
         return "Classe: Item, propridades do item " + nome + ": " + bonusPoder + " " + valor + " " + tipo + "\n";
     }
 
+    // Getters e setters para cada atributo do item
     public String getNome() {
         return this.nome;
     }
