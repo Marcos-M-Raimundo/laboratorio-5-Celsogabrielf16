@@ -20,9 +20,10 @@ public class Main {
         System.out.println(inventario.adicionarItem(item));
         System.out.println(inventario.adicionarItem(item2));
         System.out.println(inventario);
-        inventario.removerItem("Armadura");
-        System.out.println(inventario);
+        System.out.println(inventario.acessarItem("Armadura"));
+        //inventario.removerItem("Armadura");
         System.out.println(inventario.acessarItem("Armadura"));
         System.out.println(inventario.acessarItem("Armaduraaa"));
+        inventario.listarInventario();
     }
 }

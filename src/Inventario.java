@@ -6,11 +6,12 @@ public class Inventario {
     private List<Item> inventario;
 
     public Inventario(int limiteInventario) {
-        this.limiteInventario = limiteInventario;
+        // Criamos um inventario vazio
         this.inventario = new ArrayList<>(limiteInventario);
+        this.limiteInventario = limiteInventario;
     }
 
-    // Método padrao chamado quando imprimimos a classe raca
+    // Método padrao chamado quando imprimimos a classe inventario
     @Override
     public String toString() {
         if (this.inventario.isEmpty()) {
@@ -27,14 +28,13 @@ public class Inventario {
     }
 
     public boolean adicionarItem(Item item) {
-        return this.inventario.size() < this.limiteInventario? this.inventario.add(item) : false;
+        return this.inventario.size() < this.limiteInventario ? this.inventario.add(item) : false;
     }
 
     public void removerItem(String nomeItem) {
         for (Item itemInventario : this.inventario) {
             if (itemInventario.getNome().equals(nomeItem)) {
-                System.out.println(itemInventario);
-                System.out.println(this.inventario.remove(itemInventario));
+                this.inventario.remove(itemInventario);
                 break;
             }
         }
@@ -50,6 +50,12 @@ public class Inventario {
         }
 
         return itemEncontrado;
+    }
+
+    public void listarInventario() {
+        for (Item itemInventario : this.inventario) {
+            System.out.println(itemInventario);
+        }
     }
 
     public int getLimiteInventario() {
