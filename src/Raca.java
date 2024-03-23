@@ -9,7 +9,7 @@ public class Raca {
         this.minimoPraFugir = minimoPraFugir;
     }
 
-    // Retorna uma String com todos os atributos do item
+    // Método padrao chamado quando imprimimos a classe raca
     public String toString() {
         return "Classe: Raca, propridades da raça " + nomeDaRaca + ": " + descricao + " " + minimoPraFugir + "\n";
     }
