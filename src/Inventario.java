@@ -30,6 +30,16 @@ public class Inventario {
         return this.inventario.size() < this.limiteInventario? this.inventario.add(item) : false;
     }
 
+    public void removerItem(String nomeItem) {
+        for (Item itemInventario : this.inventario) {
+            if (itemInventario.getNome().equals(nomeItem)) {
+                System.out.println(itemInventario);
+                System.out.println(this.inventario.remove(itemInventario));
+                break;
+            }
+        }
+    }
+
     public Item acessarItem(String nomeItem) {
         Item itemEncontrado = null;
 
