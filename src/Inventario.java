@@ -26,6 +26,9 @@ public class Inventario {
         }
     }
 
+    public boolean adicionarItem(Item item) {
+        return this.inventario.size() < this.limiteInventario? this.inventario.add(item) : false;
+    }
 
     public int getLimiteInventario() {
         return this.limiteInventario;

@@ -14,7 +14,7 @@ public class Item {
 
     // Retorna uma String com todos os atributos do item
     public String toString() {
-        return "Classe: Item, propridades do item " + nome + ": " + bonusPoder + " " + valor + " " + tipo + "\n";
+        return "Classe: Item, propridades do item " + nome + ": " + bonusPoder + " " + valor + " " + tipo;
     }
 
     // Getters e setters para cada atributo do item
