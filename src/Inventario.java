@@ -9,4 +9,8 @@ public class Inventario {
         this.limiteInventario = limiteInventario;
         inventario = new ArrayList<>(limiteInventario);
     }
+
+    public int getLimiteInventario() {
+        return this.limiteInventario;
+    }
 }
