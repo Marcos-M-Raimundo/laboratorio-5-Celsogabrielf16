@@ -7,7 +7,7 @@ public class Main {
         Item item2 = new Item("Armadura", 10, 5, "itemCorpo");
         Monstro monstro = new Monstro("Creeper", 1000, 10, 100);
         Raca raca = new Raca("Pessoa pequena", "Anao", 100);
-        Inventario inventario = new Inventario(1);
+        Inventario inventario = new Inventario(2);
 
         // Impressão de alguns métodos para teste
         //System.out.println(jogador1);
@@ -20,5 +20,7 @@ public class Main {
         System.out.println(inventario.adicionarItem(item));
         System.out.println(inventario.adicionarItem(item2));
         System.out.println(inventario);
+        System.out.println(inventario.acessarItem("Armadura"));
+        System.out.println(inventario.acessarItem("Armaduraaa"));
     }
 }

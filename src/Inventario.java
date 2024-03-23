@@ -30,6 +30,18 @@ public class Inventario {
         return this.inventario.size() < this.limiteInventario? this.inventario.add(item) : false;
     }
 
+    public Item acessarItem(String nomeItem) {
+        Item itemEncontrado = null;
+
+        for (Item itemInventario : this.inventario) {
+            if (itemInventario.getNome().equals(nomeItem)) {
+                itemEncontrado = itemInventario;
+            }
+        }
+
+        return itemEncontrado;
+    }
+
     public int getLimiteInventario() {
         return this.limiteInventario;
     }
