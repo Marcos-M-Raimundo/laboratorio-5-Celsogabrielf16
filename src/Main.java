@@ -5,13 +5,15 @@ public class Main {
         Jogador jogador2 = new Jogador("Gabriel Prado");
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo");
         Monstro monstro = new Monstro("Creeper", 1000, 10, 100);
+        Raca raca = new Raca("Pessoa pequena", "Anao", 100);
 
         // Impressão de alguns métodos para teste
-        System.out.println(jogador1.toString());
-        System.out.println(jogador2.toString());
+        System.out.println(jogador1);
+        System.out.println(jogador2);
         System.out.println("Jogador1 posssui mão vazia? " + jogador1.possuiMaoVazia() + "\n");
         System.out.println("Jogador2 posssui mão vazia? " + jogador2.possuiMaoVazia() + "\n");
-        System.out.println(item.toString());
-        System.out.println(monstro.toString());
+        System.out.println(item);
+        System.out.println(monstro);
+        System.out.println(raca);
     }
 }
