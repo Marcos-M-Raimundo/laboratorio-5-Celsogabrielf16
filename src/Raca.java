@@ -9,12 +9,17 @@ public class Raca {
         this.minimoPraFugir = minimoPraFugir;
     }
 
+    // Getters e setters para cada atributo da raca
     public String getDescricao() {
         return this.descricao;
     }
 
     public String getNomeDaRaca() {
         return this.nomeDaRaca;
+    }
+
+    public void setNomeDaRaca(String nomeDaRaca) {
+        this.nomeDaRaca = nomeDaRaca;
     }
 
     public int getMinimoPraFugir() {
