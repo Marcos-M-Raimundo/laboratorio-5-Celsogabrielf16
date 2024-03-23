@@ -1,3 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Inventario {
-    public Inventario() {}  
+    private int limiteInventario;
+    private List<Item> inventario;
+
+    public Inventario(int limiteInventario) {
+        this.limiteInventario = limiteInventario;
+        inventario = new ArrayList<>(limiteInventario);
+    }
 }
