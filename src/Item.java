@@ -2,11 +2,11 @@ import java.util.List;
 
 public class Item {
     private final String nome;
-    private int bonusPoder;
-    private int valor;
-    private String tipo;
-    private boolean itemGrande;
-    private List<Classe> classesCompativeis;
+    private final int bonusPoder;
+    private final int valor;
+    private final String tipo;
+    private final boolean itemGrande;
+    private final List<Classe> classesCompativeis;
 
     // Construtor que recebe todos os atributos do item
     public Item(String nome, int bonusPoder, int valor, String tipo, boolean itemGrande, List<Classe> classesCompativeis) {
