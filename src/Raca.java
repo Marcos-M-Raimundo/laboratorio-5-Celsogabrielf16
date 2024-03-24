@@ -9,9 +9,16 @@ public class Raca {
         this.minimoPraFugir = minimoPraFugir;
     }
 
-    // Método padrao chamado quando imprimimos a classe raca
+    // Método padrao chamado quando imprimimos a classe Raca
+    @Override
     public String toString() {
-        return "Classe: Raca, propridades da raça " + nomeDaRaca + ": " + descricao + " " + minimoPraFugir + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Raca { ")
+            .append("Nome : ").append(this.nomeDaRaca)
+            .append(", Descrição: ").append(this.descricao)
+            .append(", Minimo para Fugir: ").append(this.minimoPraFugir)
+            .append(" }");
+        return stringBuilder.toString();
     }
 
     // Getters e setters para cada atributo da raca
