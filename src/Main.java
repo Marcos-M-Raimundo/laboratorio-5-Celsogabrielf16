@@ -12,7 +12,9 @@ public class Main {
         listaDeClasses.add(classe);
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
 
-        //Monstro monstro = new Monstro("Creeper", 1000, 10, 100);
+        List<Item> listaDeItens = new ArrayList<>();
+        listaDeItens.add(item);
+        Monstro monstro = new Monstro("Creeper", 1000, listaDeItens, 100);
         //Raca raca = new Raca("Pessoa pequena", "Anao", 100);
         //Inventario inventario = new Inventario(2);
         //Classe classe = new Classe("Humana", item, item, item2);
@@ -23,7 +25,7 @@ public class Main {
         //System.out.println("Jogador1 posssui mão vazia? " + jogador1.possuiMaoVazia() + "\n");
         //System.out.println("Jogador2 posssui mão vazia? " + jogador2.possuiMaoVazia() + "\n");
         //System.out.println(item);
-        //System.out.println(monstro);
+        System.out.println(monstro);
         //System.out.println(raca);
         //System.out.println(inventario.adicionarItem(item));
         //System.out.println(inventario.adicionarItem(item2));
@@ -33,7 +35,7 @@ public class Main {
         //System.out.println(inventario.acessarItem("Armadura"));
         //System.out.println(inventario.acessarItem("Armaduraaa"));
         //inventario.listarInventario();
-        System.out.println(classe);
-        System.out.println(item);
+        //System.out.println(classe);
+        //System.out.println(item);
     }
 }

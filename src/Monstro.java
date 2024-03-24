@@ -14,9 +14,17 @@ public class Monstro {
         this.niveisPerdidos = niveisPerdidos;
     }
 
-    // Retorna uma String com todos os atributos do monstro
+    // Método padrao chamado quando imprimimos a classe Monstro
+    @Override
     public String toString() {
-        return "Classe: Monstro, propridades do monstro " + nome + ": " + poder + " " + quantidadeDeTesouros + " " + niveisPerdidos + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Monstro { ")
+            .append("Nome do monstro: ").append(this.nome)
+            .append(", Poder do monstro: ").append(this.poder)
+            .append(", Tesouros: ").append(this.tesouros)
+            .append(", Niveis Perdidos: ").append(this.niveisPerdidos)
+            .append(" }");
+        return stringBuilder.toString();
     }
 
     // Getters para cada atributo do monstro
