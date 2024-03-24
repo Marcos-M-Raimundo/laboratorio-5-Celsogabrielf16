@@ -26,7 +26,7 @@ public class Classe {
 
     // Verifica se alguma das mãos do jogador está vazia
     public boolean possuiMaoVazia() {
-        if (this.itemMaoDireita.getNome().equals("Sem Item") || this.itemMaoEsquerda.getNome().equals("Sem Item")) {
+        if ((this.itemMaoDireita == null) || (this.itemMaoEsquerda == null)) {
             return true;
         }
         return false;

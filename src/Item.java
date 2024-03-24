@@ -1,15 +1,21 @@
+import java.util.List;
+
 public class Item {
-    private String nome;
+    private final String nome;
     private int bonusPoder;
     private int valor;
     private String tipo;
+    private boolean itemGrande;
+    private List<Classe> classesCompativeis;
 
     // Construtor que recebe todos os atributos do item
-    public Item(String nome, int bonusPoder, int valor, String tipo) {
+    public Item(String nome, int bonusPoder, int valor, String tipo, boolean itemGrande, List<Classe> classesCompativeis) {
         this.nome = nome;
         this.bonusPoder = bonusPoder;
         this.valor = valor;
         this.tipo = tipo;
+        this.itemGrande = itemGrande;
+        this.classesCompativeis = classesCompativeis;
     }
 
     // Retorna uma String com todos os atributos do item
