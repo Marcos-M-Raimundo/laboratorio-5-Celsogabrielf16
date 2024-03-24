@@ -23,9 +23,18 @@ public class Jogador {
         this.inventario = new Inventario(10);
     }
     
-    // Retorna uma String com todos os atributos do jogador
+    // Método padrao chamado quando imprimimos a classe Jogador
+    @Override
     public String toString() {
-        return "Classe: Jogador, propridades do jogador " + nome + ": " + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Jogador { ")
+            .append("Nome: ").append(this.nome)
+            .append(", Nivel: ").append(this.nivel)
+            .append(", Raça: ").append(this.raca)
+            .append(", Classe: ").append(this.classe)
+            .append(", Inventário: ").append(this.inventario)
+            .append(" }");
+        return stringBuilder.toString();
     }
 
     // Getters e setters para cada atributo do jogador
