@@ -15,15 +15,27 @@ public class Classe {
         return this.descricao;
     }
 
-    public Item getItemMaodireita() {
+    public Item getItemMaoDireita() {
         return this.itemMaoDireita;
     }
 
-    public Item getItemEsquerda() {
+    public void setItemMaoDireita (Item itemMaoDireita) {
+        this.itemMaoDireita = itemMaoDireita;
+    }
+
+    public Item getItemMaoEsquerda() {
         return this.itemMaoEsquerda;
+    }
+
+    public void setItemMaoEsquerda (Item itemMaoEsquerda) {
+        this.itemMaoEsquerda = itemMaoEsquerda;
     }
 
     public Item getItemPe() {
         return this.itemPe;
+    }
+
+    public void setItemPe (Item itemPe) {
+        this.itemPe = itemPe;
     }
 }
