@@ -1,5 +1,5 @@
 public class Mago extends Classe {
-    Item itemCabeca;
+    private Item itemCabeca;
 
     public Mago(String descricao) {
         super(descricao);
