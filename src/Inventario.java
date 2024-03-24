@@ -18,12 +18,13 @@ public class Inventario {
             return "O inventario está vazio!";
         } else {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Limite inventario: " + this.limiteInventario + ",\n");
-            stringBuilder.append("Inventario {\n");
+            stringBuilder.append("Inventario { ")
+                .append("Limite inventario: ").append(this.limiteInventario)
+                .append(", Inventario: {");
             for (Item itemInventario : this.inventario) {
-                stringBuilder.append("\t").append(itemInventario).append(",\n");
+                stringBuilder.append(itemInventario);
             }
-            stringBuilder.append("}\n");
+            stringBuilder.append(" }").append(" }");
             return stringBuilder.toString();
         }
     }

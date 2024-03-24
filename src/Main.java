@@ -12,11 +12,13 @@ public class Main {
         listaDeClasses.add(classe);
         listaDeClasses.add(mago);
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
+        Item item1 = new Item("Armadura", 10, 5, "itemCorpo", false, listaDeClasses);
         Inventario inventario = new Inventario(2);
         inventario.adicionarItem(item);
+        inventario.adicionarItem(item1);
         Raca raca = new Raca("Pessoa pequena", "Anao", 100);
         Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
-        System.out.println(jogador2);
+        //System.out.println(jogador2);
 
         //List<Item> listaDeItens = new ArrayList<>();
         //listaDeItens.add(item);
@@ -31,7 +33,7 @@ public class Main {
         //System.out.println(raca);
         //System.out.println(inventario.adicionarItem(item));
         //System.out.println(inventario.adicionarItem(item2));
-        //System.out.println(inventario);
+        System.out.println(inventario);
         //System.out.println(inventario.acessarItem("Armadura"));
         //inventario.removerItem("Armadura");
         //System.out.println(inventario.acessarItem("Armadura"));
