@@ -23,12 +23,12 @@ public class Item {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Item { ")
-            .append("Nome do item: ").append(this.nome)
-            .append(", Bonus de poder do item: ").append(this.bonusPoder)
-            .append(", Valor do item: ").append(this.valor)
-            .append(", Tipo do item: ").append(this.tipo)
+            .append("Nome: ").append(this.nome)
+            .append(", Bonus de poder: ").append(this.bonusPoder)
+            .append(", Valor: ").append(this.valor)
+            .append(", Tipo: ").append(this.tipo)
             .append(", É um item grande? ").append(this.itemGrande)
-            .append(", Classes compativeis do item: ").append(this.classesCompativeis)
+            .append(", Classes compativeis: ").append(this.classesCompativeis)
             .append(" }");
         return stringBuilder.toString();
     }
