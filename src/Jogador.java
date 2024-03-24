@@ -40,11 +40,6 @@ public class Jogador {
         return "Classe: Jogador, propridades do jogador " + nome + ": " + nivel + " " + raca + " " + classe + " " + itemCabeca + " " + itemCorpo + " " + itemMaoDireita + " " + itemMaoEsquerda + " " + itemPe + "\n";
     }
 
-    // Com um operador ternário, verifica se alguma das mãos do jogador está vazia
-    public boolean possuiMaoVazia() {
-        return ((this.itemMaoDireita.length() == 0) || (this.itemMaoEsquerda.length() == 0)) ? true : false;
-    }
-
     // Getters e setters para cada atributo do jogador
     public String getNome() {
         return this.nome;

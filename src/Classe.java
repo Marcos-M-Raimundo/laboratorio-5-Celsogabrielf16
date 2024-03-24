@@ -24,6 +24,14 @@ public class Classe {
         return stringBuilder.toString();
     }
 
+    // Verifica se alguma das mãos do jogador está vazia
+    public boolean possuiMaoVazia() {
+        if (this.itemMaoDireita.getNome().equals("Sem Item") || this.itemMaoEsquerda.getNome().equals("Sem Item")) {
+            return true;
+        }
+        return false;
+    }
+
     public String getDescricao() {
         return this.descricao;
     }
