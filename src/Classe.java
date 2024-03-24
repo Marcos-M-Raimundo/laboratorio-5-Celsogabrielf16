@@ -20,7 +20,7 @@ public class Classe {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Classe { ")
-            .append("Descricao da classe: ").append(this.descricao)
+            .append("Descricao: ").append(this.descricao)
             .append(", Item da mão direita: ").append(this.itemMaoDireita)
             .append(", Item da mão esquerda: ").append(this.itemMaoEsquerda)
             .append(", Item do pe: ").append(this.itemPe)
