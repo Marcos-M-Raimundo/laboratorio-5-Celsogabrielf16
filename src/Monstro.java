@@ -19,8 +19,8 @@ public class Monstro {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Monstro { ")
-            .append("Nome do monstro: ").append(this.nome)
-            .append(", Poder do monstro: ").append(this.poder)
+            .append("Nome: ").append(this.nome)
+            .append(", Poder: ").append(this.poder)
             .append(", Tesouros: ").append(this.tesouros)
             .append(", Niveis Perdidos: ").append(this.niveisPerdidos)
             .append(" }");
