@@ -11,4 +11,12 @@ public class Guerreiro extends Classe {
         this.itemCabeca = itemCabeca;
         this.itemCorpo = itemCorpo;
     }
+
+    public Item getItemCabeca() {
+        return this.itemCabeca;
+    }
+
+    public Item getItemCorpo() {
+        return this.itemCorpo;
+    }
 }
