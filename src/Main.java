@@ -7,7 +7,7 @@ public class Main {
         //Jogador jogador1 = new Jogador("Celso", 16, "Humano", "Unicamper", "Capacete de Tartaruga", "Armadura de Netherite", "Espada de Dima", "Escudo", "Bota de Ferro");
         
         Item item3 = new Item("Espada", 10, 5, "itemCorpo", false);
-        Mago mago = new Mago("Mago", item3, null, null, null);
+        Mago mago = new Mago("Mago", item3, null, null, item3);
         System.out.println(mago.getItensEquipados());
         //List<Classe> listaDeClasses = new ArrayList<>();
         //listaDeClasses.add(mago);

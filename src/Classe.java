@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Classe {
+public class Classe {
     private final String descricao;
     private Item itemMaoDireita;
     private Item itemMaoEsquerda;
@@ -45,10 +45,8 @@ public abstract class Classe {
         if (this.itemMaoDireita != null) itensEquipados.add(this.itemMaoDireita);
         if (this.itemMaoEsquerda != null) itensEquipados.add(this.itemMaoEsquerda);
         if (this.itemPe != null) itensEquipados.add(this.itemPe);
-        return adicionarItensHerdeiros(itensEquipados);
+        return itensEquipados;
     }
-
-    protected abstract List<Item> adicionarItensHerdeiros(List<Item> itensEquipados);
 
     public String getDescricao() {
         return this.descricao;

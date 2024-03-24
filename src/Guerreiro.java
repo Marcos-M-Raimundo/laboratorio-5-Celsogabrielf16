@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Guerreiro extends Classe {
@@ -29,9 +30,13 @@ public class Guerreiro extends Classe {
         return stringBuilder.toString();
     }
 
-    // Sobreescreve o metodo abstract adicionarItensHerdeiros da classe Classe
+    // Sopreescreve o metodo da classe Classe e retorna uma lista com os item atualmente equipados
     @Override
-    public List<Item> adicionarItensHerdeiros(List<Item> itensEquipados) {
+    public List<Item> getItensEquipados() {
+        List<Item> itensEquipados = new ArrayList<>();
+        if (this.getItemMaoDireita() != null) itensEquipados.add(this.getItemMaoDireita());
+        if (this.getItemMaoEsquerda() != null) itensEquipados.add(this.getItemMaoEsquerda());
+        if (this.getItemPe() != null) itensEquipados.add(this.getItemPe());
         if (this.itemCabeca != null) itensEquipados.add(this.itemCabeca);
         if (this.itemCorpo != null) itensEquipados.add(this.itemCorpo);
         return itensEquipados;
