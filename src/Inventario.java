@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Inventario {
-    private int limiteInventario;
+    private final int limiteInventario;
     private List<Item> inventario;
 
     public Inventario(int limiteInventario) {
