@@ -9,6 +9,16 @@ public class Item {
     private final List<Classe> classesCompativeis;
 
     // Construtor que recebe todos os atributos do item
+    public Item(String nome, int bonusPoder, int valor, String tipo, boolean itemGrande) {
+        this.nome = nome;
+        this.bonusPoder = bonusPoder;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.itemGrande = itemGrande;
+        this.classesCompativeis = null;
+    }
+
+    // Construtor que recebe todos os atributos do item
     public Item(String nome, int bonusPoder, int valor, String tipo, boolean itemGrande, List<Classe> classesCompativeis) {
         this.nome = nome;
         this.bonusPoder = bonusPoder;

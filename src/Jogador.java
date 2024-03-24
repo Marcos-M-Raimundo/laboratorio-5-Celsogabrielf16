@@ -19,7 +19,6 @@ public class Jogador {
         this.nome = nome;
         this.nivel = 1;
         this.raca = new Raca("Humana", "Sem poderes especiais", 5);
-        this.classe = new Classe("Sem classe");
         this.inventario = new Inventario(10);
     }
     

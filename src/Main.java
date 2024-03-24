@@ -6,21 +6,21 @@ public class Main {
         // Instanciação dos objetos para teste
         //Jogador jogador1 = new Jogador("Celso", 16, "Humano", "Unicamper", "Capacete de Tartaruga", "Armadura de Netherite", "Espada de Dima", "Escudo", "Bota de Ferro");
         
-        Classe classe = new Classe("Mago");
-        Mago mago = new Mago("Mago");
-        List<Classe> listaDeClasses = new ArrayList<>();
-        listaDeClasses.add(classe);
-        listaDeClasses.add(mago);
-        Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
-        Item item1 = new Item("Armadura", 10, 5, "itemCorpo", false, listaDeClasses);
-        Inventario inventario = new Inventario(2);
-        System.out.println(inventario.adicionarItem(item));
-        System.out.println(inventario.adicionarItem(item1));
-        System.out.println(inventario.acessarItem("Armadura"));
-        inventario.listarInventario();
-        inventario.removerItem("Armadura");
-        Raca raca = new Raca("Pessoa pequena", "Anao", 100);
-        Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
+        Item item3 = new Item("Espada", 10, 5, "itemCorpo", false);
+        Mago mago = new Mago("Mago", item3, null, null, null);
+        System.out.println(mago.getItensEquipados());
+        //List<Classe> listaDeClasses = new ArrayList<>();
+        //listaDeClasses.add(mago);
+        //Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
+        //Item item1 = new Item("Armadura", 10, 5, "itemCorpo", false, listaDeClasses);
+        //Inventario inventario = new Inventario(2);
+        //System.out.println(inventario.adicionarItem(item));
+        //System.out.println(inventario.adicionarItem(item1));
+        //System.out.println(inventario.acessarItem("Armadura"));
+        //inventario.listarInventario();
+        //inventario.removerItem("Armadura");
+        //Raca raca = new Raca("Pessoa pequena", "Anao", 100);
+        //Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
         //System.out.println(jogador2);
 
         //List<Item> listaDeItens = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Main {
         //System.out.println(raca);
         //System.out.println(inventario.adicionarItem(item));
         //System.out.println(inventario.adicionarItem(item2));
-        System.out.println(inventario);
+        System.out.println(mago);
         //System.out.println(inventario.acessarItem("Armadura"));
         //inventario.removerItem("Armadura");
         //System.out.println(inventario.acessarItem("Armadura"));
