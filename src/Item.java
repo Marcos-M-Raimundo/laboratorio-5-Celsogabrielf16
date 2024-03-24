@@ -18,9 +18,19 @@ public class Item {
         this.classesCompativeis = classesCompativeis;
     }
 
-    // Retorna uma String com todos os atributos do item
+    // Método padrao chamado quando imprimimos a classe Item
+    @Override
     public String toString() {
-        return "Classe: Item, propridades do item " + nome + ": " + bonusPoder + " " + valor + " " + tipo;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Item { ")
+            .append("Nome do item: ").append(this.nome)
+            .append(", Bonus de poder do item: ").append(this.bonusPoder)
+            .append(", Valor do item: ").append(this.valor)
+            .append(", Tipo do item: ").append(this.tipo)
+            .append(", É um item grande? ").append(this.itemGrande)
+            .append(", Classes compativeis do item: ").append(this.classesCompativeis)
+            .append(" }");
+        return stringBuilder.toString();
     }
 
     // Getters para cada atributo do item
@@ -34,6 +44,10 @@ public class Item {
 
     public int getValor() {
         return this.valor;
+    }
+
+    public String getTipo() {
+        return this.tipo;
     }
 
     public boolean getItemGrande() {
