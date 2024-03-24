@@ -3,7 +3,7 @@ public class Raca {
     private String nomeDaRaca;
     private final int minimoPraFugir;
 
-    public Raca(String descricao, String nomeDaRaca, int minimoPraFugir) {
+    public Raca(String nomeDaRaca, String descricao, int minimoPraFugir) {
         this.descricao = descricao;
         this.nomeDaRaca = nomeDaRaca;
         this.minimoPraFugir = minimoPraFugir;
