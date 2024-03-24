@@ -1,14 +1,16 @@
+import java.util.List;
+
 public class Monstro {
-    private String nome;
+    private final String nome;
     private int poder;
-    private int quantidadeDeTesouros;
+    private List<Item> tesouros;
     private int niveisPerdidos;
 
     // Construtor que recebe todos os atributos do monstro
-    public Monstro(String nome, int poder, int quantidadeDeTesouros, int niveisPerdidos) {
+    public Monstro(String nome, int poder, List<Item> tesouros, int niveisPerdidos) {
         this.nome = nome;
         this.poder = poder;
-        this.quantidadeDeTesouros = quantidadeDeTesouros;
+        this.tesouros = tesouros;
         this.niveisPerdidos = niveisPerdidos;
     }
 
