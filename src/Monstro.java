@@ -19,36 +19,20 @@ public class Monstro {
         return "Classe: Monstro, propridades do monstro " + nome + ": " + poder + " " + quantidadeDeTesouros + " " + niveisPerdidos + "\n";
     }
 
-    // Getters e setters para cada atributo do monstro
+    // Getters para cada atributo do monstro
     public String getNome() {
         return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getPoder() {
         return this.poder;
     }
 
-    public void setPoder(int poder) {
-        this.poder = poder;
-    }
-
-    public int getQuantidadeDeTesouros() {
-        return this.quantidadeDeTesouros;
-    }
-
-    public void setQuantidadeDeTesouros(int quantidadeDeTesouros) {
-        this.quantidadeDeTesouros = quantidadeDeTesouros;
+    public List<Item> getTesouros() {
+        return this.tesouros;
     }
 
     public int getNiveisPerdidos() {
         return this.niveisPerdidos;
-    }
-
-    public void setNiveisPerdidos(int niveisPerdidos) {
-        this.niveisPerdidos = niveisPerdidos;
     }
 }
