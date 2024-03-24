@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Inventario {
@@ -7,7 +7,7 @@ public class Inventario {
 
     public Inventario(int limiteInventario) {
         // Criamos um inventario vazio
-        this.inventario = new ArrayList<>(limiteInventario);
+        this.inventario = new LinkedList<>();
         this.limiteInventario = limiteInventario;
     }
 

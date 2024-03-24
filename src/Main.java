@@ -14,8 +14,11 @@ public class Main {
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
         Item item1 = new Item("Armadura", 10, 5, "itemCorpo", false, listaDeClasses);
         Inventario inventario = new Inventario(2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item1);
+        System.out.println(inventario.adicionarItem(item));
+        System.out.println(inventario.adicionarItem(item1));
+        System.out.println(inventario.acessarItem("Armadura"));
+        inventario.listarInventario();
+        inventario.removerItem("Armadura");
         Raca raca = new Raca("Pessoa pequena", "Anao", 100);
         Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
         //System.out.println(jogador2);
