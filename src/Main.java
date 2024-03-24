@@ -7,13 +7,15 @@ public class Main {
         //Jogador jogador1 = new Jogador("Celso", 16, "Humano", "Unicamper", "Capacete de Tartaruga", "Armadura de Netherite", "Espada de Dima", "Escudo", "Bota de Ferro");
         
         Classe classe = new Classe("Mago");
+        Mago mago = new Mago("Mago");
         List<Classe> listaDeClasses = new ArrayList<>();
         listaDeClasses.add(classe);
+        listaDeClasses.add(mago);
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
         Inventario inventario = new Inventario(2);
         inventario.adicionarItem(item);
         Raca raca = new Raca("Pessoa pequena", "Anao", 100);
-        Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, classe, inventario);
+        Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
         System.out.println(jogador2);
 
         //List<Item> listaDeItens = new ArrayList<>();
