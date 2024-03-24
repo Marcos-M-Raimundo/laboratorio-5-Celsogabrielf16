@@ -9,4 +9,8 @@ public class Mago extends Classe {
     public Item getItemCabeca() {
         return this.itemCabeca;
     }
+
+    public void setItemCabeca (Item itemCabeca) {
+        this.itemCabeca = itemCabeca;
+    }
 }
