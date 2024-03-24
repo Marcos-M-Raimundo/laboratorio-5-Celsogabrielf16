@@ -2,9 +2,9 @@ import java.util.List;
 
 public class Monstro {
     private final String nome;
-    private int poder;
-    private List<Item> tesouros;
-    private int niveisPerdidos;
+    private final int poder;
+    private final List<Item> tesouros;
+    private final int niveisPerdidos;
 
     // Construtor que recebe todos os atributos do monstro
     public Monstro(String nome, int poder, List<Item> tesouros, int niveisPerdidos) {
