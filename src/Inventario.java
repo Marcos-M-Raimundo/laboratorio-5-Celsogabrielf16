@@ -18,9 +18,10 @@ public class Inventario {
             return "O inventario está vazio!";
         } else {
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("Limite inventario: " + this.limiteInventario + ",\n");
             stringBuilder.append("Inventario {\n");
             for (Item itemInventario : this.inventario) {
-                stringBuilder.append("\t").append(itemInventario.toString()).append(",\n");
+                stringBuilder.append("\t").append(itemInventario).append(",\n");
             }
             stringBuilder.append("}\n");
             return stringBuilder.toString();
