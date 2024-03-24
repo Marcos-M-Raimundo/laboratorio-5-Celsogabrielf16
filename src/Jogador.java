@@ -32,10 +32,6 @@ public class Jogador {
     public String getNome() {
         return this.nome;
     }
-    
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public int getNivel() {
         return this.nivel;
@@ -45,60 +41,24 @@ public class Jogador {
         this.nivel = nivel;
     }
 
-    public String getRaca() {
+    public Raca getRaca() {
         return this.raca;
     }
     
-    public void setRaca(String raca) {
+    public void setRaca(Raca raca) {
         this.raca = raca;
     }
         
-    public String getClasse() {
+    public Classe getClasse() {
         return this.classe;
     }
     
-    public void setClasse(String classe) {
+    public void setClasse(Classe classe) {
         this.classe = classe;
     }
         
-    public String getItemCabeca() {
-        return this.itemCabeca;
-    }
-    
-    public void setItemCabeca(String itemCabeca) {
-        this.itemCabeca = itemCabeca;
-    }
-        
-    public String getItemCorpo() {
-        return this.itemCorpo;
-    }
-    
-    public void setItemCorpo(String itemCorpo) {
-        this.itemCorpo = itemCorpo;
-    }
-        
-    public String getItemMaoDireita() {
-        return this.itemMaoDireita;
-    }
-    
-    public void setItemMaoDireita(String itemMaoDireita) {
-        this.itemMaoDireita = itemMaoDireita;
-    }
-        
-    public String getItemMaoEsquerda() {
-        return this.itemMaoEsquerda;
-    }
-    
-    public void setItemMaoEsquerda(String itemMaoEsquerda) {
-        this.itemMaoEsquerda = itemMaoEsquerda;
-    }
-        
-    public String getItemPe() {
-        return this.itemPe;
-    }
-    
-    public void setItemPe(String itemPe) {
-        this.itemPe = itemPe;
+    public Inventario getInventario() {
+        return this.inventario;
     }
         
 }
