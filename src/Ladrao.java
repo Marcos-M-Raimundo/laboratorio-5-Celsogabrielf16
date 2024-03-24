@@ -45,6 +45,8 @@ public class Ladrao extends Classe {
     public void setItemCorpo (Item itemCorpo) {
         if(itemCorpo.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else if (!this.itemCompativel(itemCorpo)) {
+            System.out.println("O item " + itemCorpo.getNome() + " não é compativel com a classe Ladrao!");
         } else {
             this.itemCorpo = itemCorpo;
         }

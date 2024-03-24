@@ -45,6 +45,8 @@ public class Mago extends Classe {
     public void setItemCabeca (Item itemCabeca) {
         if(itemCabeca.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else if (!this.itemCompativel(itemCabeca)) {
+            System.out.println("O item " + itemCabeca.getNome() + " não é compativel com a classe Mago!");
         } else {
             this.itemCabeca = itemCabeca;
         }
