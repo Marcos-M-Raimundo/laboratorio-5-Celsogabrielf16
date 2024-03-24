@@ -11,8 +11,8 @@ public class Guerreiro extends Classe {
 
     public Guerreiro(String descricao, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe, Item itemCabeca, Item itemCorpo) {
         super(descricao, itemMaoDireita, itemMaoEsquerda, itemPe);
-        this.itemCabeca = itemCabeca;
-        this.itemCorpo = itemCorpo;
+        if (itemCabeca != null) setItemCabeca(itemCabeca);
+        if (itemCorpo != null) setItemCorpo(itemCorpo);
     }
 
     // Método padrao chamado quando imprimimos a classe Guerreiro
@@ -47,7 +47,11 @@ public class Guerreiro extends Classe {
     }
 
     public void setItemCabeca (Item itemCabeca) {
-        this.itemCabeca = itemCabeca;
+        if(itemCabeca.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemCabeca = itemCabeca;
+        }
     }
 
     public Item getItemCorpo() {
@@ -55,6 +59,10 @@ public class Guerreiro extends Classe {
     }
 
     public void setItemCorpo (Item itemCorpo) {
-        this.itemCorpo = itemCorpo;
+        if(itemCorpo.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemCorpo = itemCorpo;
+        }
     }
 }

@@ -10,7 +10,7 @@ public class Ladrao extends Classe {
 
     public Ladrao(String descricao, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe, Item itemCorpo) {
         super(descricao, itemMaoDireita, itemMaoEsquerda, itemPe);
-        this.itemCorpo = itemCorpo;
+        if (itemCorpo != null) setItemCorpo(itemCorpo);
     }
 
     // Método padrao chamado quando imprimimos a classe Ladrao
@@ -43,6 +43,10 @@ public class Ladrao extends Classe {
     }
 
     public void setItemCorpo (Item itemCorpo) {
-        this.itemCorpo = itemCorpo;
+        if(itemCorpo.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemCorpo = itemCorpo;
+        }
     }
 }

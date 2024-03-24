@@ -6,9 +6,10 @@ public class Main {
         // Instanciação dos objetos para teste
         //Jogador jogador1 = new Jogador("Celso", 16, "Humano", "Unicamper", "Capacete de Tartaruga", "Armadura de Netherite", "Espada de Dima", "Escudo", "Bota de Ferro");
         
-        Item item3 = new Item("Espada", 10, 5, "itemCorpo", false);
+        Item item3 = new Item("Espada", 10, 5, "itemCorpo", true);
         Mago mago = new Mago("Mago", item3, null, null, item3);
-        System.out.println(mago.getItensEquipados());
+        mago.setItemPe(item3);
+        System.out.println(mago);
         List<Classe> listaDeClasses = new ArrayList<>();
         listaDeClasses.add(mago);
         Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);

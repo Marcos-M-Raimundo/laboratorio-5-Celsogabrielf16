@@ -10,7 +10,7 @@ public class Mago extends Classe {
 
     public Mago(String descricao, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe, Item itemCabeca) {
         super(descricao, itemMaoDireita, itemMaoEsquerda, itemPe);
-        this.itemCabeca = itemCabeca;
+        if (itemCabeca != null) setItemCabeca(itemCabeca);
     }
 
     // Método padrao chamado quando imprimimos a classe Mago
@@ -43,6 +43,10 @@ public class Mago extends Classe {
     }
 
     public void setItemCabeca (Item itemCabeca) {
-        this.itemCabeca = itemCabeca;
+        if(itemCabeca.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemCabeca = itemCabeca;
+        }
     }
 }

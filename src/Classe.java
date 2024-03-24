@@ -13,9 +13,9 @@ public class Classe {
 
     public Classe(String descricao, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe) {
         this.descricao = descricao;
-        this.itemMaoDireita = itemMaoDireita;
-        this.itemMaoEsquerda = itemMaoEsquerda;
-        this.itemPe = itemPe;
+        if (itemMaoDireita != null) setItemMaoDireita(itemMaoDireita);
+        if (itemMaoEsquerda != null) setItemMaoEsquerda(itemMaoEsquerda);
+        if (itemPe != null) setItemPe(itemPe);
     }
 
     // Método padrao chamado quando imprimimos a classe Classe
@@ -48,6 +48,20 @@ public class Classe {
         return itensEquipados;
     }
 
+    protected boolean verificaExisteItemGrande() {
+        List<Item> itensEquipados = this.getItensEquipados();
+        boolean jaExisteItemGrande = false;
+
+        for (Item item : itensEquipados) {
+            if (item.getItemGrande()) {
+                jaExisteItemGrande = true;
+                break;
+            }
+        }
+
+        return jaExisteItemGrande;
+    }
+
     public String getDescricao() {
         return this.descricao;
     }
@@ -57,7 +71,11 @@ public class Classe {
     }
 
     public void setItemMaoDireita (Item itemMaoDireita) {
-        this.itemMaoDireita = itemMaoDireita;
+        if(itemMaoDireita.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemMaoDireita = itemMaoDireita;
+        }
     }
 
     public Item getItemMaoEsquerda() {
@@ -65,7 +83,11 @@ public class Classe {
     }
 
     public void setItemMaoEsquerda (Item itemMaoEsquerda) {
-        this.itemMaoEsquerda = itemMaoEsquerda;
+        if(itemMaoEsquerda.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemMaoEsquerda = itemMaoEsquerda;
+        }
     }
 
     public Item getItemPe() {
@@ -73,6 +95,10 @@ public class Classe {
     }
 
     public void setItemPe (Item itemPe) {
-        this.itemPe = itemPe;
+        if(itemPe.getItemGrande() && this.verificaExisteItemGrande()) {
+            System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else {
+            this.itemPe = itemPe;
+        }
     }
 }
