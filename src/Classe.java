@@ -10,4 +10,20 @@ public class Classe {
         this.itemMaoEsquerda = itemMaoEsquerda;
         this.itemPe = itemPe;
     }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public Item getItemMaodireita() {
+        return this.itemMaoDireita;
+    }
+
+    public Item getItemEsquerda() {
+        return this.itemMaoEsquerda;
+    }
+
+    public Item getItemPe() {
+        return this.itemPe;
+    }
 }
