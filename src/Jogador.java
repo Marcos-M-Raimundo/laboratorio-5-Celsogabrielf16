@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Jogador {
     private final String nome;
     private int nivel;
@@ -34,6 +36,18 @@ public class Jogador {
             .append(", Inventário: ").append(this.inventario)
             .append(" }");
         return stringBuilder.toString();
+    }
+
+    // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
+    public int poderJogador() {
+        List<Item> itensEquipados = this.classe.getItensEquipados();
+        int poderSomado = this.nivel;
+
+        for (Item item : itensEquipados) {
+            poderSomado += item.getBonusPoder();
+        }
+
+        return poderSomado;
     }
 
     // Getters e setters para cada atributo do jogador

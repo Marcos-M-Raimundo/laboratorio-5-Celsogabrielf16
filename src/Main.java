@@ -9,18 +9,18 @@ public class Main {
         Item item3 = new Item("Espada", 10, 5, "itemCorpo", false);
         Mago mago = new Mago("Mago", item3, null, null, item3);
         System.out.println(mago.getItensEquipados());
-        //List<Classe> listaDeClasses = new ArrayList<>();
-        //listaDeClasses.add(mago);
-        //Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
+        List<Classe> listaDeClasses = new ArrayList<>();
+        listaDeClasses.add(mago);
+        Item item = new Item("Armadura de Netherite", 10, 5, "itemCorpo", false, listaDeClasses);
         //Item item1 = new Item("Armadura", 10, 5, "itemCorpo", false, listaDeClasses);
-        //Inventario inventario = new Inventario(2);
-        //System.out.println(inventario.adicionarItem(item));
+        Inventario inventario = new Inventario(2);
+        inventario.adicionarItem(item);
         //System.out.println(inventario.adicionarItem(item1));
         //System.out.println(inventario.acessarItem("Armadura"));
         //inventario.listarInventario();
         //inventario.removerItem("Armadura");
-        //Raca raca = new Raca("Pessoa pequena", "Anao", 100);
-        //Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
+        Raca raca = new Raca("Pessoa pequena", "Anao", 100);
+        Jogador jogador2 = new Jogador("Gabriel Prado", 1, raca, mago, inventario);
         //System.out.println(jogador2);
 
         //List<Item> listaDeItens = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Main {
         //System.out.println(raca);
         //System.out.println(inventario.adicionarItem(item));
         //System.out.println(inventario.adicionarItem(item2));
-        System.out.println(mago);
+        System.out.println(jogador2.poderJogador());
         //System.out.println(inventario.acessarItem("Armadura"));
         //inventario.removerItem("Armadura");
         //System.out.println(inventario.acessarItem("Armadura"));
