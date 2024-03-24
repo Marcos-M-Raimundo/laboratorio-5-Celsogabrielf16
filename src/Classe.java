@@ -62,6 +62,20 @@ public class Classe {
         return jaExisteItemGrande;
     }
 
+    protected boolean itemCompativel(Item item) {
+        boolean itemCompativel = false;
+
+        if (item.getClassesCompativeis() == null) {
+            itemCompativel = true;
+        } else {
+            for (Classe classe : item.getClassesCompativeis()) {
+                if (classe.getDescricao().equals(this.getDescricao())) itemCompativel = true;
+            }
+        }
+
+        return itemCompativel;
+    }
+
     public String getDescricao() {
         return this.descricao;
     }
