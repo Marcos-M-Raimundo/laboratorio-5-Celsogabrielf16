@@ -13,4 +13,8 @@ public class Ladrao extends Classe {
     public Item getItemCorpo() {
         return this.itemCorpo;
     }
+
+    public void setItemCorpo (Item itemCorpo) {
+        this.itemCorpo = itemCorpo;
+    }
 }
