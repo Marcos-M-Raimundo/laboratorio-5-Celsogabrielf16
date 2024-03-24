@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Item {
@@ -15,7 +16,11 @@ public class Item {
         this.valor = valor;
         this.tipo = tipo;
         this.itemGrande = itemGrande;
-        this.classesCompativeis = null;
+
+        Classe classeGenerica = new Classe("Aventureiro Genérico");
+        List<Classe> listaClassesCompativeis = new ArrayList<>(1);
+        listaClassesCompativeis.add(classeGenerica);
+        this.classesCompativeis = listaClassesCompativeis;
     }
 
     // Construtor que recebe todos os atributos do item

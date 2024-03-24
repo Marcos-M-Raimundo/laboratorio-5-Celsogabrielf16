@@ -50,11 +50,6 @@ public class Jogador {
         return poderSomado;
     }
 
-    public void equipaItem(Item item) {
-        this.getClasse().setItemMaoDireita(item);
-        this.getInventario().removerItem(item.getNome());
-    }
-
     // Getters e setters para cada atributo do jogador
     public String getNome() {
         return this.nome;

@@ -65,12 +65,8 @@ public class Classe {
     protected boolean itemCompativel(Item item) {
         boolean itemCompativel = false;
 
-        if (item.getClassesCompativeis() == null) {
-            itemCompativel = true;
-        } else {
-            for (Classe classe : item.getClassesCompativeis()) {
-                if (classe.getDescricao().equals(this.getDescricao())) itemCompativel = true;
-            }
+        for (Classe classe : item.getClassesCompativeis()) {
+            if (classe.getDescricao().equals(this.getDescricao())) itemCompativel = true;
         }
 
         return itemCompativel;
@@ -87,6 +83,8 @@ public class Classe {
     public void setItemMaoDireita (Item itemMaoDireita) {
         if(itemMaoDireita.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else if (!this.itemCompativel(itemMaoDireita)) {
+            System.out.println("O item " + itemMaoDireita.getNome() + " não é compativel com a classe do jogador!");
         } else {
             this.itemMaoDireita = itemMaoDireita;
         }
