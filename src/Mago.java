@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Mago extends Classe {
     private Item itemCabeca;
 
@@ -22,6 +24,13 @@ public class Mago extends Classe {
             .append(", Item da cabeça: ").append(this.itemCabeca)
             .append(" }");
         return stringBuilder.toString();
+    }
+
+    // Sobreescreve o metodo abstract adicionarItensHerdeiros da classe Classe
+    @Override
+    public List<Item> adicionarItensHerdeiros(List<Item> itensEquipados) {
+        if (this.itemCabeca != null) itensEquipados.add(this.itemCabeca);
+        return itensEquipados;
     }
 
     public Item getItemCabeca() {
