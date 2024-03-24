@@ -5,4 +5,8 @@ public class Mago extends Classe {
         super(descricao, itemMaoDireita, itemMaoEsquerda, itemPe);
         this.itemCabeca = itemCabeca;
     }
+
+    public Item getItemCabeca() {
+        return this.itemCabeca;
+    }
 }
