@@ -97,6 +97,8 @@ public class Classe {
     public void setItemMaoEsquerda (Item itemMaoEsquerda) {
         if(itemMaoEsquerda.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else if (!this.itemCompativel(itemMaoEsquerda)) {
+            System.out.println("O item " + itemMaoEsquerda.getNome() + " não é compativel com a classe do jogador!");
         } else {
             this.itemMaoEsquerda = itemMaoEsquerda;
         }
@@ -109,6 +111,8 @@ public class Classe {
     public void setItemPe (Item itemPe) {
         if(itemPe.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+        } else if (!this.itemCompativel(itemPe)) {
+            System.out.println("O item " + itemPe.getNome() + " não é compativel com a classe do jogador!");
         } else {
             this.itemPe = itemPe;
         }
