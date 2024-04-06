@@ -36,12 +36,21 @@ public class Masmorra {
                     jogador.getInventario().adicionarItem(tesouro);
                 }
 
-                System.out.println("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + " e ganhou os tesouros: " + tesourosGanhos);
+                System.out.println("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + "! E com isso ganhou os tesouros: " + tesourosGanhos);
                 break;
             case FUGA:
                 System.out.println("O jogador " + jogador.getNome() + " conseguiu fugiu da batalha contra o monstro " + montroEscolhido.getNome() + "!");
                 break;
             case DERROTA:
+                int novoNivelJogador = jogador.getNivel() - montroEscolhido.getNiveisPerdidos();
+
+                if (novoNivelJogador > 0) {
+                    jogador.setNivel(novoNivelJogador);
+                    System.out.println("O jogador " + jogador.getNome() + " foi derrotado na batalha contra o monstro " + montroEscolhido.getNome() + "! E seu novo nível é " + novoNivelJogador + "!");
+                } else {
+                    jogador.setNivel(0);
+                    System.out.println("O jogador " + jogador.getNome() + " foi derrotado na batalha contra o monstro " + montroEscolhido.getNome() + "! E esta fora do jogo por ter zerado seu nível!");
+                }
                 break;
         }
     }
