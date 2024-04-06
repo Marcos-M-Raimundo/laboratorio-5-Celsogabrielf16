@@ -44,6 +44,18 @@ public class Jogador {
         return stringBuilder.toString();
     }
 
+    // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
+    public int poderJogador() {
+        List<Item> itensEquipados = this.getItensEquipados();
+        int poderSomado = this.nivel;
+
+        for (Item item : itensEquipados) {
+            poderSomado += item.getBonusPoder();
+        }
+
+        return poderSomado;
+    }
+
     // Retorna uma lista com os itens atualmente equipados
     private List<Item> getItensEquipados() {
         List<Item> itensEquipados = new ArrayList<Item>();
@@ -70,16 +82,17 @@ public class Jogador {
         return jaExisteItemGrande;
     }
 
-    // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
-    public int poderJogador() {
-        List<Item> itensEquipados = this.getItensEquipados();
-        int poderSomado = this.nivel;
+    private boolean verificaCompatibilidadePorClasse(Item item) {
+        boolean itemCompativel = false;
 
-        for (Item item : itensEquipados) {
-            poderSomado += item.getBonusPoder();
+        for (Classe classeItem : item.getClassesCompativeis()) {
+            if (classeItem == this.getClasse()) {
+                itemCompativel = true;
+                break;
+            };
         }
 
-        return poderSomado;
+        return itemCompativel;
     }
 
     // Getters e setters para cada atributo do jogador
