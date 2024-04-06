@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
@@ -43,9 +44,20 @@ public class Jogador {
         return stringBuilder.toString();
     }
 
+    // Retorna uma lista com os itens atualmente equipados
+    public List<Item> getItensEquipados() {
+        List<Item> itensEquipados = new ArrayList<Item>();
+        if (this.itemCabeca != null) itensEquipados.add(this.itemCabeca);
+        if (this.itemCorpo != null) itensEquipados.add(this.itemCorpo);
+        if (this.itemMaoDireita != null) itensEquipados.add(this.itemMaoDireita);
+        if (this.itemMaoEsquerda != null) itensEquipados.add(this.itemMaoEsquerda);
+        if (this.itemPe != null) itensEquipados.add(this.itemPe);
+        return itensEquipados;
+    }
+
     // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
     public int poderJogador() {
-        List<Item> itensEquipados = this.classe.getItensEquipados();
+        List<Item> itensEquipados = this.getItensEquipados();
         int poderSomado = this.nivel;
 
         for (Item item : itensEquipados) {
