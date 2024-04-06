@@ -45,7 +45,7 @@ public class Jogador {
     }
 
     // Retorna uma lista com os itens atualmente equipados
-    public List<Item> getItensEquipados() {
+    private List<Item> getItensEquipados() {
         List<Item> itensEquipados = new ArrayList<Item>();
         if (this.itemCabeca != null) itensEquipados.add(this.itemCabeca);
         if (this.itemCorpo != null) itensEquipados.add(this.itemCorpo);
@@ -53,6 +53,21 @@ public class Jogador {
         if (this.itemMaoEsquerda != null) itensEquipados.add(this.itemMaoEsquerda);
         if (this.itemPe != null) itensEquipados.add(this.itemPe);
         return itensEquipados;
+    }
+
+    // Verifica se ja existe algum item grande equipado
+    private boolean verificaExisteItemGrande() {
+        List<Item> itensEquipados = this.getItensEquipados();
+        boolean jaExisteItemGrande = false;
+
+        for (Item item : itensEquipados) {
+            if (item.getItemGrande()) {
+                jaExisteItemGrande = true;
+                break;
+            }
+        }
+
+        return jaExisteItemGrande;
     }
 
     // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
