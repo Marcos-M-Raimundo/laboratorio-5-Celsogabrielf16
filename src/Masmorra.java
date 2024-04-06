@@ -36,8 +36,10 @@ public class Masmorra {
                     jogador.getInventario().adicionarItem(tesouro);
                 }
 
+                System.out.println("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + " e ganhou os tesouros: " + tesourosGanhos);
                 break;
             case FUGA:
+                System.out.println("O jogador " + jogador.getNome() + " conseguiu fugiu da batalha contra o monstro " + montroEscolhido.getNome() + "!");
                 break;
             case DERROTA:
                 break;
