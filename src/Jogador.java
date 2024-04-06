@@ -72,6 +72,25 @@ public class Jogador {
         return poderSomado;
     }
 
+    public void venderItens(List<Item> itensParaVender) {
+        int valorTotalItens = 0;
+
+        for (Item item : itensParaVender) {
+            valorTotalItens += item.getValor();
+        }
+
+        if (valorTotalItens >= 1000) {
+            this.getInventario().removerItem(itensParaVender.stream().map(Item::getNome).toList());
+
+            int novoNivel = this.getNivel() + (valorTotalItens / 1000);
+            setNivel(novoNivel);
+            
+            System.out.println("Os itens foram vendidos! O jogador " + this.getNome() + " foi para o nível " + this.getNivel() + "!");
+        } else {
+            System.out.println("Valor total dos itens insuficiente para a venda!");
+        }
+    }
+
     // Retorna uma lista com os itens atualmente equipados
     private List<Item> getItensEquipados() {
         List<Item> itensEquipados = new ArrayList<Item>();

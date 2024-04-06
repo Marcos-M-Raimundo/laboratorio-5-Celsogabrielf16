@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,20 +52,16 @@ public class Inventario {
 
     public void removerItem(String nomeItem) {
         for (Item itemInventario : this.inventario) {
-            if (itemInventario.getNome().equals(nomeItem)) {
-                this.inventario.remove(itemInventario);
-                break;
-            }
+            if (itemInventario.getNome().equals(nomeItem)) this.inventario.remove(itemInventario);
         }
     }
 
     public void removerItem(List<String> listaNomesItens) {
-        for (Item itemInventario : this.inventario) {
-            for (String nomeItem : listaNomesItens) {
-                if (itemInventario.getNome().equals(nomeItem)) {
-                    this.inventario.remove(itemInventario);
-                    break;
-                }
+        for (String nomeItem : listaNomesItens) {
+            Iterator<Item> iterator = this.getInventario().iterator();
+            while (iterator.hasNext()) {
+                Item item = iterator.next();
+                if (item.getNome().equals(nomeItem)) iterator.remove();
             }
         }
     }
@@ -77,5 +74,9 @@ public class Inventario {
 
     public int getLimiteDeItens() {
         return this.limiteDeItens;
+    }
+
+    public List<Item> getInventario() {
+        return this.inventario;
     }
 }

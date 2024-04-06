@@ -29,35 +29,36 @@ public class Main {
 
         // Lista de itens
         List<Item> listaItens1 = new ArrayList<>();
-        listaItens1.add(itemEspadaFlamejante);
+        listaItens1.add(itemAmuletoSorte);
         listaItens1.add(itemElmoDragao);
         List<Item> listaItens2 = new ArrayList<>();
-        listaItens2.add(itemAmuletoSorte);
+        listaItens2.add(itemEspadaFlamejante);
         listaItens2.add(itemMachadoViking);
 
         // Instanciação dos inventarios e adicionando itens
         Inventario inventario1 = new Inventario(5);
-        inventario1.adicionarItem(itemEspadaFlamejante);
         inventario1.adicionarItem(itemElmoDragao);
         inventario1.removerItem(itemElmoDragao.getNome());
         Inventario inventario2 = new Inventario(5);
+        inventario2.adicionarItem(itemEspadaFlamejante);
         inventario2.adicionarItem(itemMachadoViking);
         inventario2.adicionarItem(itemAmuletoSorte);
 
+        // Criação de um bau de tesouros
         BauDeTesouros bauDeTesouros = new BauDeTesouros(5);
         bauDeTesouros.adicionarItem(itemEspadaFlamejante);
         bauDeTesouros.adicionarItem(itemElmoDragao);
         bauDeTesouros.adicionarItem(itemMachadoViking);
         bauDeTesouros.adicionarItem(itemAmuletoSorte);
 
-        System.out.println(bauDeTesouros);
-        
-        bauDeTesouros.acessarItem("Elmo do Dragão");
-        
-        System.out.println(bauDeTesouros);
-        
-        bauDeTesouros.pegarItensAleatorios(2);
-        
-        System.out.println(bauDeTesouros);
+        Jogador jogador = new Jogador("Celso", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2, itemElmoDragao, itemAmuletoSorte, itemMachadoViking, null, null);
+
+        System.out.println(jogador.getInventario());
+        jogador.venderItens(listaItens2);
+        System.out.println(jogador.getInventario());
+
+        //bauDeTesouros.acessarItem("Elmo do Dragão");
+        //bauDeTesouros.pegarItensAleatorios(2);
+        //System.out.println(bauDeTesouros);
     }
 }
