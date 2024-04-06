@@ -8,4 +8,15 @@ public class Masmorra {
         this.monstros = monstros;
         this.tesouros = tesouros;
     }
+
+    // Método padrao chamado quando imprimimos a classe Masmorra
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Masmorra { ")
+            .append("Monstros: ").append(this.monstros)
+            .append(", Tesouros: ").append(this.tesouros)
+            .append(" }");
+        return stringBuilder.toString();
+    }
 }
