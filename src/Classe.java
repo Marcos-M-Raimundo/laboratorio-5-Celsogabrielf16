@@ -1,5 +1,6 @@
 public enum Classe {
     GUERREIRO,
     LADRAO,
-    MAGO;
+    MAGO,
+    AVENTUREIRO;
 }
