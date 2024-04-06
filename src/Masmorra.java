@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 public class Masmorra {
     private List<Monstro> monstros;
@@ -21,7 +22,26 @@ public class Masmorra {
     }
 
     public void abrirPortaMonstro(Jogador jogador) {
+        Random random = new Random();
+        int indiceMonstro = random.nextInt(this.getMonstros().size());
+        Monstro montroEscolhido = this.getMonstros().get(indiceMonstro);
 
+        Resultado resultadoBatalha = CampoDeBatalha.batalhaContraMonstro(montroEscolhido, jogador);
+
+        switch (resultadoBatalha) {
+            case VITORIA:
+                List<Item> tesourosGanhos = this.getTesouros().pegarItensAleatorios(montroEscolhido.getTesouros());
+
+                for (Item tesouro : tesourosGanhos) {
+                    jogador.getInventario().adicionarItem(tesouro);
+                }
+
+                break;
+            case FUGA:
+                break;
+            case DERROTA:
+                break;
+        }
     }
 
     public void abrirPortaItem(Jogador jogador) {
