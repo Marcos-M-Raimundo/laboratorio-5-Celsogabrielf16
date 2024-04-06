@@ -51,6 +51,11 @@ public class Jogador {
             .append(", Raça: ").append(this.raca)
             .append(", Classe: ").append(this.classe)
             .append(", Inventário: ").append(this.inventario)
+            .append(", Item da Cabeça: ").append(this.itemCabeca)
+            .append(", Item do Corpo: ").append(this.itemCorpo)
+            .append(", Item da Mão Direita: ").append(this.itemMaoDireita)
+            .append(", Item da Mão Esquerda: ").append(this.itemMaoEsquerda)
+            .append(", Item do Pé: ").append(this.itemPe)
             .append(" }");
         return stringBuilder.toString();
     }
