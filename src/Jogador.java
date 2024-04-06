@@ -12,22 +12,33 @@ public class Jogador {
     private Item itemMaoDireita;
     private Item itemMaoEsquerda;
     private Item itemPe;
-    
-    // Construtor que recebe todos os atributos do jogador
-    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {
-        this.nome = nome;
-        this.nivel = nivel;
-        this.raca = raca;
-        this.classe = classe;
-        this.inventario = inventario;
-    }
 
     // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
     public Jogador(String nome) {
         this.nome = nome;
         this.nivel = 1;
-        this.raca = new Raca("Humana", "Sem poderes especiais", 5);
-        this.inventario = new Inventario(10);
+        this.raca = Raca.HUMANO;
+        this.classe = Classe.AVENTUREIRO;
+        this.inventario = new Inventario(50);
+        this.itemCabeca = null;
+        this.itemCorpo = null;
+        this.itemMaoDireita = null;
+        this.itemMaoEsquerda = null;
+        this.itemPe = null;
+    }
+    
+    // Construtor que recebe todos os atributos do jogador
+    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario, Item itemCabeca, Item itemCorpo, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe) {
+        this.nome = nome;
+        this.nivel = nivel;
+        this.raca = raca;
+        this.classe = classe;
+        this.inventario = inventario;
+        this.itemCabeca = itemCabeca;
+        this.itemCorpo = itemCorpo;
+        this.itemMaoDireita = itemMaoDireita;
+        this.itemMaoEsquerda = itemMaoEsquerda;
+        this.itemPe = itemPe;
     }
     
     // Método padrao chamado quando imprimimos a classe Jogador
