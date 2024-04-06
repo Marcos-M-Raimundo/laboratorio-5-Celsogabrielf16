@@ -6,6 +6,11 @@ public class Jogador {
     private Raca raca;
     private Classe classe;
     private Inventario inventario;
+    private Item itemCabeca;
+    private Item itemCorpo;
+    private Item itemMaoDireita;
+    private Item itemMaoEsquerda;
+    private Item itemPe;
     
     // Construtor que recebe todos os atributos do jogador
     public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {

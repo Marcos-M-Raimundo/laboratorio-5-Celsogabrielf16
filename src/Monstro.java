@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Monstro {
     private final String nome;
     private final int poder;
