@@ -160,5 +160,65 @@ public class Jogador {
     public Inventario getInventario() {
         return this.inventario;
     }
+
+    public Item getItemCabeca() {
+        return this.itemCabeca;
+    }
+
+    public void setItemCabeca (Item itemCabeca) {
+        if (verificaItemPodeSerEquipado(itemCabeca)) {
+            if (this.itemCabeca != null) this.inventario.adicionarItem(this.itemCabeca);
+            this.itemCabeca = itemCabeca;
+            this.inventario.removerItem(itemCabeca.getNome());
+        }
+    }
+
+    public Item getItemCorpo() {
+        return this.itemCorpo;
+    }
+
+    public void setItemCorpo (Item itemCorpo) {
+        if (verificaItemPodeSerEquipado(itemCorpo)) {
+            if (this.itemCorpo != null) this.inventario.adicionarItem(this.itemCorpo);
+            this.itemCorpo = itemCorpo;
+            this.inventario.removerItem(itemCorpo.getNome());
+        }
+    }
+
+    public Item getItemMaoDireita() {
+        return this.itemMaoDireita;
+    }
+
+    public void setItemMaoDireita (Item itemMaoDireita) {
+        if (verificaItemPodeSerEquipado(itemMaoDireita)) {
+            if (this.itemMaoDireita != null) this.inventario.adicionarItem(this.itemMaoDireita);
+            this.itemMaoDireita = itemMaoDireita;
+            this.inventario.removerItem(itemMaoDireita.getNome());
+        }
+    }
+
+    public Item getItemMaoEsquerda() {
+        return this.itemMaoEsquerda;
+    }
+
+    public void setItemMaoEsquerda (Item itemMaoEsquerda) {
+        if (verificaItemPodeSerEquipado(itemMaoEsquerda)) {
+            if (this.itemMaoEsquerda != null) this.inventario.adicionarItem(this.itemMaoEsquerda);
+            this.itemMaoEsquerda = itemMaoEsquerda;
+            this.inventario.removerItem(itemMaoEsquerda.getNome());
+        }
+    }
+
+    public Item getItemPe() {
+        return this.itemPe;
+    }
+
+    public void setItemPe (Item itemPe) {
+        if (verificaItemPodeSerEquipado(itemPe)) {
+            if (this.itemPe != null) this.inventario.adicionarItem(this.itemPe);
+            this.itemPe = itemPe;
+            this.inventario.removerItem(itemPe.getNome());
+        }
+    }
         
 }
