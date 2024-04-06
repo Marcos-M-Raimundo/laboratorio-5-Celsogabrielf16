@@ -95,6 +95,19 @@ public class Jogador {
         return itemCompativel;
     }
 
+    private boolean verificaCompatibilidadePorRaca(Item item) {
+        boolean itemCompativel = false;
+
+        for (Raca racaItem : item.getRacasCompativeis()) {
+            if (racaItem == this.getRaca()) {
+                itemCompativel = true;
+                break;
+            };
+        }
+
+        return itemCompativel;
+    }
+
     // Getters e setters para cada atributo do jogador
     public String getNome() {
         return this.nome;
