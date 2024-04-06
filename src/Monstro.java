@@ -3,11 +3,11 @@ import java.util.List;
 public class Monstro {
     private final String nome;
     private final int poder;
-    private final List<Item> tesouros;
+    private final int tesouros;
     private final int niveisPerdidos;
 
     // Construtor que recebe todos os atributos do monstro
-    public Monstro(String nome, int poder, List<Item> tesouros, int niveisPerdidos) {
+    public Monstro(String nome, int poder, int tesouros, int niveisPerdidos) {
         this.nome = nome;
         this.poder = poder;
         this.tesouros = tesouros;
@@ -21,7 +21,7 @@ public class Monstro {
         stringBuilder.append("Monstro { ")
             .append("Nome: ").append(this.nome)
             .append(", Poder: ").append(this.poder)
-            .append(", Tesouros: ").append(this.tesouros)
+            .append(", Número de Pesouros: ").append(this.tesouros)
             .append(", Niveis Perdidos: ").append(this.niveisPerdidos)
             .append(" }");
         return stringBuilder.toString();
@@ -36,7 +36,7 @@ public class Monstro {
         return this.poder;
     }
 
-    public List<Item> getTesouros() {
+    public int getTesouros() {
         return this.tesouros;
     }
 
