@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Inventario {
     private final int limiteDeItens;
-    private List<Item> inventario;
+    protected List<Item> inventario;
 
     public Inventario(int limiteDeItens) {
         this.limiteDeItens = limiteDeItens;
@@ -22,7 +22,7 @@ public class Inventario {
                 .append("Limite inventario: ").append(this.limiteDeItens)
                 .append(", Inventario: { ");
             for (Item itemInventario : this.inventario) {
-                stringBuilder.append(itemInventario);
+                stringBuilder.append(itemInventario).append(", ");
             }
             stringBuilder.append(" }").append(" }");
             return stringBuilder.toString();
