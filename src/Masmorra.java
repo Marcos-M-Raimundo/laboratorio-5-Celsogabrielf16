@@ -21,6 +21,10 @@ public class Masmorra {
     }
 
     public void abrirPortaMonstro(Jogador jogador) {
+
+    }
+
+    public void abrirPortaItem(Jogador jogador) {
         
     }
 
