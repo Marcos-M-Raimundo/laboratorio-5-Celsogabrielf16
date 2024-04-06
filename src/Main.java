@@ -28,19 +28,13 @@ public class Main {
         Item itemMachadoViking = new Item("Machado Viking", 4, 1200, TipoItem.MAO, true, listaClasse3, listaRaca1);
 
         // Lista de itens
-        List<Item> listaItens1 = new ArrayList<>();
-        listaItens1.add(itemAmuletoSorte);
-        listaItens1.add(itemElmoDragao);
-        List<Item> listaItens2 = new ArrayList<>();
-        listaItens2.add(itemEspadaFlamejante);
-        listaItens2.add(itemMachadoViking);
-
+        List<Item> listaItens = new ArrayList<>();
+        listaItens.add(itemEspadaFlamejante);
         // Instanciação dos inventarios e adicionando itens
         Inventario inventario1 = new Inventario(5);
         inventario1.adicionarItem(itemElmoDragao);
-        inventario1.removerItem(itemElmoDragao.getNome());
         Inventario inventario2 = new Inventario(5);
-        inventario2.adicionarItem(itemEspadaFlamejante);
+        inventario1.adicionarItem(itemEspadaFlamejante);
         inventario2.adicionarItem(itemMachadoViking);
         inventario2.adicionarItem(itemAmuletoSorte);
 
@@ -51,11 +45,13 @@ public class Main {
         bauDeTesouros.adicionarItem(itemMachadoViking);
         bauDeTesouros.adicionarItem(itemAmuletoSorte);
 
+        // Instanciação dos monstros
+        Monstro monstroDragaoVermelho = new Monstro("Dragão Vermelho", 5, 4, 3);
+        Monstro monstroEsqueletoMisterioso = new Monstro("Esqueleto Misterioso", 3, 2, 1);
+
         Jogador jogador = new Jogador("Celso", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2, itemElmoDragao, itemAmuletoSorte, itemMachadoViking, null, null);
 
-        System.out.println(jogador.getInventario());
-        jogador.venderItens(listaItens2);
-        System.out.println(jogador.getInventario());
+        jogador.venderItens(listaItens);
 
         //bauDeTesouros.acessarItem("Elmo do Dragão");
         //bauDeTesouros.pegarItensAleatorios(2);
