@@ -19,4 +19,13 @@ public class Masmorra {
             .append(" }");
         return stringBuilder.toString();
     }
+
+    // Getters da classe Masmorra
+    public List<Monstro> getMonstros() {
+        return this.monstros;
+    }
+
+    public BauDeTesouros getTesouros() {
+        return this.tesouros;
+    }
 }
