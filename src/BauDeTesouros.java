@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BauDeTesouros extends Inventario {
@@ -24,14 +26,27 @@ public class BauDeTesouros extends Inventario {
         Random random = new Random();
         int tamanhoAtualInventario = this.inventario.size();
 
-        int numeroAleatorio1 = random.nextInt(tamanhoAtualInventario);
-        int numeroAleatorio2 = random.nextInt(tamanhoAtualInventario);
+        int indiceAleatorio1 = random.nextInt(tamanhoAtualInventario);
+        int indiceAleatorio2 = random.nextInt(tamanhoAtualInventario);
 
-        if (numeroAleatorio1 == numeroAleatorio2) {
-            numeroAleatorio2 = (numeroAleatorio1 + 1) % (tamanhoAtualInventario);
+        if (indiceAleatorio1 == indiceAleatorio2) {
+            indiceAleatorio2 = (indiceAleatorio1 + 1) % (tamanhoAtualInventario);
         }
         
-        System.out.println(this.inventario.get(numeroAleatorio1));
-        System.out.println(this.inventario.get(numeroAleatorio2));
+        System.out.println(this.inventario.get(indiceAleatorio1));
+        System.out.println(this.inventario.get(indiceAleatorio2));
+    }
+
+    public List<Item> pegarItensAleatorios(int quantidadeItens) {
+        List<Item> listaItensAleatorios= new ArrayList<Item>(quantidadeItens);
+        Random random = new Random();
+
+        for(int i = 0; i < quantidadeItens; i++) {
+            int indiceAleatorio = random.nextInt(this.inventario.size());
+
+            listaItensAleatorios.add(this.acessarItem(this.inventario.get(indiceAleatorio).getNome()));
+        }
+
+        return listaItensAleatorios;
     }
 }

@@ -22,7 +22,11 @@ public class Inventario {
                 .append("Limite inventario: ").append(this.limiteDeItens)
                 .append(", Inventario: { ");
             for (Item itemInventario : this.inventario) {
-                stringBuilder.append(itemInventario).append(", ");
+                if (this.inventario.getLast().getNome().equals(itemInventario.getNome())) {
+                    stringBuilder.append(itemInventario);
+                } else {
+                    stringBuilder.append(itemInventario).append(", ");
+                }
             }
             stringBuilder.append(" }").append(" }");
             return stringBuilder.toString();

@@ -50,12 +50,14 @@ public class Main {
         bauDeTesouros.adicionarItem(itemMachadoViking);
         bauDeTesouros.adicionarItem(itemAmuletoSorte);
 
-        bauDeTesouros.listarItens();
+        System.out.println(bauDeTesouros);
         
         bauDeTesouros.acessarItem("Elmo do Dragão");
         
         System.out.println(bauDeTesouros);
         
-        bauDeTesouros.listarItens();
+        bauDeTesouros.pegarItensAleatorios(2);
+        
+        System.out.println(bauDeTesouros);
     }
 }
