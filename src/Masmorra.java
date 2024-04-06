@@ -20,6 +20,10 @@ public class Masmorra {
         return stringBuilder.toString();
     }
 
+    public void abrirPortaMonstro(Jogador jogador) {
+        
+    }
+
     // Getters da classe Masmorra
     public List<Monstro> getMonstros() {
         return this.monstros;
