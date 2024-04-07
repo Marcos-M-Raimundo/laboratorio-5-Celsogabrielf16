@@ -72,6 +72,13 @@ public class Jogador {
         return poderSomado;
     }
 
+    public boolean possuiMaoVazia() {
+        if ((this.itemMaoDireita == null) || (this.itemMaoEsquerda == null)) {
+            return true;
+        }
+        return false;
+    }
+
     public void venderItens(List<Item> itensParaVender) {
         int valorTotalItens = 0;
 
