@@ -1,4 +1,6 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class Main {
         // Instanciação dos itens
         Item itemEspadaFlamejante = new Item("Espada Flamejante", 3, 1000, TipoItem.MAO, true, listaClasse1, listaRaca1);
         Item itemElmoDragao = new Item("Elmo do Dragão", 2, 800, TipoItem.CORPO, false, listaClasse2, listaRaca2);
-        Item itemAmuletoSorte = new Item("Amuleto da Sorte", 1, 400, TipoItem.CORPO, false, listaClasse3, listaRaca3);
+        Item itemAmuletoSorte = new Item("Amuleto da Sorte", 1, 800, TipoItem.CORPO, false, listaClasse3, listaRaca3);
         Item itemMachadoViking = new Item("Machado Viking", 4, 1200, TipoItem.MAO, true, listaClasse3, listaRaca1);
 
         // Lista de itens
@@ -111,15 +113,26 @@ public class Main {
                             jogadorDaRodada.setItemPe(itemEscolhido);
                             break;
                     }
-                    System.out.println();
                     break;
                 case 3:
+                    System.out.println("Digite o nome dos itens que deseja vender separados por virgula:");
+                    String linhaComItensParaVender = scanner.nextLine();
+                    List<String> listaNomeItensParaVender = Arrays.asList(linhaComItensParaVender.split(", "));
+                    System.out.println();
+
+                    List<Item> listaItensParaVender = new ArrayList<Item>();
+                    for(String nomeItemParaVender : listaNomeItensParaVender) {
+                        listaItensParaVender.add(jogadorDaRodada.getInventario().acessarItem(nomeItemParaVender));
+                    }
+
+                    jogadorDaRodada.venderItens(listaItensParaVender);
                     break;
                 case 4:
                     break;
                 case 5:
                     break;
-            }
+                }
+            System.out.println();
 
         } while (entradaJogador != 0);
         //indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
