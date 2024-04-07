@@ -128,6 +128,7 @@ public class Main {
                     jogadorDaRodada.venderItens(listaItensParaVender);
                     break;
                 case 4:
+                    System.out.println(jogadorDaRodada);
                     break;
                 case 5:
                     break;

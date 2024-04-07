@@ -44,7 +44,7 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("- ").append(this.nome).append(" - nível ").append(this.bonusPoder);
+        stringBuilder.append(this.nome).append(" - nível ").append(this.bonusPoder);
         return stringBuilder.toString();
     }
 

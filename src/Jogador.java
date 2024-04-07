@@ -45,18 +45,16 @@ public class Jogador {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Jogador { ")
-            .append("Nome: ").append(this.nome)
-            .append(", Nivel: ").append(this.nivel)
-            .append(", Raça: ").append(this.raca)
-            .append(", Classe: ").append(this.classe)
-            .append(", Inventário: ").append(this.inventario)
-            .append(", Item da Cabeça: ").append(this.itemCabeca)
-            .append(", Item do Corpo: ").append(this.itemCorpo)
-            .append(", Item da Mão Direita: ").append(this.itemMaoDireita)
-            .append(", Item da Mão Esquerda: ").append(this.itemMaoEsquerda)
-            .append(", Item do Pé: ").append(this.itemPe)
-            .append(" }");
+        stringBuilder.append("Informações do jogador ").append(this.nome)
+            .append("\n- Nivel: ").append(this.nivel)
+            .append("\n- Raça: ").append(this.raca)
+            .append("\n- Classe: ").append(this.classe)
+            .append("\n- Inventário: ").append(this.inventario)
+            .append("\n- Item da Cabeça: ").append(this.itemCabeca != null ? this.itemCabeca : "Sem item equipado")
+            .append("\n- Item do Corpo: ").append(this.itemCorpo != null ? this.itemCorpo : "Sem item equipado")
+            .append("\n- Item da Mão Direita: ").append(this.itemMaoDireita != null ? this.itemMaoDireita : "Sem item equipado")
+            .append("\n- Item da Mão Esquerda: ").append(this.itemMaoEsquerda != null ? this.itemMaoEsquerda : "Sem item equipado")
+            .append("\n- Item do Pé: ").append(this.itemPe != null ? this.itemPe : "Sem item equipado");
         return stringBuilder.toString();
     }
 

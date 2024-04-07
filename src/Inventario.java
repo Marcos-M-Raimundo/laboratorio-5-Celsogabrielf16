@@ -19,9 +19,7 @@ public class Inventario {
             return "O inventario está vazio!";
         } else {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Inventario { ")
-                .append("Limite inventario: ").append(this.limiteDeItens)
-                .append(", Inventario: { ");
+            stringBuilder.append("[ ").append("Limite inventario: ").append(this.limiteDeItens).append(", Itens Inventario: [ ");
             for (Item itemInventario : this.inventario) {
                 if (this.inventario.getLast().getNome().equals(itemInventario.getNome())) {
                     stringBuilder.append(itemInventario);
@@ -29,7 +27,7 @@ public class Inventario {
                     stringBuilder.append(itemInventario).append(", ");
                 }
             }
-            stringBuilder.append(" }").append(" }");
+            stringBuilder.append(" ]").append(" ]");
             return stringBuilder.toString();
         }
     }
@@ -72,7 +70,7 @@ public class Inventario {
         } else {
             System.out.println("Listando intens do inventário:");
             for (Item itemInventario : this.inventario) {
-                System.out.println(itemInventario);
+                System.out.println("- " + itemInventario);
             }
         }
     }
