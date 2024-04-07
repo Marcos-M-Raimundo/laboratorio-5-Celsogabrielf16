@@ -67,9 +67,11 @@ public class Inventario {
     }
 
     public void listarItens() {
+        System.out.println("Listando intens do inventário:");
         for (Item itemInventario : this.inventario) {
             System.out.println(itemInventario);
         }
+        System.out.println();
     }
 
     public int getLimiteDeItens() {

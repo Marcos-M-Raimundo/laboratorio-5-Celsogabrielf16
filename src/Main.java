@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +21,6 @@ public class Main {
         List<Raca> listaRaca3 = new ArrayList<>();
         listaRaca3.add(Raca.ANAO);
 
-
         // Instanciação dos itens
         Item itemEspadaFlamejante = new Item("Espada Flamejante", 3, 1000, TipoItem.MAO, true, listaClasse1, listaRaca1);
         Item itemElmoDragao = new Item("Elmo do Dragão", 2, 800, TipoItem.CORPO, false, listaClasse2, listaRaca2);
@@ -30,11 +30,12 @@ public class Main {
         // Lista de itens
         List<Item> listaItens = new ArrayList<>();
         listaItens.add(itemEspadaFlamejante);
+
         // Instanciação dos inventarios e adicionando itens
         Inventario inventario1 = new Inventario(5);
         inventario1.adicionarItem(itemElmoDragao);
-        Inventario inventario2 = new Inventario(5);
         inventario1.adicionarItem(itemEspadaFlamejante);
+        Inventario inventario2 = new Inventario(5);
         inventario2.adicionarItem(itemMachadoViking);
         inventario2.adicionarItem(itemAmuletoSorte);
 
@@ -49,12 +50,47 @@ public class Main {
         Monstro monstroDragaoVermelho = new Monstro("Dragão Vermelho", 5, 4, 3);
         Monstro monstroEsqueletoMisterioso = new Monstro("Esqueleto Misterioso", 3, 2, 1);
 
-        Jogador jogador = new Jogador("Celso", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2, itemElmoDragao, itemAmuletoSorte, itemMachadoViking, null, null);
+        Jogador jogador1 = new Jogador("Celso", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2, null, itemAmuletoSorte, itemMachadoViking, null, null);
+        Jogador jogador2 = new Jogador("Gabriel", 1, Raca.ELFO, Classe.MAGO, inventario1, itemElmoDragao, null, itemEspadaFlamejante, null, null);
 
-        jogador.venderItens(listaItens);
+        List<Jogador> listaJogadores = new ArrayList<Jogador>(6);
+        listaJogadores.add(jogador1);
+        listaJogadores.add(jogador2);
 
-        //bauDeTesouros.acessarItem("Elmo do Dragão");
-        //bauDeTesouros.pegarItensAleatorios(2);
-        //System.out.println(bauDeTesouros);
+        int entradaJogador, indiceJogadorRodada = 0;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            Jogador jogadorDaRodada = listaJogadores.get(indiceJogadorRodada);
+            System.out.println("Jogador " + (indiceJogadorRodada + 1) + ": " + jogadorDaRodada.getNome());
+            System.out.println("O que você deseja fazer?");
+            System.out.println("1 - Listar itens do inventário");
+            System.out.println("2 - Equipar itens do inventário");
+            System.out.println("3 - Vender itens do inventário");
+            System.out.println("4 - Ver informações do jogador");
+            System.out.println("5 - Passar para abrir porta");
+            System.out.println("0 - Sair do Jogo\n");
+
+            System.out.println("-------------------");
+            System.out.print("Opção escolhida: ");
+            entradaJogador = scanner.nextInt();
+            System.out.println("-------------------\n");
+
+            switch (entradaJogador) {
+                case 1:
+                    jogadorDaRodada.getInventario().listarItens();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+
+            //indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
+        } while (entradaJogador != 0);
+        scanner.close();
     }
 }

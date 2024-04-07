@@ -44,15 +44,7 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Item { ")
-            .append("Nome: ").append(this.nome)
-            .append(", Bonus de poder: ").append(this.bonusPoder)
-            .append(", Valor: ").append(this.valor)
-            .append(", Tipo: ").append(this.tipo)
-            .append(", É um item grande? ").append(this.itemGrande)
-            .append(", Classes compativeis: ").append(this.classesCompativeis)
-            .append(", Raças compativeis: ").append(this.racasCompativeis)
-            .append(" }");
+        stringBuilder.append("- ").append(this.nome).append(" - nível ").append(this.bonusPoder);
         return stringBuilder.toString();
     }
 
