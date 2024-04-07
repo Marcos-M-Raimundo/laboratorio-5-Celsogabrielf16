@@ -71,25 +71,20 @@ public class Main {
         Jogador jogador1 = new Jogador("Celso", 1, Raca.HUMANO, Classe.MAGO, inventario1);
         Jogador jogador2 = new Jogador("Gabriel", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2);
 
-        jogador1.setItemMaoDireita(itemEspadaFlamejante);
-        List<Item> listaItensJogador1 = new ArrayList<Item>(2);
-        listaItensJogador1.add(itemElmoDragao);
-        listaItensJogador1.add(itemCapaInvisibilidade);
-        jogador1.venderItens(listaItensJogador1);
-
-        // Simulação do jogo
+        // Simulação do jogo (ideal seria criar uma classe Munchkin para o controle das rodadas)
         List<Jogador> listaJogadores = new ArrayList<Jogador>(6);
         listaJogadores.add(jogador1);
         listaJogadores.add(jogador2);
 
         int entradaJogador, indiceJogadorRodada = 0;
-        boolean abrirPorta = false;
+        boolean jogadorDerrotado = false, abrirPorta = false;
         Scanner scanner = new Scanner(System.in);
         do {
             Jogador jogadorDaRodada = listaJogadores.get(indiceJogadorRodada);
+            jogadorDerrotado = false;
             
             do {
-                System.out.println("Jogador " + (indiceJogadorRodada + 1) + ": " + jogadorDaRodada.getNome());
+                System.out.println("Rodada do jogador: " + jogadorDaRodada.getNome());
                 System.out.println("O que você deseja fazer?");
                 System.out.println("1 - Listar itens do inventário");
                 System.out.println("2 - Equipar itens do inventário");
@@ -180,10 +175,16 @@ public class Main {
 
                 System.out.println();
 
+                if (jogadorDaRodada.getNivel() == 0) {
+                    jogadorDerrotado = true;
+                    listaJogadores.remove(indiceJogadorRodada);
+                    indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
+                }
+
                 abrirPorta = false;
             }
 
-            if (entradaJogador != 0) {
+            if (entradaJogador != 0 && jogadorDerrotado != true) {
                 do {
                     System.out.println("Jogador " + (indiceJogadorRodada + 1) + ": " + jogadorDaRodada.getNome());
                     System.out.println("O que você deseja fazer?");
