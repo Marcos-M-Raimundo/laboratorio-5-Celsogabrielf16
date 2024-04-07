@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Iterator;
 
 public class BauDeTesouros extends Inventario {
     public BauDeTesouros (int limiteDeItens) {
@@ -11,13 +12,15 @@ public class BauDeTesouros extends Inventario {
     public Item acessarItem(String nomeItem) {
         Item item = null;
 
-        for (Item itemInventario : this.inventario) {
+        Iterator<Item> iterator = this.getInventario().iterator();
+        while (iterator.hasNext()) {
+            Item itemInventario = iterator.next();
             if (itemInventario.getNome().equals(nomeItem)) {
                 item = itemInventario;
+                iterator.remove();
             }
         }
 
-        this.removerItem(item.getNome());
         return item;
     }
 

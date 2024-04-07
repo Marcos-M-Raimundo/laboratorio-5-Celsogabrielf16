@@ -26,6 +26,20 @@ public class Jogador {
         this.itemMaoEsquerda = null;
         this.itemPe = null;
     }
+
+    // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
+    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {
+        this.nome = nome;
+        this.nivel = nivel;
+        this.raca = raca;
+        this.classe = classe;
+        this.inventario = inventario;
+        this.itemCabeca = null;
+        this.itemCorpo = null;
+        this.itemMaoDireita = null;
+        this.itemMaoEsquerda = null;
+        this.itemPe = null;
+    }
     
     // Construtor que recebe todos os atributos do jogador
     public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario, Item itemCabeca, Item itemCorpo, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe) {
@@ -46,6 +60,7 @@ public class Jogador {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Informações do jogador ").append(this.nome)
+            .append("\n- Poder: ").append(this.poderJogador())
             .append("\n- Nivel: ").append(this.nivel)
             .append("\n- Raça: ").append(this.raca)
             .append("\n- Classe: ").append(this.classe)
@@ -157,10 +172,13 @@ public class Jogador {
 
         if(item.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
+            System.out.println();
         } else if (!this.verificaCompatibilidadePorClasse(item)) {
             System.out.println("O item " + item.getNome() + " não é compativel com a classe " + this.getClasse() + "!");
+            System.out.println();
         } else if (!this.verificaCompatibilidadePorRaca(item)) {
             System.out.println("O item " + item.getNome() + " não é compativel com a raça " + this.getRaca() + "!");
+            System.out.println();
         } else {
             itemValido = true;
         }
