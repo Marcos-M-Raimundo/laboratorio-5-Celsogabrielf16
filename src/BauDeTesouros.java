@@ -9,16 +9,16 @@ public class BauDeTesouros extends Inventario {
 
     @Override
     public Item acessarItem(String nomeItem) {
-        Item itemEncontrado = null;
+        Item item = null;
 
         for (Item itemInventario : this.inventario) {
             if (itemInventario.getNome().equals(nomeItem)) {
-                itemEncontrado = itemInventario;
+                item = itemInventario;
             }
         }
 
-        this.removerItem(itemEncontrado.getNome());
-        return itemEncontrado;
+        this.removerItem(item.getNome());
+        return item;
     }
 
     @Override

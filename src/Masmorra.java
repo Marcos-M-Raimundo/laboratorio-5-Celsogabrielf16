@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Masmorra {
     private List<Monstro> monstros;
@@ -33,7 +34,7 @@ public class Masmorra {
                 List<Item> tesourosGanhos = this.getTesouros().pegarItensAleatorios(montroEscolhido.getTesouros());
 
                 for (Item tesouro : tesourosGanhos) {
-                    jogador.getInventario().adicionarItem(tesouro);
+                    jogador.getInventario().adicionarItem(this.getTesouros().acessarItem(tesouro.getNome()));
                 }
 
                 System.out.println("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + "! E com isso ganhou os tesouros: " + tesourosGanhos);
@@ -56,7 +57,14 @@ public class Masmorra {
     }
 
     public void abrirPortaItem(Jogador jogador) {
-        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Escolha um dos itens abaixo digitando seu nome:");
+        getTesouros().listarItens();
+        String nomeItem = scanner.nextLine();
+        jogador.getInventario().adicionarItem(this.getTesouros().acessarItem(nomeItem));
+
+        scanner.close();
     }
 
     // Getters da classe Masmorra
