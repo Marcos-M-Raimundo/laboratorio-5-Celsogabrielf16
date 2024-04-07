@@ -72,7 +72,8 @@ public class Main {
 
             System.out.println("-------------------");
             System.out.print("Opção escolhida: ");
-            entradaJogador = scanner.nextInt();
+            String entradaJogadoString = scanner.nextLine();
+            entradaJogador = Integer.parseInt(entradaJogadoString);
             System.out.println("-------------------\n");
 
             switch (entradaJogador) {
@@ -80,6 +81,37 @@ public class Main {
                     jogadorDaRodada.getInventario().listarItens();
                     break;
                 case 2:
+                    System.out.println("Digite o nome do item que deseja equipar:");
+                    String nomeItem = scanner.nextLine();
+                    Item itemEscolhido = jogadorDaRodada.getInventario().acessarItem(nomeItem);
+                    System.out.println();
+
+                    switch (itemEscolhido.getTipo()) {
+                        case CABECA:
+                            jogadorDaRodada.setItemCabeca(itemEscolhido);
+                            break;
+                        case CORPO:
+                            jogadorDaRodada.setItemCorpo(itemEscolhido);
+                            break;
+                        case MAO:
+                            System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
+                            System.out.println("1 - Mão direita");
+                            System.out.println("2 - Mão esquerda");
+                            int maoEscolhida = Integer.parseInt(scanner.nextLine());
+                            System.out.println();
+
+                            if (maoEscolhida == 1) {
+                                jogadorDaRodada.setItemMaoDireita(itemEscolhido);
+                            } else  {
+                                jogadorDaRodada.setItemMaoEsquerda(itemEscolhido);
+                            }
+
+                            break;
+                        case PE:
+                            jogadorDaRodada.setItemPe(itemEscolhido);
+                            break;
+                    }
+                    System.out.println();
                     break;
                 case 3:
                     break;
@@ -89,8 +121,8 @@ public class Main {
                     break;
             }
 
-            //indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
         } while (entradaJogador != 0);
+        //indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
         scanner.close();
     }
 }
