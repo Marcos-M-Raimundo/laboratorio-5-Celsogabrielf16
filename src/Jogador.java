@@ -16,67 +16,72 @@ public class Jogador {
     // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
     public Jogador(String nome) {
         this.nome = nome;
-        this.nivel = 1;
-        this.raca = Raca.HUMANO;
-        this.classe = Classe.AVENTUREIRO;
-        this.inventario = new Inventario(50);
-        this.itemCabeca = null;
-        this.itemCorpo = null;
-        this.itemMaoDireita = null;
-        this.itemMaoEsquerda = null;
-        this.itemPe = null;
-    }
+        this.setNivel(1);
+        this.setRaca(Raca.HUMANO);
+        this.setClasse(Classe.AVENTUREIRO);
+        
+        Inventario inventarioJogador = new Inventario(50);
+        this.setInventario(inventarioJogador);
 
-    // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
-    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {
-        this.nome = nome;
-        this.nivel = nivel;
-        this.raca = raca;
-        this.classe = classe;
-        this.inventario = inventario;
-        this.itemCabeca = null;
-        this.itemCorpo = null;
-        this.itemMaoDireita = null;
-        this.itemMaoEsquerda = null;
-        this.itemPe = null;
+        this.setItemCabeca(null);
+        this.setItemCorpo(null);
+        this.setItemMaoDireita(null);
+        this.setItemMaoEsquerda(null);
+        this.setItemPe(null);
     }
     
-    // Construtor que recebe todos os atributos do jogador
+    // Sobrecarrega o construtor anterior, recebe apenas o nome, nivel, raca, classe e inventario
+    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {
+        this.nome = nome;
+        this.setNivel(nivel);
+        this.setRaca(raca);
+        this.setClasse(classe);
+        this.setInventario(inventario);
+        this.setItemCabeca(null);
+        this.setItemCorpo(null);
+        this.setItemMaoDireita(null);
+        this.setItemMaoEsquerda(null);
+        this.setItemPe(null);
+    }
+    
+    // Sobrecarrega os construtores anteriores, recebe todos os atributos do jogador
     public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario, Item itemCabeca, Item itemCorpo, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe) {
         this.nome = nome;
-        this.nivel = nivel;
-        this.raca = raca;
-        this.classe = classe;
-        this.inventario = inventario;
-        this.itemCabeca = itemCabeca;
-        this.itemCorpo = itemCorpo;
-        this.itemMaoDireita = itemMaoDireita;
-        this.itemMaoEsquerda = itemMaoEsquerda;
-        this.itemPe = itemPe;
+        this.setNivel(nivel);
+        this.setRaca(raca);
+        this.setClasse(classe);
+        this.setInventario(inventario);
+        this.setItemCabeca(itemCabeca);
+        this.setItemCorpo(itemCorpo);
+        this.setItemMaoDireita(itemMaoDireita);
+        this.setItemMaoEsquerda(itemMaoEsquerda);
+        this.setItemPe(itemPe);
     }
     
     // Método padrao chamado quando imprimimos a classe Jogador
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Informações do jogador ").append(this.nome)
+
+        stringBuilder.append("Informações do jogador ").append(this.getNome())
             .append("\n- Poder: ").append(this.poderJogador())
-            .append("\n- Nivel: ").append(this.nivel)
-            .append("\n- Raça: ").append(this.raca)
-            .append("\n- Classe: ").append(this.classe)
-            .append("\n- Inventário: ").append(this.inventario)
-            .append("\n- Item da Cabeça: ").append(this.itemCabeca != null ? this.itemCabeca : "Sem item equipado")
-            .append("\n- Item do Corpo: ").append(this.itemCorpo != null ? this.itemCorpo : "Sem item equipado")
-            .append("\n- Item da Mão Direita: ").append(this.itemMaoDireita != null ? this.itemMaoDireita : "Sem item equipado")
-            .append("\n- Item da Mão Esquerda: ").append(this.itemMaoEsquerda != null ? this.itemMaoEsquerda : "Sem item equipado")
-            .append("\n- Item do Pé: ").append(this.itemPe != null ? this.itemPe : "Sem item equipado");
+            .append("\n- Nivel: ").append(this.getNivel())
+            .append("\n- Raça: ").append(this.getRaca())
+            .append("\n- Classe: ").append(this.getClasse())
+            .append("\n- Inventário: ").append(this.getInventario())
+            .append("\n- Item da Cabeça: ").append(this.getItemCabeca() != null ? this.getItemCabeca() : "Sem item equipado")
+            .append("\n- Item do Corpo: ").append(this.getItemCorpo() != null ? this.getItemCorpo() : "Sem item equipado")
+            .append("\n- Item da Mão Direita: ").append(this.getItemMaoDireita() != null ? this.getItemMaoDireita() : "Sem item equipado")
+            .append("\n- Item da Mão Esquerda: ").append(this.getItemMaoEsquerda() != null ? this.getItemMaoEsquerda() : "Sem item equipado")
+            .append("\n- Item do Pé: ").append(this.getItemPe() != null ? this.getItemPe() : "Sem item equipado");
+
         return stringBuilder.toString();
     }
 
     // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
     public int poderJogador() {
         List<Item> itensEquipados = this.getItensEquipados();
-        int poderSomado = this.nivel;
+        int poderSomado = this.getNivel();
 
         for (Item item : itensEquipados) {
             poderSomado += item.getBonusPoder();
@@ -85,13 +90,15 @@ public class Jogador {
         return poderSomado;
     }
 
+    // Verifica se alguma das maos do jogador esta vazia
     public boolean possuiMaoVazia() {
-        if ((this.itemMaoDireita == null) || (this.itemMaoEsquerda == null)) {
+        if ((this.getItemMaoDireita() == null) || (this.getItemMaoEsquerda() == null)) {
             return true;
         }
         return false;
     }
 
+    // Vende os itens de acordo com a lista recebida
     public void venderItens(List<Item> itensParaVender) {
         int valorTotalItens = 0;
 
@@ -114,11 +121,13 @@ public class Jogador {
     // Retorna uma lista com os itens atualmente equipados
     private List<Item> getItensEquipados() {
         List<Item> itensEquipados = new ArrayList<Item>();
-        if (this.itemCabeca != null) itensEquipados.add(this.itemCabeca);
-        if (this.itemCorpo != null) itensEquipados.add(this.itemCorpo);
-        if (this.itemMaoDireita != null) itensEquipados.add(this.itemMaoDireita);
-        if (this.itemMaoEsquerda != null) itensEquipados.add(this.itemMaoEsquerda);
-        if (this.itemPe != null) itensEquipados.add(this.itemPe);
+
+        if (this.getItemCabeca() != null) itensEquipados.add(this.getItemCabeca());
+        if (this.getItemCorpo() != null) itensEquipados.add(this.getItemCorpo());
+        if (this.getItemMaoDireita() != null) itensEquipados.add(this.itemMaoDireita);
+        if (this.getItemMaoEsquerda() != null) itensEquipados.add(this.itemMaoEsquerda);
+        if (this.getItemPe() != null) itensEquipados.add(this.itemPe);
+
         return itensEquipados;
     }
 
@@ -170,13 +179,13 @@ public class Jogador {
     private boolean verificaItemPodeSerEquipado(Item item) {
         boolean itemValido = false;
 
-        if(item.getItemGrande() && this.verificaExisteItemGrande()) {
+        if (item != null && item.getItemGrande() && this.verificaExisteItemGrande()) {
             System.out.println("Não é possível ter dois itens grandes equipados!");
             System.out.println();
-        } else if (!this.verificaCompatibilidadePorClasse(item)) {
+        } else if (item != null && !this.verificaCompatibilidadePorClasse(item)) {
             System.out.println("O item " + item.getNome() + " não é compativel com a classe " + this.getClasse() + "!");
             System.out.println();
-        } else if (!this.verificaCompatibilidadePorRaca(item)) {
+        } else if (item != null && !this.verificaCompatibilidadePorRaca(item)) {
             System.out.println("O item " + item.getNome() + " não é compativel com a raça " + this.getRaca() + "!");
             System.out.println();
         } else {
@@ -219,15 +228,21 @@ public class Jogador {
         return this.inventario;
     }
 
+    private void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
     public Item getItemCabeca() {
         return this.itemCabeca;
     }
 
     public void setItemCabeca (Item itemCabeca) {
         if (verificaItemPodeSerEquipado(itemCabeca)) {
-            if (this.itemCabeca != null) this.inventario.adicionarItem(this.itemCabeca);
+            if (this.itemCabeca != null) this.getInventario().adicionarItem(this.itemCabeca);
             this.itemCabeca = itemCabeca;
-            this.inventario.removerItem(itemCabeca.getNome());
+
+            if (itemCabeca != null)
+                this.getInventario().removerItem(itemCabeca.getNome());
         }
     }
 
@@ -237,9 +252,11 @@ public class Jogador {
 
     public void setItemCorpo (Item itemCorpo) {
         if (verificaItemPodeSerEquipado(itemCorpo)) {
-            if (this.itemCorpo != null) this.inventario.adicionarItem(this.itemCorpo);
+            if (this.itemCorpo != null) this.getInventario().adicionarItem(this.itemCorpo);
             this.itemCorpo = itemCorpo;
-            this.inventario.removerItem(itemCorpo.getNome());
+
+            if (itemCorpo != null)
+                this.getInventario().removerItem(itemCorpo.getNome());
         }
     }
 
@@ -249,9 +266,11 @@ public class Jogador {
 
     public void setItemMaoDireita (Item itemMaoDireita) {
         if (verificaItemPodeSerEquipado(itemMaoDireita)) {
-            if (this.itemMaoDireita != null) this.inventario.adicionarItem(this.itemMaoDireita);
+            if (this.itemMaoDireita != null) this.getInventario().adicionarItem(this.itemMaoDireita);
             this.itemMaoDireita = itemMaoDireita;
-            this.inventario.removerItem(itemMaoDireita.getNome());
+
+            if (itemMaoDireita != null)
+                this.getInventario().removerItem(itemMaoDireita.getNome());
         }
     }
 
@@ -261,9 +280,11 @@ public class Jogador {
 
     public void setItemMaoEsquerda (Item itemMaoEsquerda) {
         if (verificaItemPodeSerEquipado(itemMaoEsquerda)) {
-            if (this.itemMaoEsquerda != null) this.inventario.adicionarItem(this.itemMaoEsquerda);
+            if (this.itemMaoEsquerda != null) this.getInventario().adicionarItem(this.itemMaoEsquerda);
             this.itemMaoEsquerda = itemMaoEsquerda;
-            this.inventario.removerItem(itemMaoEsquerda.getNome());
+
+            if (itemMaoEsquerda != null)
+                this.getInventario().removerItem(itemMaoEsquerda.getNome());
         }
     }
 
@@ -273,9 +294,11 @@ public class Jogador {
 
     public void setItemPe (Item itemPe) {
         if (verificaItemPodeSerEquipado(itemPe)) {
-            if (this.itemPe != null) this.inventario.adicionarItem(this.itemPe);
+            if (this.itemPe != null) this.getInventario().adicionarItem(this.itemPe);
             this.itemPe = itemPe;
-            this.inventario.removerItem(itemPe.getNome());
+
+            if (itemPe != null)
+                this.getInventario().removerItem(itemPe.getNome());
         }
     }
         
