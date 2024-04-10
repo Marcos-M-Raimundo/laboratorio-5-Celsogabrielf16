@@ -3,12 +3,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Inventario {
-    private final int limiteDeItens;
+    private int limiteDeItens;
     protected List<Item> inventario;
 
     public Inventario(int limiteDeItens) {
-        this.limiteDeItens = limiteDeItens;
-        // Criamos um inventario vazio
+        this.setLimiteDeItens(limiteDeItens);
+
         List<Item> inventarioVazio = new LinkedList<Item>();
         this.setInventario(inventarioVazio);
     }
@@ -20,31 +20,33 @@ public class Inventario {
             return "O inventario está vazio!";
         } else {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("[ ").append("Limite inventario: ").append(this.limiteDeItens).append(", Itens Inventario: [ ");
-            for (Item itemInventario : this.getInventario()) {
+
+            stringBuilder.append("[ ").append("Limite inventario: ").append(this.getLimiteDeItens()).append(", Itens Inventario: [ ");
+            for (Item itemInventario : this.getInventario())
                 stringBuilder.append(itemInventario).append(", ");
-            }
             stringBuilder.append(" ]").append(" ]");
+
             return stringBuilder.toString();
         }
     }
 
+    // Adiciona um item no inventario retornando false caso o inventario esteja cheio
     public boolean adicionarItem(Item item) {
-        return this.getInventario().size() < this.limiteDeItens ? this.getInventario().add(item) : false;
+        return this.getInventario().size() < this.getLimiteDeItens() ? this.getInventario().add(item) : false;
     }
 
+    // Acessa e retorna um item de acordo com o nome recebido
     public Item acessarItem(String nomeItem) {
         Item itemEncontrado = null;
 
-        for (Item itemInventario : this.getInventario()) {
-            if (itemInventario.getNome().equals(nomeItem)) {
+        for (Item itemInventario : this.getInventario())
+            if (itemInventario.getNome().equals(nomeItem))
                 itemEncontrado = itemInventario;
-            }
-        }
 
         return itemEncontrado;
     }
 
+    // Remove o item de acordo com o nome
     public void removerItem(String nomeItem) {
         Iterator<Item> iterator = this.getInventario().iterator();
         while (iterator.hasNext()) {
@@ -53,12 +55,14 @@ public class Inventario {
         }
     }
 
+    // Sobrecarrega o método anterior, agora removendo uma lista de itens
     public void removerItem(List<String> listaNomesItens) {
         for (String nomeItem : listaNomesItens) {
             this.removerItem(nomeItem);
         }
     }
 
+    // Lista todos os itens do inventario
     public void listarItens() {
         if (this.getInventario().isEmpty()) {
             System.out.println("O inventario está vazio!");
@@ -72,6 +76,10 @@ public class Inventario {
 
     public int getLimiteDeItens() {
         return this.limiteDeItens;
+    }
+
+    private void setLimiteDeItens(int limiteDeItens) {
+        this.limiteDeItens = limiteDeItens;
     }
 
     public List<Item> getInventario() {

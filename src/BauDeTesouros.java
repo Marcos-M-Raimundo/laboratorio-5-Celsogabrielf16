@@ -8,7 +8,7 @@ public class BauDeTesouros extends Inventario {
         super(limiteDeItens);
     }
 
-    // Sobreescreve o acessarItem da classe Inventario, tem a mesma funcionalidade apenas remove o item e não apenas acessa o mesmo
+    // Sobreescreve o metodo acessarItem da classe Inventario,agora alem de acessar remove o item
     @Override
     public Item acessarItem(String nomeItem) {
         Item item = null;
@@ -25,7 +25,7 @@ public class BauDeTesouros extends Inventario {
         return item;
     }
 
-    // Lista apenas dois itens aleatorios do inventario
+    // Sobreescreve o metodo listarItens da classe inventario, agora listando apenas dois itens aleatorios do inventario
     @Override
     public void listarItens() {
         Random random = new Random();
@@ -34,12 +34,15 @@ public class BauDeTesouros extends Inventario {
         int indiceAleatorio1 = random.nextInt(tamanhoAtualInventario);
         int indiceAleatorio2 = random.nextInt(tamanhoAtualInventario);
 
-        if (indiceAleatorio1 == indiceAleatorio2) {
+        // Se os indices aleatorios forem iguais passo o indiceAleatorio2 para o proximo item
+        if (indiceAleatorio1 == indiceAleatorio2)
             indiceAleatorio2 = (indiceAleatorio1 + 1) % (tamanhoAtualInventario);
-        }
         
         System.out.println(this.inventario.get(indiceAleatorio1));
-        System.out.println(this.inventario.get(indiceAleatorio2));
+
+        // Se ainda assim eles foram iguais 
+        if (indiceAleatorio1 != indiceAleatorio2) 
+            System.out.println(this.inventario.get(indiceAleatorio2));
     }
 
     // Retorna a quantia desejada de itens do inventario
