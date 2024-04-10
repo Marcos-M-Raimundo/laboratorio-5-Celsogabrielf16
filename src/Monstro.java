@@ -1,31 +1,33 @@
 public class Monstro {
     private final String nome;
-    private final int poder;
-    private final int tesouros;
-    private final int niveisPerdidos;
+    private int poder;
+    private int tesouros;
+    private int niveisPerdidos;
 
     // Construtor que recebe todos os atributos do monstro
     public Monstro(String nome, int poder, int tesouros, int niveisPerdidos) {
         this.nome = nome;
-        this.poder = poder;
-        this.tesouros = tesouros;
-        this.niveisPerdidos = niveisPerdidos;
+        this.setPoder(poder);
+        this.setTesouros(tesouros);
+        this.setNiveisPerdidos(niveisPerdidos);
     }
 
     // Método padrao chamado quando imprimimos a classe Monstro
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append("Monstro { ")
-            .append("Nome: ").append(this.nome)
-            .append(", Poder: ").append(this.poder)
-            .append(", Número de Pesouros: ").append(this.tesouros)
-            .append(", Niveis Perdidos: ").append(this.niveisPerdidos)
+            .append("Nome: ").append(this.getNome())
+            .append(", Poder: ").append(this.getPoder())
+            .append(", Número de Pesouros: ").append(this.getTesouros())
+            .append(", Niveis Perdidos: ").append(this.getNiveisPerdidos())
             .append(" }");
+
         return stringBuilder.toString();
     }
 
-    // Getters para cada atributo do monstro
+    // Getters e setters para cada atributo do monstro
     public String getNome() {
         return this.nome;
     }
@@ -34,11 +36,23 @@ public class Monstro {
         return this.poder;
     }
 
+    private void setPoder(int poder) {
+        this.poder = poder;
+    }
+
     public int getTesouros() {
         return this.tesouros;
     }
 
+    private void setTesouros(int tesouros) {
+        this.tesouros = tesouros;
+    }
+
     public int getNiveisPerdidos() {
         return this.niveisPerdidos;
+    }
+
+    private void  setNiveisPerdidos(int niveisPerdidos) {
+        this.niveisPerdidos = niveisPerdidos;
     }
 }
