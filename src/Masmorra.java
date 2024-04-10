@@ -7,18 +7,20 @@ public class Masmorra {
     private BauDeTesouros tesouros;
 
     public Masmorra(List<Monstro> monstros, BauDeTesouros tesouros) {
-        this.monstros = monstros;
-        this.tesouros = tesouros;
+        this.setMonstros(monstros);
+        this.setTesouros(tesouros);
     }
 
     // Método padrao chamado quando imprimimos a classe Masmorra
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append("Masmorra { ")
-            .append("Monstros: ").append(this.monstros)
-            .append(", Tesouros: ").append(this.tesouros)
+            .append("Monstros: ").append(this.getMonstros())
+            .append(", Tesouros: ").append(this.getTesouros())
             .append(" }");
+
         return stringBuilder.toString();
     }
 
@@ -77,7 +79,15 @@ public class Masmorra {
         return this.monstros;
     }
 
+    private void setMonstros(List<Monstro> monstros) {
+        this.monstros = monstros;
+    }
+
     public BauDeTesouros getTesouros() {
         return this.tesouros;
+    }
+
+    private void setTesouros(BauDeTesouros tesouros) {
+        this.tesouros = tesouros;
     }
 }
