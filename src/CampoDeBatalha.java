@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class CampoDeBatalha {
+    // Implementa a logica de batalha entre o jogador e o monstro
     public static Resultado batalhaContraMonstro(Monstro monstro, Jogador jogador) {
         Resultado resultado;
         
