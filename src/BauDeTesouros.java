@@ -8,6 +8,7 @@ public class BauDeTesouros extends Inventario {
         super(limiteDeItens);
     }
 
+    // Sobreescreve o acessarItem da classe Inventario, tem a mesma funcionalidade apenas remove o item e não apenas acessa o mesmo
     @Override
     public Item acessarItem(String nomeItem) {
         Item item = null;
@@ -24,6 +25,7 @@ public class BauDeTesouros extends Inventario {
         return item;
     }
 
+    // Lista apenas dois itens aleatorios do inventario
     @Override
     public void listarItens() {
         Random random = new Random();
@@ -40,6 +42,7 @@ public class BauDeTesouros extends Inventario {
         System.out.println(this.inventario.get(indiceAleatorio2));
     }
 
+    // Retorna a quantia desejada de itens do inventario
     public List<Item> pegarItensAleatorios(int quantidadeItens) {
         List<Item> listaItensAleatorios= new ArrayList<Item>(quantidadeItens);
         Random random = new Random();

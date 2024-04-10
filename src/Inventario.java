@@ -22,11 +22,7 @@ public class Inventario {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("[ ").append("Limite inventario: ").append(this.limiteDeItens).append(", Itens Inventario: [ ");
             for (Item itemInventario : this.getInventario()) {
-                if (this.getInventario().getLast().getNome().equals(itemInventario.getNome())) {
-                    stringBuilder.append(itemInventario);
-                } else {
-                    stringBuilder.append(itemInventario).append(", ");
-                }
+                stringBuilder.append(itemInventario).append(", ");
             }
             stringBuilder.append(" ]").append(" ]");
             return stringBuilder.toString();
