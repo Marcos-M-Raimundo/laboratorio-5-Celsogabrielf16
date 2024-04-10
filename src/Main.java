@@ -94,8 +94,8 @@ public class Main {
 
                 System.out.println("-------------------");
                 System.out.print("Opção escolhida: ");
-                String entradaJogadoString = scanner.nextLine();
-                entradaJogador = Integer.parseInt(entradaJogadoString);
+                String entradaJogadorString = scanner.nextLine();
+                entradaJogador = Integer.parseInt(entradaJogadorString);
                 System.out.println("-------------------\n");
 
                 switch (entradaJogador) {
@@ -196,8 +196,8 @@ public class Main {
     
                     System.out.println("-------------------");
                     System.out.print("Opção escolhida: ");
-                    String entradaJogadoString = scanner.nextLine();
-                    entradaJogador = Integer.parseInt(entradaJogadoString);
+                    String entradaJogadorString = scanner.nextLine();
+                    entradaJogador = Integer.parseInt(entradaJogadorString);
                     System.out.println("-------------------\n");
     
                     switch (entradaJogador) {
