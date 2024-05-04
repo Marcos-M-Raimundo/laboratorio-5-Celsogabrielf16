@@ -1,3 +1,3 @@
 public interface I_Arquivo {
-    void lerArquivo(String jogo, String path);
+    void lerArquivo(Jogo jogo, String path);
 }
