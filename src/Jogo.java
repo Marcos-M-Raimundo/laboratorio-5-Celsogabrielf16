@@ -13,6 +13,19 @@ public class Jogo {
         this.setMasmorra(masmorra);
     }
 
+    // Método padrao chamado quando imprimimos a classe Masmorra
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Jogo { ")
+            .append("Jogadores: ").append(this.getJogadores())
+            .append(", Masmorra: ").append(this.getMasmorra())
+            .append(" }");
+
+        return stringBuilder.toString();
+    }
+
     public void loopDeJogo() {
         List<Jogador> listaJogadores = this.getJogadores();
         int entradaJogador, indiceJogadorRodada = 0;
