@@ -8,10 +8,18 @@ public class Jogo {
     private static Scanner scanner = new Scanner(System.in);
     private List<Jogador> jogadores;
     private Masmorra masmorra;
+    private int numeroDaRodada;
+    private int indiceJogadorDaRodada;
+    private boolean jogadorDaRodadaAbriuAPorta;
+    private boolean jogadorDaRodadaFoiDerrotado;
 
     public Jogo(List<Jogador> jogadores, Masmorra masmorra) {
         this.setJogadores(jogadores);
         this.setMasmorra(masmorra);
+        this.setNumeroDaRodada(0);
+        this.setIndiceJogadorDaRodada(0);
+        this.setJogadorDaRodadaAbriuAPorta(false);
+        this.setJogadorDaRodadaFoiDerrotado(false);
     }
 
     // Método padrao chamado quando imprimimos a classe Masmorra
@@ -29,6 +37,7 @@ public class Jogo {
 
     public void loopDeJogo() {
         List<Jogador> listaJogadores = this.getJogadores();
+        
         int entradaJogador, indiceJogadorRodada = 0, numeroDaRodada = 1;
         boolean jogadorDerrotado = false, abrirPorta = false;
 
@@ -219,7 +228,7 @@ public class Jogo {
         System.out.println("-------------------\n");
 
         return entradaJogador;
-    }
+    } 
 
     private List<Jogador> getJogadores() {
         return this.jogadores;
