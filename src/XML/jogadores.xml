@@ -1,0 +1,14 @@
+<Jogadores>
+    <Jogador>
+        <nome>Celso</nome>
+        <nivel>1</nivel>
+        <raca>HUMANO</raca>
+        <classe>MAGO</classe>
+    </Jogador>
+    <Jogador>
+        <nome>Gabriel</nome>
+        <nivel>1</nivel>
+        <raca>HUMANO</raca>
+        <classe>GUERREIRO</classe>
+    </Jogador>
+</Jogadores>
