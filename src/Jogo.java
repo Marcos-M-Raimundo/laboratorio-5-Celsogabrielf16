@@ -9,17 +9,15 @@ public class Jogo {
     private List<Jogador> jogadores;
     private Masmorra masmorra;
     private int numeroDaRodada;
-    private int indiceJogadorDaRodada;
-    private boolean jogadorDaRodadaAbriuAPorta;
-    private boolean jogadorDaRodadaFoiDerrotado;
+    private int indiceJogadorAtual;
+    private boolean jogadorAtualFoiDerrotado;
 
     public Jogo(List<Jogador> jogadores, Masmorra masmorra) {
         this.setJogadores(jogadores);
         this.setMasmorra(masmorra);
         this.setNumeroDaRodada(1);
-        this.setIndiceJogadorDaRodada(0);
-        this.setJogadorDaRodadaAbriuAPorta(false);
-        this.setJogadorDaRodadaFoiDerrotado(false);
+        this.setIndiceJogadorAtual(0);
+        this.setJogadorAtualFoiDerrotado(false);
     }
 
     // Método padrao chamado quando imprimimos a classe Masmorra
@@ -35,44 +33,31 @@ public class Jogo {
         return stringBuilder.toString();
     }
 
+    // Executa o loop de jogo, assim trocando o jogador e a rodada de jogo quando necessario
     public void loopDeJogo() {
-
         int entradaJogador;
 
         do {
-            Jogador jogadorDaRodada = this.getJogadores().get(this.getIndiceJogadorDaRodada());
-            this.setJogadorDaRodadaFoiDerrotado(false);
-            this.setJogadorDaRodadaAbriuAPorta(false);
+            // Declara o jogadorAtual e atualiza os booleans JogadorAtualFoiDerrotado para iniciar a jogada
+            Jogador jogadorAtual = this.getJogadores().get(this.getIndiceJogadorAtual());
+            this.setJogadorAtualFoiDerrotado(false);
             
+            // Executa as acoes do jogador ate ele escolher abrir a porta ou sair do jogo
             do {
-                entradaJogador = this.retornaAcaoJogador(jogadorDaRodada, "PrimeiraAcao");
-                this.executaAcaoJogador(entradaJogador, jogadorDaRodada, "PrimeiraAcao");
+                entradaJogador = this.retornaAcaoJogador(jogadorAtual, "AntesDeAbrirAPorta");
+                this.executaAcaoJogador(entradaJogador, jogadorAtual, "AntesDeAbrirAPorta");
             } while (entradaJogador != 5 && entradaJogador != 0);
 
-            if (this.getJogadorDaRodadaAbriuAPorta()) {
-                Random random = new Random();
-                int escolhaAleatoria = random.nextInt(2);
-
-                if (escolhaAleatoria == 0) {
-                    masmorra.abrirPortaMonstro(jogadorDaRodada);
-                } else {
-                    masmorra.abrirPortaItem(jogadorDaRodada);
-                }
-
-                System.out.println();
-
-                if (jogadorDaRodada.getNivel() == 0) {
-                    this.setJogadorDaRodadaFoiDerrotado(true);
-                    this.removeJogador(this.getIndiceJogadorDaRodada());
-                    this.setIndiceJogadorDaRodada((this.getIndiceJogadorDaRodada() + 1) % this.getJogadores().size());
-                    this.setNumeroDaRodada(this.getIndiceJogadorDaRodada() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
-                }
+            // Abre a porta se o jogador nao escolheu a acao de sair do jogo
+            if (entradaJogador != 0) {
+                this.executaAbrirPorta(jogadorAtual);
             }
 
-            if (entradaJogador != 0 && this.getJogadorDaRodadaFoiDerrotado() != true) {
+            // Se o jogador nao escolheu sair do jogo, nem foi derrotado pelo monstro, ele pode jogar novamente antes do proximo jogador
+            if (entradaJogador != 0 && !this.getJogadorAtualFoiDerrotado()) {
                 do {
-                    entradaJogador = this.retornaAcaoJogador(jogadorDaRodada, "SegundaAcao");
-                    this.executaAcaoJogador(entradaJogador, jogadorDaRodada, "SegundaAcao");
+                    entradaJogador = this.retornaAcaoJogador(jogadorAtual, "DepoisDeAbrirAPorta");
+                    this.executaAcaoJogador(entradaJogador, jogadorAtual, "DepoisDeAbrirAPorta");
                 } while (entradaJogador != 5 && entradaJogador != 0);
             }
 
@@ -82,16 +67,16 @@ public class Jogo {
     }
 
     // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
-    private int retornaAcaoJogador(Jogador jogadorDaRodada, String identificadorAcao) {
+    private int retornaAcaoJogador(Jogador jogadorAtual, String identificadorAcao) {
 
-        System.out.println("Rodada " + this.getNumeroDaRodada() + " - Jogador " + jogadorDaRodada.getNome());
+        System.out.println("Rodada " + this.getNumeroDaRodada() + " - Jogador " + jogadorAtual.getNome());
         System.out.println("O que você deseja fazer?");
 
         System.out.println("1 - Listar itens do inventário");
         System.out.println("2 - Equipar itens do inventário");
         System.out.println("3 - Vender itens do inventário");
         System.out.println("4 - Ver informações do jogador");
-        System.out.println(identificadorAcao.equals("PrimeiraAcao") ? "5 - Passar para abrir porta" : "5 - Terminar rodada");
+        System.out.println(identificadorAcao.equals("AntesDeAbrirAPorta") ? "5 - Passar para abrir porta" : "5 - Terminar rodada");
         System.out.println("0 - Sair do Jogo\n");
 
         System.out.println("-------------------");
@@ -102,11 +87,11 @@ public class Jogo {
         return entradaJogador;
     }
 
-
-    private void executaAcaoJogador(int entradaJogador, Jogador jogadorDaRodada, String identificadorAcao) {
+    // Executa a acao escolhida pelo jogador
+    private void executaAcaoJogador(int entradaJogador, Jogador jogadorAtual, String identificadorAcao) {
         switch (entradaJogador) {
             case 1:
-                jogadorDaRodada.getInventario().listarItens();
+                jogadorAtual.getInventario().listarItens();
                 System.out.println();
                 break;
             case 2:
@@ -114,14 +99,14 @@ public class Jogo {
                 System.out.print("Item escolhido: ");
                 String nomeItem = scanner.nextLine();
                 System.out.println();
-                Item itemEscolhido = jogadorDaRodada.getInventario().acessarItem(nomeItem);
+                Item itemEscolhido = jogadorAtual.getInventario().acessarItem(nomeItem);
                 
                 switch (itemEscolhido.getTipo()) {
                     case CABECA:
-                        jogadorDaRodada.setItemCabeca(itemEscolhido);
+                        jogadorAtual.setItemCabeca(itemEscolhido);
                         break;
                     case CORPO:
-                        jogadorDaRodada.setItemCorpo(itemEscolhido);
+                        jogadorAtual.setItemCorpo(itemEscolhido);
                         break;
                     case MAO:
                         System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
@@ -132,19 +117,19 @@ public class Jogo {
                         System.out.println();
 
                         if (maoEscolhida == 1) {
-                            jogadorDaRodada.setItemMaoDireita(itemEscolhido);
+                            jogadorAtual.setItemMaoDireita(itemEscolhido);
                         } else  {
-                            jogadorDaRodada.setItemMaoEsquerda(itemEscolhido);
+                            jogadorAtual.setItemMaoEsquerda(itemEscolhido);
                         }
 
                         break;
                     case PE:
-                        jogadorDaRodada.setItemPe(itemEscolhido);
+                        jogadorAtual.setItemPe(itemEscolhido);
                         break;
                 }
                 break;
             case 3:
-                if(jogadorDaRodada.getInventario().inventario.size() != 0) {
+                if(jogadorAtual.getInventario().inventario.size() != 0) {
                     System.out.println("Digite o nome dos itens que deseja vender separados por virgula:");
                     System.out.print("Itens escolhidos: ");
                     String linhaComItensParaVender = scanner.nextLine();
@@ -153,33 +138,55 @@ public class Jogo {
                     
                     List<Item> listaItensParaVender = new ArrayList<Item>();
                     for(String nomeItemParaVender : listaNomeItensParaVender) {
-                        listaItensParaVender.add(jogadorDaRodada.getInventario().acessarItem(nomeItemParaVender));
+                        listaItensParaVender.add(jogadorAtual.getInventario().acessarItem(nomeItemParaVender));
                     }
     
-                    jogadorDaRodada.venderItens(listaItensParaVender);
+                    jogadorAtual.venderItens(listaItensParaVender);
                     System.out.println();
                 } else {
                     System.out.println("O inventário está vazio! Não existem itens a serem vendidos!\n");
                 }
                 break;
             case 4:
-                System.out.println(jogadorDaRodada);
+                System.out.println(jogadorAtual);
                 System.out.println();
                 break;
             case 5:
-                if (identificadorAcao.equals("PrimeiraAcao")) {
-                    this.setJogadorDaRodadaAbriuAPorta(true);
-                } else {
-                    this.setIndiceJogadorDaRodada((this.getIndiceJogadorDaRodada() + 1) % this.getJogadores().size());
-                    this.setNumeroDaRodada(this.getIndiceJogadorDaRodada() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
+                if (identificadorAcao.equals("DepoisDeAbrirAPorta")) {
+                    this.setIndiceJogadorAtual((this.getIndiceJogadorAtual() + 1) % this.getJogadores().size());
+                    this.setNumeroDaRodada(this.getIndiceJogadorAtual() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
                 }
+                break;
             }
     }
 
+    // Executa a acao de abrir a porta da masmorra
+    private void executaAbrirPorta(Jogador jogadorAtual) {
+        Random random = new Random();
+        int escolhaAleatoria = random.nextInt(2);
+
+        if (escolhaAleatoria == 0) {
+            this.getMasmorra().abrirPortaMonstro(jogadorAtual);
+        } else {
+            this.getMasmorra().abrirPortaItem(jogadorAtual);
+        }
+
+        System.out.println();
+
+        if (jogadorAtual.getNivel() == 0) {
+            this.setJogadorAtualFoiDerrotado(true);
+            this.removeJogador(this.getIndiceJogadorAtual());
+            this.setIndiceJogadorAtual((this.getIndiceJogadorAtual() + 1) % this.getJogadores().size());
+            this.setNumeroDaRodada(this.getIndiceJogadorAtual() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
+        }
+    }
+
+    // Remove o jogador da lista de jogadores de acordo com seu indice
     private void removeJogador(int indiceJogador) {
         this.getJogadores().remove(indiceJogador);
     }
 
+    // Getters e setters dos aributos
     private List<Jogador> getJogadores() {
         return this.jogadores;
     }
@@ -204,27 +211,19 @@ public class Jogo {
         this.numeroDaRodada = numeroDaRodada;
     }
 
-    private int getIndiceJogadorDaRodada() {
-        return this.indiceJogadorDaRodada;
+    private int getIndiceJogadorAtual() {
+        return this.indiceJogadorAtual;
     }
 
-    private void setIndiceJogadorDaRodada(int indiceJogadorDaRodada) {
-        this.indiceJogadorDaRodada = indiceJogadorDaRodada;
+    private void setIndiceJogadorAtual(int indiceJogadorAtual) {
+        this.indiceJogadorAtual = indiceJogadorAtual;
     }
 
-    private boolean getJogadorDaRodadaFoiDerrotado() {
-        return this.jogadorDaRodadaFoiDerrotado;
+    private boolean getJogadorAtualFoiDerrotado() {
+        return this.jogadorAtualFoiDerrotado;
     }
 
-    private void setJogadorDaRodadaFoiDerrotado(boolean jogadorDaRodadaFoiDerrotado) {
-        this.jogadorDaRodadaFoiDerrotado = jogadorDaRodadaFoiDerrotado;
-    }
-
-    private boolean getJogadorDaRodadaAbriuAPorta() {
-        return this.jogadorDaRodadaAbriuAPorta;
-    }
-
-    private void setJogadorDaRodadaAbriuAPorta(boolean jogadorDaRodadaAbriuAPorta) {
-        this.jogadorDaRodadaAbriuAPorta = jogadorDaRodadaAbriuAPorta;
+    private void setJogadorAtualFoiDerrotado(boolean jogadorAtualFoiDerrotado) {
+        this.jogadorAtualFoiDerrotado = jogadorAtualFoiDerrotado;
     }
 }
