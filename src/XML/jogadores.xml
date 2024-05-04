@@ -1,3 +1,12 @@
+<!DOCTYPE Jogadores [
+    <!ELEMENT Jogadores (Jogador*)>
+    <!ELEMENT Jogador (nome, nivel, raca, classe)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT nivel (#PCDATA)>
+    <!ELEMENT raca (#PCDATA)>
+    <!ELEMENT classe (#PCDATA)>
+]>
+
 <Jogadores>
     <Jogador>
         <nome>Celso</nome>
