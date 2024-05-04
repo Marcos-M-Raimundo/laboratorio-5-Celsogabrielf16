@@ -16,7 +16,7 @@ public class Jogo {
     public Jogo(List<Jogador> jogadores, Masmorra masmorra) {
         this.setJogadores(jogadores);
         this.setMasmorra(masmorra);
-        this.setNumeroDaRodada(0);
+        this.setNumeroDaRodada(1);
         this.setIndiceJogadorDaRodada(0);
         this.setJogadorDaRodadaAbriuAPorta(false);
         this.setJogadorDaRodadaFoiDerrotado(false);
@@ -36,83 +36,20 @@ public class Jogo {
     }
 
     public void loopDeJogo() {
-        List<Jogador> listaJogadores = this.getJogadores();
-        
-        int entradaJogador, indiceJogadorRodada = 0, numeroDaRodada = 1;
-        boolean jogadorDerrotado = false, abrirPorta = false;
+
+        int entradaJogador;
 
         do {
-            Jogador jogadorDaRodada = listaJogadores.get(indiceJogadorRodada);
-            jogadorDerrotado = false;
+            Jogador jogadorDaRodada = this.getJogadores().get(this.getIndiceJogadorDaRodada());
+            this.setJogadorDaRodadaFoiDerrotado(false);
+            this.setJogadorDaRodadaAbriuAPorta(false);
             
             do {
-                entradaJogador = retornaAcaoJogador(jogadorDaRodada, numeroDaRodada, "PrimeiraAcao");
-
-                switch (entradaJogador) {
-                    case 1:
-                        jogadorDaRodada.getInventario().listarItens();
-                        System.out.println();
-                        break;
-                    case 2:
-                        System.out.println("Digite o nome do item que deseja equipar:");
-                        System.out.print("Item escolhido: ");
-                        String nomeItem = scanner.nextLine();
-                        System.out.println();
-                        Item itemEscolhido = jogadorDaRodada.getInventario().acessarItem(nomeItem);
-                        
-                        switch (itemEscolhido.getTipo()) {
-                            case CABECA:
-                                jogadorDaRodada.setItemCabeca(itemEscolhido);
-                                break;
-                            case CORPO:
-                                jogadorDaRodada.setItemCorpo(itemEscolhido);
-                                break;
-                            case MAO:
-                                System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
-                                System.out.println("1 - Mão direita");
-                                System.out.println("2 - Mão esquerda");
-                                System.out.print("Opção escolhida: ");
-                                int maoEscolhida = Integer.parseInt(scanner.nextLine());
-                                System.out.println();
-
-                                if (maoEscolhida == 1) {
-                                    jogadorDaRodada.setItemMaoDireita(itemEscolhido);
-                                } else  {
-                                    jogadorDaRodada.setItemMaoEsquerda(itemEscolhido);
-                                }
-
-                                break;
-                            case PE:
-                                jogadorDaRodada.setItemPe(itemEscolhido);
-                                break;
-                        }
-                        break;
-                    case 3:
-                        System.out.println("Digite o nome dos itens que deseja vender separados por virgula:");
-                        System.out.print("Itens escolhidos: ");
-                        String linhaComItensParaVender = scanner.nextLine();
-                        System.out.println();
-                        List<String> listaNomeItensParaVender = Arrays.asList(linhaComItensParaVender.split(", "));
-
-                        List<Item> listaItensParaVender = new ArrayList<Item>();
-                        for(String nomeItemParaVender : listaNomeItensParaVender) {
-                            listaItensParaVender.add(jogadorDaRodada.getInventario().acessarItem(nomeItemParaVender));
-                        }
-
-                        jogadorDaRodada.venderItens(listaItensParaVender);
-                        System.out.println();
-                        break;
-                    case 4:
-                        System.out.println(jogadorDaRodada);
-                        System.out.println();
-                        break;
-                    case 5:
-                        abrirPorta = true;
-                        break;
-                }
+                entradaJogador = this.retornaAcaoJogador(jogadorDaRodada, "PrimeiraAcao");
+                this.executaAcaoJogador(entradaJogador, jogadorDaRodada, "PrimeiraAcao");
             } while (entradaJogador != 5 && entradaJogador != 0);
 
-            if (abrirPorta) {
+            if (this.getJogadorDaRodadaAbriuAPorta()) {
                 Random random = new Random();
                 int escolhaAleatoria = random.nextInt(2);
 
@@ -125,82 +62,17 @@ public class Jogo {
                 System.out.println();
 
                 if (jogadorDaRodada.getNivel() == 0) {
-                    jogadorDerrotado = true;
-                    listaJogadores.remove(indiceJogadorRodada);
-                    indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
-                    numeroDaRodada = indiceJogadorRodada == 0 ? ++numeroDaRodada : numeroDaRodada;
+                    this.setJogadorDaRodadaFoiDerrotado(true);
+                    this.removeJogador(this.getIndiceJogadorDaRodada());
+                    this.setIndiceJogadorDaRodada((this.getIndiceJogadorDaRodada() + 1) % this.getJogadores().size());
+                    this.setNumeroDaRodada(this.getIndiceJogadorDaRodada() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
                 }
-
-                abrirPorta = false;
             }
 
-            if (entradaJogador != 0 && jogadorDerrotado != true) {
+            if (entradaJogador != 0 && this.getJogadorDaRodadaFoiDerrotado() != true) {
                 do {
-                    entradaJogador = retornaAcaoJogador(jogadorDaRodada, numeroDaRodada, "SegundaAcao");
-    
-                    switch (entradaJogador) {
-                        case 1:
-                            jogadorDaRodada.getInventario().listarItens();
-                            System.out.println();
-                            break;
-                        case 2:
-                            System.out.println("Digite o nome do item que deseja equipar:");
-                            System.out.print("Item escolhido: ");
-                            String nomeItem = scanner.nextLine();
-                            System.out.println();
-                            Item itemEscolhido = jogadorDaRodada.getInventario().acessarItem(nomeItem);
-                            
-                            switch (itemEscolhido.getTipo()) {
-                                case CABECA:
-                                    jogadorDaRodada.setItemCabeca(itemEscolhido);
-                                    break;
-                                case CORPO:
-                                    jogadorDaRodada.setItemCorpo(itemEscolhido);
-                                    break;
-                                case MAO:
-                                    System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
-                                    System.out.println("1 - Mão direita");
-                                    System.out.println("2 - Mão esquerda");
-                                    System.out.print("Opção escolhida: ");
-                                    int maoEscolhida = Integer.parseInt(scanner.nextLine());
-                                    System.out.println();
-    
-                                    if (maoEscolhida == 1) {
-                                        jogadorDaRodada.setItemMaoDireita(itemEscolhido);
-                                    } else  {
-                                        jogadorDaRodada.setItemMaoEsquerda(itemEscolhido);
-                                    }
-    
-                                    break;
-                                case PE:
-                                    jogadorDaRodada.setItemPe(itemEscolhido);
-                                    break;
-                            }
-                            break;
-                        case 3:
-                            System.out.println("Digite o nome dos itens que deseja vender separados por virgula:");
-                            System.out.print("Itens escolhidos: ");
-                            String linhaComItensParaVender = scanner.nextLine();
-                            System.out.println();
-                            List<String> listaNomeItensParaVender = Arrays.asList(linhaComItensParaVender.split(", "));
-    
-                            List<Item> listaItensParaVender = new ArrayList<Item>();
-                            for(String nomeItemParaVender : listaNomeItensParaVender) {
-                                listaItensParaVender.add(jogadorDaRodada.getInventario().acessarItem(nomeItemParaVender));
-                            }
-    
-                            jogadorDaRodada.venderItens(listaItensParaVender);
-                            System.out.println();
-                            break;
-                        case 4:
-                            System.out.println(jogadorDaRodada);
-                            System.out.println();
-                            break;
-                        case 5:
-                            indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
-                            numeroDaRodada = indiceJogadorRodada == 0 ? ++numeroDaRodada : numeroDaRodada;
-                            break;
-                    }
+                    entradaJogador = this.retornaAcaoJogador(jogadorDaRodada, "SegundaAcao");
+                    this.executaAcaoJogador(entradaJogador, jogadorDaRodada, "SegundaAcao");
                 } while (entradaJogador != 5 && entradaJogador != 0);
             }
 
@@ -210,9 +82,9 @@ public class Jogo {
     }
 
     // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
-    private int retornaAcaoJogador(Jogador jogadorDaRodada, int numeroRodada, String identificadorAcao) {
+    private int retornaAcaoJogador(Jogador jogadorDaRodada, String identificadorAcao) {
 
-        System.out.println("Rodada " + numeroRodada + " - Jogador " + jogadorDaRodada.getNome());
+        System.out.println("Rodada " + this.getNumeroDaRodada() + " - Jogador " + jogadorDaRodada.getNome());
         System.out.println("O que você deseja fazer?");
 
         System.out.println("1 - Listar itens do inventário");
@@ -228,7 +100,85 @@ public class Jogo {
         System.out.println("-------------------\n");
 
         return entradaJogador;
-    } 
+    }
+
+
+    private void executaAcaoJogador(int entradaJogador, Jogador jogadorDaRodada, String identificadorAcao) {
+        switch (entradaJogador) {
+            case 1:
+                jogadorDaRodada.getInventario().listarItens();
+                System.out.println();
+                break;
+            case 2:
+                System.out.println("Digite o nome do item que deseja equipar:");
+                System.out.print("Item escolhido: ");
+                String nomeItem = scanner.nextLine();
+                System.out.println();
+                Item itemEscolhido = jogadorDaRodada.getInventario().acessarItem(nomeItem);
+                
+                switch (itemEscolhido.getTipo()) {
+                    case CABECA:
+                        jogadorDaRodada.setItemCabeca(itemEscolhido);
+                        break;
+                    case CORPO:
+                        jogadorDaRodada.setItemCorpo(itemEscolhido);
+                        break;
+                    case MAO:
+                        System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
+                        System.out.println("1 - Mão direita");
+                        System.out.println("2 - Mão esquerda");
+                        System.out.print("Opção escolhida: ");
+                        int maoEscolhida = Integer.parseInt(scanner.nextLine());
+                        System.out.println();
+
+                        if (maoEscolhida == 1) {
+                            jogadorDaRodada.setItemMaoDireita(itemEscolhido);
+                        } else  {
+                            jogadorDaRodada.setItemMaoEsquerda(itemEscolhido);
+                        }
+
+                        break;
+                    case PE:
+                        jogadorDaRodada.setItemPe(itemEscolhido);
+                        break;
+                }
+                break;
+            case 3:
+                if(jogadorDaRodada.getInventario().inventario.size() != 0) {
+                    System.out.println("Digite o nome dos itens que deseja vender separados por virgula:");
+                    System.out.print("Itens escolhidos: ");
+                    String linhaComItensParaVender = scanner.nextLine();
+                    System.out.println();
+                    List<String> listaNomeItensParaVender = Arrays.asList(linhaComItensParaVender.split(", "));
+                    
+                    List<Item> listaItensParaVender = new ArrayList<Item>();
+                    for(String nomeItemParaVender : listaNomeItensParaVender) {
+                        listaItensParaVender.add(jogadorDaRodada.getInventario().acessarItem(nomeItemParaVender));
+                    }
+    
+                    jogadorDaRodada.venderItens(listaItensParaVender);
+                    System.out.println();
+                } else {
+                    System.out.println("O inventário está vazio! Não existem itens a serem vendidos!\n");
+                }
+                break;
+            case 4:
+                System.out.println(jogadorDaRodada);
+                System.out.println();
+                break;
+            case 5:
+                if (identificadorAcao.equals("PrimeiraAcao")) {
+                    this.setJogadorDaRodadaAbriuAPorta(true);
+                } else {
+                    this.setIndiceJogadorDaRodada((this.getIndiceJogadorDaRodada() + 1) % this.getJogadores().size());
+                    this.setNumeroDaRodada(this.getIndiceJogadorDaRodada() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
+                }
+            }
+    }
+
+    private void removeJogador(int indiceJogador) {
+        this.getJogadores().remove(indiceJogador);
+    }
 
     private List<Jogador> getJogadores() {
         return this.jogadores;
@@ -237,7 +187,6 @@ public class Jogo {
     private void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
-
     
     private Masmorra getMasmorra() {
         return this.masmorra;
