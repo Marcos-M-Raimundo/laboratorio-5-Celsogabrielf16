@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Jogo {
+    private static Scanner scanner = new Scanner(System.in);
     private List<Jogador> jogadores;
     private Masmorra masmorra;
 
@@ -28,28 +29,15 @@ public class Jogo {
 
     public void loopDeJogo() {
         List<Jogador> listaJogadores = this.getJogadores();
-        int entradaJogador, indiceJogadorRodada = 0;
+        int entradaJogador, indiceJogadorRodada = 0, numeroDaRodada = 1;
         boolean jogadorDerrotado = false, abrirPorta = false;
-        Scanner scanner = new Scanner(System.in);
+
         do {
             Jogador jogadorDaRodada = listaJogadores.get(indiceJogadorRodada);
             jogadorDerrotado = false;
             
             do {
-                System.out.println("Rodada do jogador: " + jogadorDaRodada.getNome());
-                System.out.println("O que você deseja fazer?");
-                System.out.println("1 - Listar itens do inventário");
-                System.out.println("2 - Equipar itens do inventário");
-                System.out.println("3 - Vender itens do inventário");
-                System.out.println("4 - Ver informações do jogador");
-                System.out.println("5 - Passar para abrir porta");
-                System.out.println("0 - Sair do Jogo\n");
-
-                System.out.println("-------------------");
-                System.out.print("Opção escolhida: ");
-                String entradaJogadorString = scanner.nextLine();
-                entradaJogador = Integer.parseInt(entradaJogadorString);
-                System.out.println("-------------------\n");
+                entradaJogador = retornaAcaoJogador(jogadorDaRodada, numeroDaRodada, "PrimeiraAcao");
 
                 switch (entradaJogador) {
                     case 1:
@@ -131,6 +119,7 @@ public class Jogo {
                     jogadorDerrotado = true;
                     listaJogadores.remove(indiceJogadorRodada);
                     indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
+                    numeroDaRodada = indiceJogadorRodada == 0 ? ++numeroDaRodada : numeroDaRodada;
                 }
 
                 abrirPorta = false;
@@ -138,20 +127,7 @@ public class Jogo {
 
             if (entradaJogador != 0 && jogadorDerrotado != true) {
                 do {
-                    System.out.println("Jogador " + (indiceJogadorRodada + 1) + ": " + jogadorDaRodada.getNome());
-                    System.out.println("O que você deseja fazer?");
-                    System.out.println("1 - Listar itens do inventário");
-                    System.out.println("2 - Equipar itens do inventário");
-                    System.out.println("3 - Vender itens do inventário");
-                    System.out.println("4 - Ver informações do jogador");
-                    System.out.println("5 - Terminar rodada");
-                    System.out.println("0 - Sair do Jogo\n");
-    
-                    System.out.println("-------------------");
-                    System.out.print("Opção escolhida: ");
-                    String entradaJogadorString = scanner.nextLine();
-                    entradaJogador = Integer.parseInt(entradaJogadorString);
-                    System.out.println("-------------------\n");
+                    entradaJogador = retornaAcaoJogador(jogadorDaRodada, numeroDaRodada, "SegundaAcao");
     
                     switch (entradaJogador) {
                         case 1:
@@ -213,13 +189,36 @@ public class Jogo {
                             break;
                         case 5:
                             indiceJogadorRodada = (indiceJogadorRodada + 1) % listaJogadores.size();
+                            numeroDaRodada = indiceJogadorRodada == 0 ? ++numeroDaRodada : numeroDaRodada;
                             break;
                     }
                 } while (entradaJogador != 5 && entradaJogador != 0);
             }
 
         } while (entradaJogador != 0);
+        
         scanner.close();
+    }
+
+    // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
+    private int retornaAcaoJogador(Jogador jogadorDaRodada, int numeroRodada, String identificadorAcao) {
+
+        System.out.println("Rodada " + numeroRodada + " - Jogador " + jogadorDaRodada.getNome());
+        System.out.println("O que você deseja fazer?");
+
+        System.out.println("1 - Listar itens do inventário");
+        System.out.println("2 - Equipar itens do inventário");
+        System.out.println("3 - Vender itens do inventário");
+        System.out.println("4 - Ver informações do jogador");
+        System.out.println(identificadorAcao.equals("PrimeiraAcao") ? "5 - Passar para abrir porta" : "5 - Terminar rodada");
+        System.out.println("0 - Sair do Jogo\n");
+
+        System.out.println("-------------------");
+        System.out.print("Opção escolhida: ");
+        int entradaJogador = Integer.parseInt(scanner.nextLine());
+        System.out.println("-------------------\n");
+
+        return entradaJogador;
     }
 
     private List<Jogador> getJogadores() {
