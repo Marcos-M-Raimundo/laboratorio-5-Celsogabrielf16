@@ -246,4 +246,36 @@ public class Jogo {
     private void setMasmorra(Masmorra masmorra) {
         this.masmorra = masmorra;
     }
+
+    private int getNumeroDaRodada() {
+        return this.numeroDaRodada;
+    }
+
+    private void setNumeroDaRodada(int numeroDaRodada) {
+        this.numeroDaRodada = numeroDaRodada;
+    }
+
+    private int getIndiceJogadorDaRodada() {
+        return this.indiceJogadorDaRodada;
+    }
+
+    private void setIndiceJogadorDaRodada(int indiceJogadorDaRodada) {
+        this.indiceJogadorDaRodada = indiceJogadorDaRodada;
+    }
+
+    private boolean getJogadorDaRodadaFoiDerrotado() {
+        return this.jogadorDaRodadaFoiDerrotado;
+    }
+
+    private void setJogadorDaRodadaFoiDerrotado(boolean jogadorDaRodadaFoiDerrotado) {
+        this.jogadorDaRodadaFoiDerrotado = jogadorDaRodadaFoiDerrotado;
+    }
+
+    private boolean getJogadorDaRodadaAbriuAPorta() {
+        return this.jogadorDaRodadaAbriuAPorta;
+    }
+
+    private void setJogadorDaRodadaAbriuAPorta(boolean jogadorDaRodadaAbriuAPorta) {
+        this.jogadorDaRodadaAbriuAPorta = jogadorDaRodadaAbriuAPorta;
+    }
 }
