@@ -1,3 +1,12 @@
+<!DOCTYPE Monstros [
+    <!ELEMENT Monstros (Monstro*)>
+    <!ELEMENT Monstro (nome, poder, tesouros, niveisPerdidos)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT poder (#PCDATA)>
+    <!ELEMENT tesouros (#PCDATA)>
+    <!ELEMENT niveisPerdidos (#PCDATA)>
+]>
+
 <Monstros>
     <Monstro>
         <nome>Dragão Vermelho</nome>
