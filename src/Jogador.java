@@ -7,30 +7,13 @@ public class Jogador {
     private Raca raca;
     private Classe classe;
     private Inventario inventario;
+    private Item itemAcessorio;
     private Item itemCabeca;
     private Item itemCorpo;
     private Item itemMaoDireita;
     private Item itemMaoEsquerda;
     private Item itemPe;
 
-    // Construtor que recebe apenas o nome, no Munchkim caso o jogador nao tenha raça ele é humano, e todos os jogadores tem no minimo o nível 1
-    public Jogador(String nome) {
-        this.nome = nome;
-        this.setNivel(1);
-        this.setRaca(Raca.HUMANO);
-        this.setClasse(Classe.AVENTUREIRO);
-        
-        Inventario inventarioJogador = new Inventario(50);
-        this.setInventario(inventarioJogador);
-
-        this.setItemCabeca(null);
-        this.setItemCorpo(null);
-        this.setItemMaoDireita(null);
-        this.setItemMaoEsquerda(null);
-        this.setItemPe(null);
-    }
-    
-    // Sobrecarrega o construtor anterior, recebe apenas o nome, nivel, raca, classe e inventario
     public Jogador(String nome, int nivel, Raca raca, Classe classe) {
         this.nome = nome;
         this.setNivel(nivel);
@@ -42,6 +25,7 @@ public class Jogador {
         
         this.setItemCabeca(null);
         this.setItemCorpo(null);
+        this.setItemAcessorio(null);
         this.setItemMaoDireita(null);
         this.setItemMaoEsquerda(null);
         this.setItemPe(null);
@@ -60,6 +44,7 @@ public class Jogador {
             .append("\n- Inventário: ").append(this.getInventario())
             .append("\n- Item da Cabeça: ").append(this.getItemCabeca() != null ? this.getItemCabeca() : "Sem item equipado")
             .append("\n- Item do Corpo: ").append(this.getItemCorpo() != null ? this.getItemCorpo() : "Sem item equipado")
+            .append("\n- Acessório: ").append(this.getItemAcessorio() != null ? this.getItemAcessorio() : "Sem item equipado")
             .append("\n- Item da Mão Direita: ").append(this.getItemMaoDireita() != null ? this.getItemMaoDireita() : "Sem item equipado")
             .append("\n- Item da Mão Esquerda: ").append(this.getItemMaoEsquerda() != null ? this.getItemMaoEsquerda() : "Sem item equipado")
             .append("\n- Item do Pé: ").append(this.getItemPe() != null ? this.getItemPe() : "Sem item equipado");
@@ -113,9 +98,10 @@ public class Jogador {
 
         if (this.getItemCabeca() != null) itensEquipados.add(this.getItemCabeca());
         if (this.getItemCorpo() != null) itensEquipados.add(this.getItemCorpo());
-        if (this.getItemMaoDireita() != null) itensEquipados.add(this.itemMaoDireita);
-        if (this.getItemMaoEsquerda() != null) itensEquipados.add(this.itemMaoEsquerda);
-        if (this.getItemPe() != null) itensEquipados.add(this.itemPe);
+        if (this.getItemAcessorio() != null) itensEquipados.add(this.getItemAcessorio());
+        if (this.getItemMaoDireita() != null) itensEquipados.add(this.getItemMaoDireita());
+        if (this.getItemMaoEsquerda() != null) itensEquipados.add(this.getItemMaoEsquerda());
+        if (this.getItemPe() != null) itensEquipados.add(this.getItemPe());
 
         return itensEquipados;
     }
@@ -246,6 +232,20 @@ public class Jogador {
 
             if (itemCorpo != null)
                 this.getInventario().removerItem(itemCorpo.getNome());
+        }
+    }
+
+    public Item getItemAcessorio() {
+        return this.itemAcessorio;
+    }
+
+    public void setItemAcessorio (Item ItemAcessorio) {
+        if (verificaItemPodeSerEquipado(ItemAcessorio)) {
+            if (this.itemAcessorio != null) this.getInventario().adicionarItem(this.itemAcessorio);
+            this.itemAcessorio = ItemAcessorio;
+
+            if (ItemAcessorio != null)
+                this.getInventario().removerItem(ItemAcessorio.getNome());
         }
     }
 
