@@ -1,5 +1,7 @@
 public enum Raca {
     HUMANO,
     ELFO,
-    ANAO;
+    ANAO,
+    GNOMO,
+    ORC;
 }
