@@ -1,0 +1,120 @@
+<Itens>
+    <Item>
+        <nome>Espada Flamejante</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Elmo do Dragao</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>CABECA</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>MAGO</classe>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Amuleto da Sorte</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>LADRAO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Machado Viking</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1600</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Capa da Invisibilidade</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>LADRAO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Armadura de Placas</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1200</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Cajado do Arcanista</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Escudo de Mithril</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>600</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Botas Velozes</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>600</valor>
+        <tipo>PE</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+</Itens>
