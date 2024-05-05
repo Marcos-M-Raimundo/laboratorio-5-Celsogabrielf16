@@ -36,6 +36,51 @@ public class Jogo {
         return stringBuilder.toString();
     }
 
+    public void iniciarJogo() {
+        for (Jogador jogador : this.getJogadores())
+            this.jogadaInicial(jogador);
+
+        this.loopDeJogo();
+        
+        scanner.close();
+    }
+
+    public void jogadaInicial(Jogador jogador) {
+        List<Item> tesourosGanhos = this.getMasmorra().getTesouros().pegarItensAleatorios(5);
+
+        System.err.println("O jogador " + jogador.getNome() + " ganhou inicialmente os seguintes itens:");
+        for (Item item : tesourosGanhos) {
+            jogador.getInventario().adicionarItem(item);
+            System.out.println("- " + item);
+        }
+        
+        int entradaJogador;
+
+        do {
+            System.err.println("\nDeseja equipar algum item?\n1 - Sim, tentar equipar todos os itens\n2 - Sim, tentar equipar alguns itens\n3 - Não tentar equipar nenhum item\n");
+
+            System.out.print("Opção escolhida: ");
+            entradaJogador = Integer.parseInt(scanner.nextLine());
+            System.out.println();
+
+            if (entradaJogador == 1) {
+                for (Item item : tesourosGanhos) {
+                    this.equipaItem(jogador, item.getNome());
+                }
+            } else if (entradaJogador == 2){
+                System.out.println("Digite o nome dos itens que deseja equipar separados por virgula:");
+                System.out.print("Itens escolhidos: ");
+                String linhaComItensParaEquipar = scanner.nextLine();
+                System.out.println();
+                List<String> listaNomeItensParaEquipar = Arrays.asList(linhaComItensParaEquipar.split(", "));
+
+                for (String nomeItem : listaNomeItensParaEquipar) {
+                    this.equipaItem(jogador, nomeItem);
+                }
+            }
+        } while (entradaJogador != 3);
+    }
+
     // Executa o loop de jogo, assim trocando o jogador e a rodada de jogo quando necessario
     public void loopDeJogo() {
         int entradaJogador;
@@ -64,9 +109,11 @@ public class Jogo {
                 } while (entradaJogador != 5 && entradaJogador != 0);
             }
 
-        } while (entradaJogador != 0);
-        
-        scanner.close();
+        } while (entradaJogador != 0 && this.getJogadores().size() != 0);
+
+        if (this.getJogadores().size() == 0) {
+            System.out.println("O jogo terminou pois todos os jogadores foram derrotados!");
+        }
     }
 
     // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
@@ -102,34 +149,7 @@ public class Jogo {
                 System.out.print("Item escolhido: ");
                 String nomeItem = scanner.nextLine();
                 System.out.println();
-                Item itemEscolhido = jogadorAtual.getInventario().acessarItem(nomeItem);
-                
-                switch (itemEscolhido.getTipo()) {
-                    case CABECA:
-                        jogadorAtual.setItemCabeca(itemEscolhido);
-                        break;
-                    case CORPO:
-                        jogadorAtual.setItemCorpo(itemEscolhido);
-                        break;
-                    case MAO:
-                        System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
-                        System.out.println("1 - Mão direita");
-                        System.out.println("2 - Mão esquerda");
-                        System.out.print("Opção escolhida: ");
-                        int maoEscolhida = Integer.parseInt(scanner.nextLine());
-                        System.out.println();
-
-                        if (maoEscolhida == 1) {
-                            jogadorAtual.setItemMaoDireita(itemEscolhido);
-                        } else  {
-                            jogadorAtual.setItemMaoEsquerda(itemEscolhido);
-                        }
-
-                        break;
-                    case PE:
-                        jogadorAtual.setItemPe(itemEscolhido);
-                        break;
-                }
+                this.equipaItem(jogadorAtual, nomeItem);
                 break;
             case 3:
                 if(jogadorAtual.getInventario().inventario.size() != 0) {
@@ -179,14 +199,53 @@ public class Jogo {
         if (jogadorAtual.getNivel() == 0) {
             this.setJogadorAtualFoiDerrotado(true);
             this.removeJogador(this.getIndiceJogadorAtual());
-            this.setIndiceJogadorAtual((this.getIndiceJogadorAtual() + 1) % this.getJogadores().size());
-            this.setNumeroDaRodada(this.getIndiceJogadorAtual() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
+
+            if (this.getJogadores().size() != 0) {
+                this.setIndiceJogadorAtual((this.getIndiceJogadorAtual() + 1) % this.getJogadores().size());
+                this.setNumeroDaRodada(this.getIndiceJogadorAtual() == 0 ? this.getNumeroDaRodada() + 1 : this.getNumeroDaRodada());
+            }
         }
     }
 
     // Remove o jogador da lista de jogadores de acordo com seu indice
     private void removeJogador(int indiceJogador) {
         this.getJogadores().remove(indiceJogador);
+    }
+
+    private void equipaItem(Jogador jogador, String nomeItem) {
+        System.out.println(nomeItem);
+        Item itemEscolhido = jogador.getInventario().acessarItem(nomeItem);
+        System.out.println(itemEscolhido);
+                
+        switch (itemEscolhido.getTipo()) {
+            case CABECA:
+                jogador.setItemCabeca(itemEscolhido);
+                break;
+            case CORPO:
+                jogador.setItemCorpo(itemEscolhido);
+                break;
+            case ACESSORIO:
+                jogador.setItemAcessorio(itemEscolhido);
+                break;
+            case MAO:
+                System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
+                System.out.println("1 - Mão direita");
+                System.out.println("2 - Mão esquerda");
+                System.out.print("Opção escolhida: ");
+                int maoEscolhida = Integer.parseInt(scanner.nextLine());
+                System.out.println();
+
+                if (maoEscolhida == 1) {
+                    jogador.setItemMaoDireita(itemEscolhido);
+                } else  {
+                    jogador.setItemMaoEsquerda(itemEscolhido);
+                }
+
+                break;
+            case PE:
+                jogador.setItemPe(itemEscolhido);
+                break;
+        }
     }
 
     // Getters e setters dos aributos

@@ -29,7 +29,7 @@ public class BauDeTesouros extends Inventario {
     @Override
     public void listarItens() {
         Random random = new Random();
-        int tamanhoAtualInventario = this.inventario.size();
+        int tamanhoAtualInventario = this.getInventario().size();
 
         int indiceAleatorio1 = random.nextInt(tamanhoAtualInventario);
         int indiceAleatorio2 = random.nextInt(tamanhoAtualInventario);
@@ -38,22 +38,22 @@ public class BauDeTesouros extends Inventario {
         if (indiceAleatorio1 == indiceAleatorio2)
             indiceAleatorio2 = (indiceAleatorio1 + 1) % (tamanhoAtualInventario);
         
-        System.out.println(this.inventario.get(indiceAleatorio1));
+        System.out.println(this.getInventario().get(indiceAleatorio1));
 
         // Se ainda assim eles foram iguais 
         if (indiceAleatorio1 != indiceAleatorio2) 
-            System.out.println(this.inventario.get(indiceAleatorio2));
+            System.out.println(this.getInventario().get(indiceAleatorio2));
     }
 
-    // Retorna a quantia desejada de itens do inventario
+    // Retorna a quantia desejada de itens do bau
     public List<Item> pegarItensAleatorios(int quantidadeItens) {
         List<Item> listaItensAleatorios= new ArrayList<Item>(quantidadeItens);
         Random random = new Random();
 
         for(int i = 0; i < quantidadeItens; i++) {
-            int indiceAleatorio = random.nextInt(this.inventario.size());
+            int indiceAleatorio = random.nextInt(this.getInventario().size());
 
-            listaItensAleatorios.add(this.acessarItem(this.inventario.get(indiceAleatorio).getNome()));
+            listaItensAleatorios.add(this.acessarItem(this.getInventario().get(indiceAleatorio).getNome()));
         }
 
         return listaItensAleatorios;

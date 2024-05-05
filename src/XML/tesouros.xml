@@ -172,7 +172,7 @@
         </racasCompativeis>
     </Item>
     <Item>
-        <nome>Botas de Velocidade</nome>
+        <nome>Botas Magicas</nome>
         <bonusPoder>1</bonusPoder>
         <valor>400</valor>
         <tipo>PE</tipo>
@@ -216,7 +216,7 @@
         </racasCompativeis>
     </Item>
     <Item>
-        <nome>Anel do Ladrão</nome>
+        <nome>Anel do Ladrao</nome>
         <bonusPoder>2</bonusPoder>
         <valor>800</valor>
         <tipo>ACESSORIO</tipo>
@@ -260,7 +260,7 @@
         </racasCompativeis>
     </Item>
     <Item>
-        <nome>Arco Élfico</nome>
+        <nome>Arco Elfico</nome>
         <bonusPoder>3</bonusPoder>
         <valor>1200</valor>
         <tipo>MAO</tipo>

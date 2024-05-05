@@ -14,7 +14,7 @@ public class Main {
         LerTesouros tesouros = new LerTesouros();
         tesouros.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/tesouros.xml");
 
-        jogo.loopDeJogo();
+        jogo.iniciarJogo();
 
     }
 }
