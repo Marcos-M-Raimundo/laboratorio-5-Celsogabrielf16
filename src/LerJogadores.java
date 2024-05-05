@@ -42,7 +42,7 @@ public class LerJogadores implements I_Arquivo {
         jogo.setJogadores(jogadores);
     }
 
-    public String getString(Element jogador, String string) {
-        return jogador.getElementsByTagName(string).item(0).getTextContent();
+    public String getString(Element element, String string) {
+        return element.getElementsByTagName(string).item(0).getTextContent();
     }
 }
