@@ -1,3 +1,17 @@
+<!DOCTYPE Itens [
+    <!ELEMENT Itens (Item*)>
+    <!ELEMENT Item (nome, bonusPoder, valor, tipo, itemGrande, classesCompativeis, racasCompativeis)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT bonusPoder (#PCDATA)>
+    <!ELEMENT valor (#PCDATA)>
+    <!ELEMENT tipo (#PCDATA)>
+    <!ELEMENT itemGrande (#PCDATA)>
+    <!ELEMENT classesCompativeis (classe*)>
+    <!ELEMENT classe (#PCDATA)>
+    <!ELEMENT racasCompativeis (raca*)>
+    <!ELEMENT raca (#PCDATA)>
+]>
+
 <Itens>
     <Item>
         <nome>Espada Flamejante</nome>
