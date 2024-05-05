@@ -1,0 +1,14 @@
+<Monstros>
+    <Monstro>
+        <nome>Dragão Vermelho</nome>
+        <poder>3</poder>
+        <tesouros>2</tesouros>
+        <niveisPerdidos>2</niveisPerdidos>
+    </Monstro>
+    <Monstro>
+        <nome>Esqueleto Misterioso</nome>
+        <poder>2</poder>
+        <tesouros>1</tesouros>
+        <niveisPerdidos>1</niveisPerdidos>
+    </Monstro>
+</Monstros>
