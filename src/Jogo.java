@@ -87,10 +87,11 @@ public class Jogo {
     // Executa o loop de jogo, assim trocando o jogador e a rodada de jogo quando necessario
     public void loopDeJogo() {
         int entradaJogador;
+        Jogador jogadorAtual;
 
         do {
             // Declara o jogadorAtual e atualiza os booleans JogadorAtualFoiDerrotado para iniciar a jogada
-            Jogador jogadorAtual = this.getJogadores().get(this.getIndiceJogadorAtual());
+            jogadorAtual = this.getJogadores().get(this.getIndiceJogadorAtual());
             this.setJogadorAtualFoiDerrotado(false);
             
             // Executa as acoes do jogador ate ele escolher abrir a porta ou sair do jogo
@@ -111,11 +112,12 @@ public class Jogo {
                     this.executaAcaoJogador(entradaJogador, jogadorAtual, "DepoisDeAbrirAPorta");
                 } while (entradaJogador != 5 && entradaJogador != 0);
             }
-
-        } while (entradaJogador != 0 && this.getJogadores().size() != 0);
+        } while (entradaJogador != 0 && this.getJogadores().size() != 0 && jogadorAtual.getNivel() < 10);
 
         if (this.getJogadores().size() == 0) {
             System.out.println("O jogo terminou pois todos os jogadores foram derrotados!");
+        } else if (jogadorAtual.getNivel() >= 10){
+            System.out.println("O jogo terminou pois o jogador " + jogadorAtual.getNome() + " alcançou o nível 10 e venceu o jogo!");
         }
     }
 
