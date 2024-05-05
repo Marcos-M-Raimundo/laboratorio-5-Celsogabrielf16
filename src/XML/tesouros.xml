@@ -35,7 +35,6 @@
         <tipo>CABECA</tipo>
         <itemGrande>false</itemGrande>
         <classesCompativeis>
-            <classe>MAGO</classe>
             <classe>AVENTUREIRO</classe>
         </classesCompativeis>
         <racasCompativeis>
@@ -52,6 +51,7 @@
         <classesCompativeis>
             <classe>LADRAO</classe>
             <classe>CLERIGO</classe>
+            <classe>MAGO</classe>
         </classesCompativeis>
         <racasCompativeis>
             <raca>ELFO</raca>
@@ -81,6 +81,7 @@
         <classesCompativeis>
             <classe>LADRAO</classe>
             <classe>NECROMANTE</classe>
+            <classe>MAGO</classe>
         </classesCompativeis>
         <racasCompativeis>
             <raca>ANAO</raca>
@@ -223,6 +224,7 @@
         <itemGrande>false</itemGrande>
         <classesCompativeis>
             <classe>LADRAO</classe>
+            <classe>GUERREIRO</classe>
         </classesCompativeis>
         <racasCompativeis>
             <raca>HUMANO</raca>
@@ -252,6 +254,7 @@
         <itemGrande>false</itemGrande>
         <classesCompativeis>
             <classe>NECROMANTE</classe>
+            <classe>MAGO</classe>
         </classesCompativeis>
         <racasCompativeis>
             <raca>HUMANO</raca>

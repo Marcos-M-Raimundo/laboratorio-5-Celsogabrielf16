@@ -194,7 +194,7 @@ public class Jogo {
         if (escolhaAleatoria == 0) {
             this.getMasmorra().abrirPortaMonstro(jogadorAtual);
         } else {
-            this.getMasmorra().abrirPortaItem(jogadorAtual);
+            this.getMasmorra().abrirPortaItem(jogadorAtual, scanner);
         }
 
         System.out.println();
@@ -216,37 +216,41 @@ public class Jogo {
     }
 
     private void equipaItem(Jogador jogador, String nomeItem) {
-        System.out.println(nomeItem);
         Item itemEscolhido = jogador.getInventario().acessarItem(nomeItem);
-        System.out.println(itemEscolhido);
                 
         switch (itemEscolhido.getTipo()) {
             case CABECA:
-                jogador.setItemCabeca(itemEscolhido);
+                if (jogador.equipaItemCabeca(itemEscolhido))
+                    System.out.println(nomeItem + " equipado com sucesso!\n");
                 break;
             case CORPO:
-                jogador.setItemCorpo(itemEscolhido);
+                if (jogador.equipaItemCorpo(itemEscolhido))
+                    System.out.println(nomeItem + " equipado com sucesso!\n");
                 break;
             case ACESSORIO:
-                jogador.setItemAcessorio(itemEscolhido);
+                if (jogador.equipaItemAcessorio(itemEscolhido))
+                    System.out.println(nomeItem + " equipado com sucesso!\n");
                 break;
             case MAO:
-                System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
-                System.out.println("1 - Mão direita");
-                System.out.println("2 - Mão esquerda");
-                System.out.print("Opção escolhida: ");
-                int maoEscolhida = Integer.parseInt(scanner.nextLine());
-                System.out.println();
+                if (jogador.verificaItemPodeSerEquipado(itemEscolhido)) {
+                    System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
+                    System.out.println("1 - Mão direita");
+                    System.out.println("2 - Mão esquerda");
+                    System.out.print("Opção escolhida: ");
+                    int maoEscolhida = Integer.parseInt(scanner.nextLine());
+    
+                    if (maoEscolhida == 1) {
+                        jogador.setItemMaoDireita(itemEscolhido);
+                    } else  {
+                        jogador.setItemMaoEsquerda(itemEscolhido);
+                    }
 
-                if (maoEscolhida == 1) {
-                    jogador.setItemMaoDireita(itemEscolhido);
-                } else  {
-                    jogador.setItemMaoEsquerda(itemEscolhido);
+                    System.out.println(nomeItem + " equipado com sucesso!\n");
                 }
-
                 break;
             case PE:
-                jogador.setItemPe(itemEscolhido);
+                if (jogador.equipaItemPe(itemEscolhido))
+                    System.out.println(nomeItem + " equipado com sucesso!\n");
                 break;
         }
     }

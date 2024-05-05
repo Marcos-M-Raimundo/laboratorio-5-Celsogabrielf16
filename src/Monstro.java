@@ -20,8 +20,8 @@ public class Monstro {
         stringBuilder.append("Monstro { ")
             .append("Nome: ").append(this.getNome())
             .append(", Poder: ").append(this.getPoder())
-            .append(", Número de Pesouros: ").append(this.getTesouros())
-            .append(", Niveis Perdidos: ").append(this.getNiveisPerdidos())
+            .append(", Número de Tesouros: ").append(this.getTesouros())
+            .append(", Níveis Perdidos: ").append(this.getNiveisPerdidos())
             .append(" }");
 
         return stringBuilder.toString();

@@ -30,11 +30,19 @@ public class Masmorra {
             case VITORIA:
                 List<Item> tesourosGanhos = this.getTesouros().pegarItensAleatorios(montroEscolhido.getTesouros());
 
-                for (Item tesouro : tesourosGanhos) {
-                    jogador.getInventario().adicionarItem(tesouro);
+                System.out.print("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + "! E com isso ganhou os tesouros: ");
+
+                for (int i = 0; i < tesourosGanhos.size(); i++) {
+                    System.out.print(tesourosGanhos.get(i).getNome());
+                    if (i + 1 != tesourosGanhos.size()) {
+                        System.out.print(", ");
+                    } else {
+                        System.out.println();
+                    }
+
+                    jogador.getInventario().adicionarItem(tesourosGanhos.get(i));
                 }
 
-                System.out.println("O jogador " + jogador.getNome() + " venceu a batalha contra o monstro " + montroEscolhido.getNome() + "! E com isso ganhou os tesouros: " + tesourosGanhos);
                 break;
             case FUGA:
                 System.out.println("O jogador " + jogador.getNome() + " conseguiu fugiu da batalha contra o monstro " + montroEscolhido.getNome() + "!");
@@ -53,14 +61,12 @@ public class Masmorra {
         }
     }
 
-    public void abrirPortaItem(Jogador jogador) {
-        
+    public void abrirPortaItem(Jogador jogador, Scanner scanner) {
         if (this.getTesouros().getInventario().size() == 1) {
             String nomeUnicoItem = this.getTesouros().getInventario().get(0).getNome();
             jogador.getInventario().adicionarItem(this.getTesouros().acessarItem(nomeUnicoItem));
             System.out.println("O item " + nomeUnicoItem + " era o único no bau de tesouros, com isso o mesmo foi adicionado ao inventário do jogador!");
         } else {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("Escolha um dos itens abaixo digitando seu nome:");
             getTesouros().listarItens();
             System.out.print("Item escolhido: ");
