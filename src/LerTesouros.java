@@ -32,18 +32,16 @@ public class LerTesouros  implements I_Arquivo {
                 boolean itemGrande = Boolean.parseBoolean(this.getString(itemElement, "itemGrande"));
 
                 List<Classe> classesCompativeis = new ArrayList<Classe>(5);
-                NodeList nodeListClassesCompativeis = itemElement.getElementsByTagName("classesCompativeis");
+                NodeList nodeListClassesCompativeis = itemElement.getElementsByTagName("classe");
                 for (int indiceClasse = 0; indiceClasse < nodeListClassesCompativeis.getLength(); indiceClasse++) {
-                    Element classeElement = (Element) nodeListClassesCompativeis.item(indiceClasse);
-                    Classe classe = Classe.valueOf(this.getString(classeElement, "classe"));
+                    Classe classe = Classe.valueOf(nodeListClassesCompativeis.item(indiceClasse).getTextContent());
                     classesCompativeis.add(classe);
                 }
 
                 List<Raca> racasCompativeis = new ArrayList<Raca>(5);
-                NodeList nodeListRacasCompativeis = itemElement.getElementsByTagName("racasCompativeis");
-                for (int indiceClasse = 0; indiceClasse < nodeListRacasCompativeis.getLength(); indiceClasse++) {
-                    Element classeElement = (Element) nodeListRacasCompativeis.item(indiceClasse);
-                    Raca raca = Raca.valueOf(this.getString(classeElement, "raca"));
+                NodeList nodeListRacasCompativeis = itemElement.getElementsByTagName("raca");
+                for (int indiceRaca = 0; indiceRaca < nodeListRacasCompativeis.getLength(); indiceRaca++) {
+                    Raca raca = Raca.valueOf(nodeListRacasCompativeis.item(indiceRaca).getTextContent());
                     racasCompativeis.add(raca);
                 }
 

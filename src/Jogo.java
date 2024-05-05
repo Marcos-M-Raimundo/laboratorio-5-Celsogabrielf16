@@ -36,6 +36,7 @@ public class Jogo {
         return stringBuilder.toString();
     }
 
+    // Inicia o jogo dando 5 itens para cada jogador na jogadaInicial, e posteriormente inicia o loopDeJogo
     public void iniciarJogo() {
         for (Jogador jogador : this.getJogadores())
             this.jogadaInicial(jogador);
@@ -45,40 +46,42 @@ public class Jogo {
         scanner.close();
     }
 
+    // Pega 5 itens do bauDeTesouro e coloca no inventario de cada jogador, dando a opção dele poder equipar o mesmo
     public void jogadaInicial(Jogador jogador) {
         List<Item> tesourosGanhos = this.getMasmorra().getTesouros().pegarItensAleatorios(5);
 
         System.err.println("O jogador " + jogador.getNome() + " ganhou inicialmente os seguintes itens:");
         for (Item item : tesourosGanhos) {
             jogador.getInventario().adicionarItem(item);
-            System.out.println("- " + item);
+            System.out.println("- " + item.toStringCompleto());
         }
         
         int entradaJogador;
 
         do {
-            System.err.println("\nDeseja equipar algum item?\n1 - Sim, tentar equipar todos os itens\n2 - Sim, tentar equipar alguns itens\n3 - Não tentar equipar nenhum item\n");
+            System.err.println("\nDeseja equipar algum item?");
+            System.err.println("1 - Sim, tentar equipar todos os itens");
+            System.err.println("2 - Sim, tentar equipar alguns itens");
+            System.err.println("3 - Não tentar equipar nenhum item\n");
 
             System.out.print("Opção escolhida: ");
             entradaJogador = Integer.parseInt(scanner.nextLine());
             System.out.println();
 
             if (entradaJogador == 1) {
-                for (Item item : tesourosGanhos) {
+                for (Item item : tesourosGanhos)
                     this.equipaItem(jogador, item.getNome());
-                }
-            } else if (entradaJogador == 2){
+            } else if (entradaJogador == 2) {
                 System.out.println("Digite o nome dos itens que deseja equipar separados por virgula:");
                 System.out.print("Itens escolhidos: ");
                 String linhaComItensParaEquipar = scanner.nextLine();
                 System.out.println();
-                List<String> listaNomeItensParaEquipar = Arrays.asList(linhaComItensParaEquipar.split(", "));
 
-                for (String nomeItem : listaNomeItensParaEquipar) {
+                List<String> listaNomeItensParaEquipar = Arrays.asList(linhaComItensParaEquipar.split(", "));
+                for (String nomeItem : listaNomeItensParaEquipar)
                     this.equipaItem(jogador, nomeItem);
-                }
             }
-        } while (entradaJogador != 3);
+        } while (entradaJogador == 2);
     }
 
     // Executa o loop de jogo, assim trocando o jogador e a rodada de jogo quando necessario

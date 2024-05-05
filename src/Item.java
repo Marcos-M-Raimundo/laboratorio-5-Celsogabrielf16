@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Item {
@@ -9,25 +8,6 @@ public class Item {
     private boolean itemGrande;
     private List<Classe> classesCompativeis;
     public List<Raca> racasCompativeis;
-
-    // Construtor que recebe todos os atributos do item
-    public Item(String nome, int bonusPoder, int valor, TipoItem tipo, boolean itemGrande) {
-        this.nome = nome;
-        this.setBonusPoder(bonusPoder);
-        this.setValor(valor);
-        this.setTipo(tipo);
-        this.setItemGrande(itemGrande);;
-
-        Classe classeGenerica = Classe.AVENTUREIRO;
-        List<Classe> listaClassesCompativeis = new ArrayList<>(1);
-        listaClassesCompativeis.add(classeGenerica);
-        this.classesCompativeis = listaClassesCompativeis;
-
-        Raca racaGenerica = Raca.HUMANO;
-        List<Raca> listaRacasCompativeis = new ArrayList<>(1);
-        listaRacasCompativeis.add(racaGenerica);
-        this.racasCompativeis = listaRacasCompativeis;
-    }
 
     // Construtor que recebe todos os atributos do item
     public Item(String nome, int bonusPoder, int valor, TipoItem tipo, boolean itemGrande, List<Classe> classesCompativeis, List<Raca> racasCompativeis) {
@@ -44,7 +24,14 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.getNome()).append(" - nível ").append(this.getBonusPoder());
+        stringBuilder.append(this.getNome())
+                        .append(" - Nível ").append(this.getBonusPoder())
+                        .append(" - Valor ").append(this.getValor())
+                        .append(" - Tipo ").append(this.getTipo())
+                        .append(" - Item Grande? ").append(this.getItemGrande())
+                        .append(" - Raças Compativeis: ").append(this.getRacasCompativeis())
+                        .append(" - Classes Compativeis: ").append(this.getClassesCompativeis());
+        
         return stringBuilder.toString();
     }
 

@@ -69,7 +69,7 @@ public class Inventario {
         } else {
             System.out.println("Listando intens do inventário:");
             for (Item itemInventario : this.getInventario()) {
-                System.out.println("- " + itemInventario);
+                System.out.println("- " + itemInventario.toStringCompleto());
             }
         }
     }
