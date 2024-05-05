@@ -51,22 +51,16 @@ public class Main {
         bauDeTesouros.adicionarItem(itemCajadoArcanista);
         bauDeTesouros.adicionarItem(itemEscudoMithril);
 
-        // Instanciação dos monstros
-        Monstro monstroDragaoVermelho = new Monstro("Dragão Vermelho", 3, 2, 2);
-        Monstro monstroEsqueletoMisterioso = new Monstro("Esqueleto Misterioso", 2, 1, 1);
-
-        // Lista de Monstros
-        List<Monstro> monstrosMasmorra = new ArrayList<Monstro>(2);
-        monstrosMasmorra.add(monstroDragaoVermelho);
-        monstrosMasmorra.add(monstroEsqueletoMisterioso);
-
         // Instanciação da masmorra
-        Masmorra masmorra = new Masmorra(monstrosMasmorra, bauDeTesouros);
+        Masmorra masmorra = new Masmorra();
 
         Jogo jogo = new Jogo(masmorra);
 
         LerJogadores jogadores = new LerJogadores();
         jogadores.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/jogadores.xml");
+
+        LerMonstros monstros = new LerMonstros();
+        monstros.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/monstros.xml");
 
         jogo.loopDeJogo();
 

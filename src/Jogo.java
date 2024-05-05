@@ -198,7 +198,7 @@ public class Jogo {
         this.jogadores = jogadores;
     }
     
-    private Masmorra getMasmorra() {
+    public Masmorra getMasmorra() {
         return this.masmorra;
     }
 

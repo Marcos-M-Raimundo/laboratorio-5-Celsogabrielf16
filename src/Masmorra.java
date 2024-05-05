@@ -6,11 +6,6 @@ public class Masmorra {
     private List<Monstro> monstros;
     private BauDeTesouros tesouros;
 
-    public Masmorra(List<Monstro> monstros, BauDeTesouros tesouros) {
-        this.setMonstros(monstros);
-        this.setTesouros(tesouros);
-    }
-
     // Método padrao chamado quando imprimimos a classe Masmorra
     @Override
     public String toString() {
@@ -79,7 +74,7 @@ public class Masmorra {
         return this.monstros;
     }
 
-    private void setMonstros(List<Monstro> monstros) {
+    public void setMonstros(List<Monstro> monstros) {
         this.monstros = monstros;
     }
 
@@ -87,7 +82,7 @@ public class Masmorra {
         return this.tesouros;
     }
 
-    private void setTesouros(BauDeTesouros tesouros) {
+    public void setTesouros(BauDeTesouros tesouros) {
         this.tesouros = tesouros;
     }
 }
