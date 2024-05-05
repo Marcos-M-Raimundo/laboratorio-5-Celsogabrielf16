@@ -40,19 +40,18 @@ public class BauDeTesouros extends Inventario {
         
         System.out.println(this.getInventario().get(indiceAleatorio1));
 
-        // Se ainda assim eles foram iguais 
+        // Se ainda assim eles foram iguais nao imprimimos nada, pois existe apenas um item
         if (indiceAleatorio1 != indiceAleatorio2) 
             System.out.println(this.getInventario().get(indiceAleatorio2));
     }
 
-    // Retorna a quantia desejada de itens do bau
+    // Retorna uma lista de itens com a quantia desejada de itens do bau
     public List<Item> pegarItensAleatorios(int quantidadeItens) {
         List<Item> listaItensAleatorios= new ArrayList<Item>(quantidadeItens);
-        Random random = new Random();
 
+        Random random = new Random();
         for(int i = 0; i < quantidadeItens; i++) {
             int indiceAleatorio = random.nextInt(this.getInventario().size());
-
             listaItensAleatorios.add(this.acessarItem(this.getInventario().get(indiceAleatorio).getNome()));
         }
 

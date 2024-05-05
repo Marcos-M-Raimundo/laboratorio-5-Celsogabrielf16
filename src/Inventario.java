@@ -21,9 +21,17 @@ public class Inventario {
         } else {
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.append("[ ").append("Limite inventario: ").append(this.getLimiteDeItens()).append(", Itens Inventario: [ ");
-            for (Item itemInventario : this.getInventario())
-                stringBuilder.append(itemInventario).append(", ");
+            stringBuilder.append("[ ")
+                            .append("Limite inventario: ").append(this.getLimiteDeItens())
+                            .append(", Itens Inventario: [ ");
+
+            for (int i = 0; i < this.getInventario().size(); i++) {
+                stringBuilder.append(this.getInventario().get(i).getNome());
+
+                if (i + 1 != this.getInventario().size()) 
+                    stringBuilder.append(", ");
+            }
+
             stringBuilder.append(" ]").append(" ]");
 
             return stringBuilder.toString();
@@ -67,14 +75,15 @@ public class Inventario {
         if (this.getInventario().isEmpty()) {
             System.out.println("O inventario está vazio!");
         } else {
-            System.out.println("Listando intens do inventário:");
+            System.out.println("Itens do inventário:");
             for (Item itemInventario : this.getInventario()) {
-                System.out.println("- " + itemInventario.toStringCompleto());
+                System.out.println("- " + itemInventario);
             }
         }
     }
 
-    public int getLimiteDeItens() {
+    // Getters e setters da classe Inventario
+    private int getLimiteDeItens() {
         return this.limiteDeItens;
     }
 

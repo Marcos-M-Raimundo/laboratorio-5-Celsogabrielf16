@@ -53,7 +53,7 @@ public class Jogo {
         System.err.println("O jogador " + jogador.getNome() + " ganhou inicialmente os seguintes itens:");
         for (Item item : tesourosGanhos) {
             jogador.getInventario().adicionarItem(item);
-            System.out.println("- " + item.toStringCompleto());
+            System.out.println("- " + item);
         }
         
         int entradaJogador;
