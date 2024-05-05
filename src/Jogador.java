@@ -31,31 +31,20 @@ public class Jogador {
     }
     
     // Sobrecarrega o construtor anterior, recebe apenas o nome, nivel, raca, classe e inventario
-    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario) {
+    public Jogador(String nome, int nivel, Raca raca, Classe classe) {
         this.nome = nome;
         this.setNivel(nivel);
         this.setRaca(raca);
         this.setClasse(classe);
-        this.setInventario(inventario);
+        
+        Inventario inventarioJogador = new Inventario(50);
+        this.setInventario(inventarioJogador);
+        
         this.setItemCabeca(null);
         this.setItemCorpo(null);
         this.setItemMaoDireita(null);
         this.setItemMaoEsquerda(null);
         this.setItemPe(null);
-    }
-    
-    // Sobrecarrega os construtores anteriores, recebe todos os atributos do jogador
-    public Jogador(String nome, int nivel, Raca raca, Classe classe, Inventario inventario, Item itemCabeca, Item itemCorpo, Item itemMaoDireita, Item itemMaoEsquerda, Item itemPe) {
-        this.nome = nome;
-        this.setNivel(nivel);
-        this.setRaca(raca);
-        this.setClasse(classe);
-        this.setInventario(inventario);
-        this.setItemCabeca(itemCabeca);
-        this.setItemCorpo(itemCorpo);
-        this.setItemMaoDireita(itemMaoDireita);
-        this.setItemMaoEsquerda(itemMaoEsquerda);
-        this.setItemPe(itemPe);
     }
     
     // Método padrao chamado quando imprimimos a classe Jogador

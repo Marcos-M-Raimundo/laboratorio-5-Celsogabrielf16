@@ -1,8 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -66,16 +63,12 @@ public class Main {
         // Instanciação da masmorra
         Masmorra masmorra = new Masmorra(monstrosMasmorra, bauDeTesouros);
 
-        // Instanciação dos jogadores
-        Jogador jogador1 = new Jogador("Celso", 1, Raca.HUMANO, Classe.MAGO, inventario1);
-        Jogador jogador2 = new Jogador("Gabriel", 1, Raca.HUMANO, Classe.GUERREIRO, inventario2);
+        Jogo jogo = new Jogo(masmorra);
 
-        // Simulação do jogo (ideal seria criar uma classe Munchkin para o controle das rodadas)
-        List<Jogador> listaJogadores = new ArrayList<Jogador>(6);
-        listaJogadores.add(jogador1);
-        listaJogadores.add(jogador2);
+        LerJogadores jogadores = new LerJogadores();
+        jogadores.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/jogadores.xml");
 
-        Jogo jogo = new Jogo(listaJogadores, masmorra);
         jogo.loopDeJogo();
+
     }
 }

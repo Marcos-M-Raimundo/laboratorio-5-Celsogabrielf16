@@ -12,9 +12,12 @@ public class Jogo {
     private int indiceJogadorAtual;
     private boolean jogadorAtualFoiDerrotado;
 
-    public Jogo(List<Jogador> jogadores, Masmorra masmorra) {
-        this.setJogadores(jogadores);
+    public Jogo(Masmorra masmorra) {
         this.setMasmorra(masmorra);
+
+        ArrayList<Jogador> ListaJogadores = new ArrayList<Jogador>(6);
+        this.setJogadores(ListaJogadores);
+
         this.setNumeroDaRodada(1);
         this.setIndiceJogadorAtual(0);
         this.setJogadorAtualFoiDerrotado(false);
@@ -191,7 +194,7 @@ public class Jogo {
         return this.jogadores;
     }
 
-    private void setJogadores(List<Jogador> jogadores) {
+    public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
     
