@@ -1,0 +1,373 @@
+<!DOCTYPE Itens [
+    <!ELEMENT Itens (Item*)>
+    <!ELEMENT Item (nome, bonusPoder, valor, tipo, itemGrande, classesCompativeis, racasCompativeis)>
+    <!ELEMENT nome (#PCDATA)>
+    <!ELEMENT bonusPoder (#PCDATA)>
+    <!ELEMENT valor (#PCDATA)>
+    <!ELEMENT tipo (#PCDATA)>
+    <!ELEMENT itemGrande (#PCDATA)>
+    <!ELEMENT classesCompativeis (classe*)>
+    <!ELEMENT classe (#PCDATA)>
+    <!ELEMENT racasCompativeis (raca*)>
+    <!ELEMENT raca (#PCDATA)>
+]>
+
+<Itens>
+    <Item>
+        <nome>Espada Flamejante</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>MAGO</classe>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ORC</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Elmo do Dragao</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>CABECA</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Amuleto da Sorte</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>ACESSORIO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>LADRAO</classe>
+            <classe>CLERIGO</classe>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Machado Viking</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1600</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+            <classe>NECROMANTE</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ORC</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Capa da Invisibilidade</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>LADRAO</classe>
+            <classe>NECROMANTE</classe>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Armadura de Placas</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1200</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Cajado do Arcanista</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Escudo de Mithril</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>600</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Botas Velozes</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>600</valor>
+        <tipo>PE</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Espada do Poder</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+            <classe>NECROMANTE</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ANAO</raca>
+            <raca>ORC</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Capacete de Aco</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>CABECA</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>CLERIGO</classe>
+            <classe>LADRAO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Botas Magicas</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>PE</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+            <raca>ANAO</raca>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Amuleto de Protecao</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>ACESSORIO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Varinha do Trovao</nome>
+        <bonusPoder>5</bonusPoder>
+        <valor>2000</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>true</itemGrande>
+        <classesCompativeis>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Anel do Ladrao</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>ACESSORIO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>LADRAO</classe>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Luvas do Mago</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ORC</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Cajado Sombrio</nome>
+        <bonusPoder>4</bonusPoder>
+        <valor>1600</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>NECROMANTE</classe>
+            <classe>MAGO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Arco Elfico</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Pergaminho da Sabedoria</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>ACESSORIO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Espada de Prata</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Capa da Montanha</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>CORPO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>GUERREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Botas do Corredor</nome>
+        <bonusPoder>1</bonusPoder>
+        <valor>400</valor>
+        <tipo>PE</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Anel da Força</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>ACESSORIO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ORC</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Luvas do Velocista</nome>
+        <bonusPoder>2</bonusPoder>
+        <valor>800</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>AVENTUREIRO</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>ELFO</raca>
+            <raca>ANAO</raca>
+        </racasCompativeis>
+    </Item>
+    <Item>
+        <nome>Cajado da Magia</nome>
+        <bonusPoder>3</bonusPoder>
+        <valor>1200</valor>
+        <tipo>MAO</tipo>
+        <itemGrande>false</itemGrande>
+        <classesCompativeis>
+            <classe>CLERIGO</classe>
+            <classe>NECROMANTE</classe>
+        </classesCompativeis>
+        <racasCompativeis>
+            <raca>HUMANO</raca>
+            <raca>ELFO</raca>
+            <raca>GNOMO</raca>
+        </racasCompativeis>
+    </Item>
+</Itens>
