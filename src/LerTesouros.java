@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 public class LerTesouros  implements I_Arquivo {
     @Override
     public void lerArquivo(Jogo jogo, String path) {
-        BauDeTesouros bauDeTesouros = new BauDeTesouros(20);
+        BauDeTesouros bauDeTesouros = BauDeTesouros.getInstanciaBauDeTesouros();
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

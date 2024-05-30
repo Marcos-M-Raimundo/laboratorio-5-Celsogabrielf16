@@ -4,7 +4,10 @@ import java.util.Random;
 import java.util.Iterator;
 
 public class BauDeTesouros extends Inventario {
-    public BauDeTesouros (int limiteDeItens) {
+    private static BauDeTesouros instancia;
+    public static int contador;
+
+    private BauDeTesouros (int limiteDeItens) {
         super(limiteDeItens);
     }
 
@@ -56,5 +59,12 @@ public class BauDeTesouros extends Inventario {
         }
 
         return listaItensAleatorios;
+    }
+
+    public static BauDeTesouros getInstanciaBauDeTesouros() {
+        if (instancia == null)
+            instancia = new BauDeTesouros(20);
+            
+        return instancia;
     }
 }
