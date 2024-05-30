@@ -1,3 +1,7 @@
+package app;
+
+import model.Jogador;
+
 import java.util.Random;
 
 public class CampoDeBatalha {

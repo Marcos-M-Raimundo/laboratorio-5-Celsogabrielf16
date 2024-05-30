@@ -1,3 +1,10 @@
+package model;
+
+import app.Classe;
+import app.Inventario;
+import app.Item;
+import app.Raca;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,11 @@
+package model;
+
+import app.BauDeTesouros;
+import app.CampoDeBatalha;
+import app.Item;
+import app.Monstro;
+import app.Resultado;
+
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;

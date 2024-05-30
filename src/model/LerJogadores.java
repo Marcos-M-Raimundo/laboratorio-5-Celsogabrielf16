@@ -1,3 +1,9 @@
+package model;
+
+import app.Classe;
+import app.Jogo;
+import app.Raca;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
@@ -7,9 +13,11 @@ import javax.xml.parsers.DocumentBuilder;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import interfaces.IArquivo;
+
 import org.w3c.dom.Element;
 
-public class LerJogadores implements I_Arquivo {
+public class LerJogadores implements IArquivo {
     @Override
     public void lerArquivo(Jogo jogo, String path) {
         List<Jogador> jogadores = new ArrayList<Jogador>(6);

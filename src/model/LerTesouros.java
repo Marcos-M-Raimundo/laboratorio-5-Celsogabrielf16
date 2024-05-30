@@ -1,3 +1,13 @@
+package model;
+
+import app.BauDeTesouros;
+import app.Classe;
+import app.Item;
+import app.Jogo;
+import app.Raca;
+import app.TipoItem;
+import interfaces.IArquivo;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-public class LerTesouros  implements I_Arquivo {
+public class LerTesouros  implements IArquivo {
     @Override
     public void lerArquivo(Jogo jogo, String path) {
         BauDeTesouros bauDeTesouros = BauDeTesouros.getInstanciaBauDeTesouros();

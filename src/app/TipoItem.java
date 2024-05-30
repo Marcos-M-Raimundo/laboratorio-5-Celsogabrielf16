@@ -1,3 +1,5 @@
+package app;
+
 public enum TipoItem {
     ACESSORIO,
     CABECA,

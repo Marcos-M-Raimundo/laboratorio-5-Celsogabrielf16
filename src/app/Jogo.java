@@ -1,3 +1,8 @@
+package app;
+
+import model.Jogador;
+import model.Masmorra;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

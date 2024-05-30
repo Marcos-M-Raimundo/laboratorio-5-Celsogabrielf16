@@ -1,3 +1,9 @@
+package model;
+
+import app.Jogo;
+import app.Monstro;
+import interfaces.IArquivo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
@@ -9,7 +15,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
-public class LerMonstros implements I_Arquivo{
+public class LerMonstros implements IArquivo{
     @Override
     public void lerArquivo(Jogo jogo, String path) {
         List<Monstro> monstros = new ArrayList<Monstro>(10);

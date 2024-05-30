@@ -1,3 +1,5 @@
+package app;
+
 public class Monstro {
     private final String nome;
     private int poder;

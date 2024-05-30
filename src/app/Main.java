@@ -1,3 +1,10 @@
+package app;
+
+import model.LerJogadores;
+import model.LerMonstros;
+import model.LerTesouros;
+import model.Masmorra;
+
 public class Main {
     public static void main(String[] args) {
 
