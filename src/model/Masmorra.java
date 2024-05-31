@@ -1,5 +1,6 @@
 package model;
 
+import controller.JogadorController;
 import app.BauDeTesouros;
 import app.CampoDeBatalha;
 import app.Item;
@@ -27,7 +28,7 @@ public class Masmorra {
         return stringBuilder.toString();
     }
 
-    public void abrirPortaMonstro(Jogador jogador) {
+    public void abrirPortaMonstro(JogadorController jogador) {
         Random random = new Random();
         int indiceMonstro = random.nextInt(this.getMonstros().size());
         Monstro montroEscolhido = this.getMonstros().get(indiceMonstro);
@@ -69,7 +70,7 @@ public class Masmorra {
         }
     }
 
-    public void abrirPortaItem(Jogador jogador, Scanner scanner) {
+    public void abrirPortaItem(JogadorController jogador, Scanner scanner) {
         if (this.getTesouros().getInventario().size() == 1) {
             String nomeUnicoItem = this.getTesouros().getInventario().get(0).getNome();
             jogador.getInventario().adicionarItem(this.getTesouros().acessarItem(nomeUnicoItem));

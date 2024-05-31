@@ -1,6 +1,6 @@
 package app;
 
-import model.LerJogadores;
+import controller.JogadorController;
 import model.LerMonstros;
 import model.LerTesouros;
 import model.Masmorra;
@@ -12,8 +12,7 @@ public class Main {
 
         Jogo jogo = new Jogo(masmorra);
 
-        LerJogadores jogadores = new LerJogadores();
-        jogadores.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/jogadores.xml");
+        JogadorController.lerJogadores(jogo, "laboratorio-4-Celsogabrielf16/src/XML/jogadores.xml");
 
         LerMonstros monstros = new LerMonstros();
         monstros.lerArquivo(jogo, "laboratorio-4-Celsogabrielf16/src/XML/monstros.xml");

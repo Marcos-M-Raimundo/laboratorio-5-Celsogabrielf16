@@ -1,5 +1,6 @@
 package model;
 
+import controller.JogadorController;
 import app.Classe;
 import app.Jogo;
 import app.Raca;
@@ -14,13 +15,14 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import interfaces.IArquivo;
+import view.JogadorView;
 
 import org.w3c.dom.Element;
 
 public class LerJogadores implements IArquivo {
     @Override
     public void lerArquivo(Jogo jogo, String path) {
-        List<Jogador> jogadores = new ArrayList<Jogador>(6);
+        List<JogadorController> jogadores = new ArrayList<JogadorController>(6);
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -38,7 +40,7 @@ public class LerJogadores implements IArquivo {
                 Raca raca = Raca.valueOf(this.getString(jogadorElement, "raca"));
                 Classe classe = Classe.valueOf(this.getString(jogadorElement, "classe"));
 
-                Jogador jogador = new Jogador(nome, nivel, raca, classe);
+                JogadorController jogador = new JogadorController(new JogadorView(), new Jogador(nome, nivel, raca, classe));
                 jogadores.add(jogador);
             }
 
@@ -50,7 +52,7 @@ public class LerJogadores implements IArquivo {
         jogo.setJogadores(jogadores);
     }
 
-    public String getString(Element element, String string) {
+    private String getString(Element element, String string) {
         return element.getElementsByTagName(string).item(0).getTextContent();
     }
 }

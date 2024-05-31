@@ -3,6 +3,7 @@ package model;
 import app.Classe;
 import app.Inventario;
 import app.Item;
+import app.Jogo;
 import app.Raca;
 
 import java.util.ArrayList;
@@ -59,6 +60,11 @@ public class Jogador {
         return stringBuilder.toString();
     }
 
+    public static void lerJogadores(Jogo jogo, String path) {
+        LerJogadores jogadores = new LerJogadores();
+        jogadores.lerArquivo(jogo, path);
+    }
+
     // Retorna o poder do jogador de acordo com seu nivel e o bonus de poder dos itens equipados pelo mesmo
     public int poderJogador() {
         List<Item> itensEquipados = this.getItensEquipados();
@@ -71,16 +77,9 @@ public class Jogador {
         return poderSomado;
     }
 
-    // Verifica se alguma das maos do jogador esta vazia
-    public boolean possuiMaoVazia() {
-        if ((this.getItemMaoDireita() == null) || (this.getItemMaoEsquerda() == null)) {
-            return true;
-        }
-        return false;
-    }
-
     // Vende os itens de acordo com a lista recebida
-    public void venderItens(List<Item> itensParaVender) {
+    public String venderItens(List<Item> itensParaVender) {
+        String mensagem;
         int valorTotalItens = 0;
 
         for (Item item : itensParaVender)
@@ -92,10 +91,144 @@ public class Jogador {
             int novoNivel = this.getNivel() + (valorTotalItens / 1000);
             setNivel(novoNivel);
             
-            System.out.println("Os itens foram vendidos! O jogador " + this.getNome() + " foi para o nível " + this.getNivel() + "!");
+            mensagem = "Os itens foram vendidos! O jogador " + this.getNome() + " foi para o nível " + this.getNivel() + "!\n";
         } else {
-            System.out.println("Valor total dos itens insuficiente para a venda!");
+            mensagem = "Valor total dos itens insuficiente para a venda!\n";
         }
+
+        return mensagem;
+    }
+
+    public String equipaItemCabeca (Item itemCabeca) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemCabeca);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemCabeca() != null)
+                this.getInventario().adicionarItem(this.getItemCabeca());
+
+            this.getInventario().removerItem(itemCabeca.getNome());
+            this.setItemCabeca(itemCabeca);
+
+            mensagem = this.getItemCabeca().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    public String equipaItemCorpo (Item itemCorpo) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemCorpo);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemCorpo() != null)
+                this.getInventario().adicionarItem(this.getItemCorpo());
+
+            this.getInventario().removerItem(itemCorpo.getNome());
+            this.setItemCorpo(itemCorpo);
+
+            mensagem = this.getItemCorpo().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    public String equipaItemAcessorio (Item itemAcessorio) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemAcessorio);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemAcessorio() != null)
+                this.getInventario().adicionarItem(this.getItemAcessorio());
+
+            this.getInventario().removerItem(itemAcessorio.getNome());
+            this.setItemAcessorio(itemAcessorio);
+
+            mensagem = this.getItemAcessorio().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    public String equipaItemMaoDireita (Item itemMaoDireita) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemMaoDireita);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemMaoDireita() != null)
+                this.getInventario().adicionarItem(this.getItemMaoDireita());
+
+            this.getInventario().removerItem(itemMaoDireita.getNome());
+            this.setItemMaoDireita(itemMaoDireita);
+
+            mensagem = this.getItemMaoDireita().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    public String equipaItemMaoEsquerda (Item itemMaoEsquerda) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemMaoEsquerda);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemMaoEsquerda() != null)
+                this.getInventario().adicionarItem(this.getItemMaoEsquerda());
+
+            this.getInventario().removerItem(itemMaoEsquerda.getNome());
+            this.setItemMaoEsquerda(itemMaoEsquerda);
+
+            mensagem = this.getItemMaoEsquerda().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    public String equipaItemPe (Item itemPe) {
+        String mensagem;
+
+        String mensagemVerificacao = verificaItemPodeSerEquipado(itemPe);
+        if (mensagemVerificacao.equals("O item é válido!")) {
+            if (this.getItemPe() != null)
+                this.getInventario().adicionarItem(this.getItemPe());
+
+            this.getInventario().removerItem(itemPe.getNome());
+            this.setItemPe(itemPe);
+
+            mensagem = this.getItemPe().getNome() + " equipado com sucesso!\n";
+        } else {
+            mensagem = mensagemVerificacao;
+        }
+
+        return mensagem;
+    }
+
+    // Verifica se o item dado pode ser equipado pelo jogador, 
+    // verificanto se ja existem grande e sua compatibilidade por classe e raca
+    private String verificaItemPodeSerEquipado(Item item) {
+        String mensagem = "O item é válido!";
+
+        if (item == null) {
+            mensagem = "Este item não é valido!\n";
+        } else if (!this.verificaCompatibilidadePorClasse(item)) {
+            mensagem = "O item " + item.getNome() + " não é compativel com a classe " + this.getClasse() + "!\n";
+        } else if (!this.verificaCompatibilidadePorRaca(item)) {
+            mensagem = "O item " + item.getNome() + " não é compativel com a raça " + this.getRaca() + "!\n";
+        } else if (item.getItemGrande() && this.verificaExisteItemGrande()) {
+            mensagem = "O item " + item.getNome() + " não foi equipado pois não é possivel ter dois itens grandes equipados!\n";
+        }
+
+        return mensagem;
     }
 
     // Retorna uma lista com os itens atualmente equipados
@@ -153,122 +286,6 @@ public class Jogador {
         }
 
         return itemCompativel;
-    }
-
-    // Verifica se o item dado pode ser equipado pelo jogador, 
-    // verificanto se ja existem grande e sua compatibilidade por classe e raca
-    public boolean verificaItemPodeSerEquipado(Item item) {
-        boolean itemValido = false;
-
-        if (item == null) {
-            System.out.println("Este item não é valido!\n");
-        } else if (!this.verificaCompatibilidadePorClasse(item)) {
-            System.out.println("O item " + item.getNome() + " não é compativel com a classe " + this.getClasse() + "!\n");
-        } else if (!this.verificaCompatibilidadePorRaca(item)) {
-            System.out.println("O item " + item.getNome() + " não é compativel com a raça " + this.getRaca() + "!\n");
-        } else if (item.getItemGrande() && this.verificaExisteItemGrande()) {
-            System.out.println("O item " + item.getNome() + " não foi equipado pois não é possivel ter dois itens grandes equipados!\n");
-        } else {
-            itemValido = true;
-        }
-
-        return itemValido;
-    }
-
-    public boolean equipaItemCabeca (Item itemCabeca) {
-        if (verificaItemPodeSerEquipado(itemCabeca)) {
-            if (this.getItemCabeca() != null) {
-                System.out.println("O item " + this.getItemCabeca() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemCabeca());
-            }
-
-            this.getInventario().removerItem(itemCabeca.getNome());
-            this.setItemCabeca(itemCabeca);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean equipaItemCorpo (Item itemCorpo) {
-        if (verificaItemPodeSerEquipado(itemCorpo)) {
-            if (this.getItemCorpo() != null) {
-                System.out.println("O item " + this.getItemCorpo() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemCorpo());
-            }
-
-            this.getInventario().removerItem(itemCorpo.getNome());
-            this.setItemCorpo(itemCorpo);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean equipaItemAcessorio (Item itemAcessorio) {
-        if (verificaItemPodeSerEquipado(itemAcessorio)) {
-            if (this.getItemAcessorio() != null) {
-                System.out.println("O item " + this.getItemAcessorio() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemAcessorio());
-            }
-
-            this.getInventario().removerItem(itemAcessorio.getNome());
-            this.setItemAcessorio(itemAcessorio);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean equipaItemMaoDireita (Item itemMaoDireita) {
-        if (verificaItemPodeSerEquipado(itemMaoDireita)) {
-            if (this.getItemMaoDireita() != null) {
-                System.out.println("O item " + this.getItemMaoDireita() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemMaoDireita());
-            }
-
-            this.getInventario().removerItem(itemMaoDireita.getNome());
-            this.setItemMaoDireita(itemMaoDireita);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean equipaItemMaoEsquerda (Item itemMaoEsquerda) {
-        if (verificaItemPodeSerEquipado(itemMaoEsquerda)) {
-            if (this.getItemMaoEsquerda() != null) {
-                System.out.println("O item " + this.getItemMaoEsquerda() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemMaoEsquerda());
-            }
-
-            this.getInventario().removerItem(itemMaoEsquerda.getNome());
-            this.setItemMaoEsquerda(itemMaoEsquerda);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean equipaItemPe (Item itemPe) {
-        if (verificaItemPodeSerEquipado(itemPe)) {
-            if (this.getItemPe() != null){
-                System.out.println("O item " + this.getItemPe() + " estava equipado e foi devolvido ao inventário!");
-                this.getInventario().adicionarItem(this.getItemPe());
-            }
-
-            this.getInventario().removerItem(itemPe.getNome());
-            this.setItemPe(itemPe);
-
-            return true;
-        }
-
-        return false;
     }
 
     // Getters e setters para cada atributo do jogador
@@ -336,14 +353,6 @@ public class Jogador {
     }
 
     public void setItemMaoDireita (Item itemMaoDireita) {
-        if (this.getItemMaoDireita() != null) {
-            System.out.println("O item " + this.getItemMaoDireita() + " estava equipado e foi devolvido ao inventário!");
-            this.getInventario().adicionarItem(this.getItemMaoDireita());
-        }
-        
-        if (itemMaoDireita != null)
-            this.getInventario().removerItem(itemMaoDireita.getNome());
-            
         this.itemMaoDireita = itemMaoDireita;
     }
 
@@ -351,15 +360,7 @@ public class Jogador {
         return this.itemMaoEsquerda;
     }
 
-    public void setItemMaoEsquerda (Item itemMaoEsquerda) {
-        if (this.getItemMaoEsquerda() != null) {
-            System.out.println("O item " + this.getItemMaoEsquerda() + " estava equipado e foi devolvido ao inventário!");
-            this.getInventario().adicionarItem(this.getItemMaoEsquerda());
-        }
-        
-        if (itemMaoEsquerda != null)
-            this.getInventario().removerItem(itemMaoEsquerda.getNome());
-
+    private void setItemMaoEsquerda (Item itemMaoEsquerda) {
         this.itemMaoEsquerda = itemMaoEsquerda;
     }
 

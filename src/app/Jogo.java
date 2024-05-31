@@ -1,6 +1,6 @@
 package app;
 
-import model.Jogador;
+import controller.JogadorController;
 import model.Masmorra;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Jogo {
     private static Scanner scanner = new Scanner(System.in);
-    private List<Jogador> jogadores;
+    private List<JogadorController> jogadores;
     private Masmorra masmorra;
     private int numeroDaRodada;
     private int indiceJogadorAtual;
@@ -20,7 +20,7 @@ public class Jogo {
     public Jogo(Masmorra masmorra) {
         this.setMasmorra(masmorra);
 
-        ArrayList<Jogador> ListaJogadores = new ArrayList<Jogador>(6);
+        ArrayList<JogadorController> ListaJogadores = new ArrayList<JogadorController>(6);
         this.setJogadores(ListaJogadores);
 
         this.setNumeroDaRodada(1);
@@ -43,7 +43,7 @@ public class Jogo {
 
     // Inicia o jogo dando 5 itens para cada jogador na jogadaInicial, e posteriormente inicia o loopDeJogo
     public void iniciarJogo() {
-        for (Jogador jogador : this.getJogadores())
+        for (JogadorController jogador : this.getJogadores())
             this.jogadaInicial(jogador);
 
         this.loopDeJogo();
@@ -52,7 +52,7 @@ public class Jogo {
     }
 
     // Pega 5 itens do bauDeTesouro e coloca no inventario de cada jogador, dando a opção dele poder equipar o mesmo
-    public void jogadaInicial(Jogador jogador) {
+    public void jogadaInicial(JogadorController jogador) {
         List<Item> tesourosGanhos = this.getMasmorra().getTesouros().pegarItensAleatorios(5);
 
         System.err.println("O jogador " + jogador.getNome() + " ganhou inicialmente os seguintes itens:");
@@ -92,7 +92,7 @@ public class Jogo {
     // Executa o loop de jogo, assim trocando o jogador e a rodada de jogo quando necessario
     public void loopDeJogo() {
         int entradaJogador;
-        Jogador jogadorAtual;
+        JogadorController jogadorAtual;
 
         do {
             // Declara o jogadorAtual e atualiza os booleans JogadorAtualFoiDerrotado para iniciar a jogada
@@ -127,9 +127,9 @@ public class Jogo {
     }
 
     // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
-    private int retornaAcaoJogador(Jogador jogadorAtual, String identificadorAcao) {
+    private int retornaAcaoJogador(JogadorController jogadorAtual, String identificadorAcao) {
 
-        System.out.println("Rodada " + this.getNumeroDaRodada() + " - Jogador " + jogadorAtual.getNome());
+        System.out.println("Rodada " + this.getNumeroDaRodada() + " - JogadorController " + jogadorAtual.getNome());
         System.out.println("O que você deseja fazer?");
 
         System.out.println("1 - Listar itens do inventário");
@@ -148,7 +148,7 @@ public class Jogo {
     }
 
     // Executa a acao escolhida pelo jogador
-    private void executaAcaoJogador(int entradaJogador, Jogador jogadorAtual, String identificadorAcao) {
+    private void executaAcaoJogador(int entradaJogador, JogadorController jogadorAtual, String identificadorAcao) {
         switch (entradaJogador) {
             case 1:
                 jogadorAtual.getInventario().listarItens();
@@ -194,7 +194,7 @@ public class Jogo {
     }
 
     // Executa a acao de abrir a porta da masmorra
-    private void executaAbrirPorta(Jogador jogadorAtual) {
+    private void executaAbrirPorta(JogadorController jogadorAtual) {
         Random random = new Random();
         int escolhaAleatoria = random.nextInt(2);
 
@@ -222,52 +222,44 @@ public class Jogo {
         this.getJogadores().remove(indiceJogador);
     }
 
-    private void equipaItem(Jogador jogador, String nomeItem) {
+    private void equipaItem(JogadorController jogador, String nomeItem) {
         Item itemEscolhido = jogador.getInventario().acessarItem(nomeItem);
                 
         switch (itemEscolhido.getTipo()) {
             case CABECA:
-                if (jogador.equipaItemCabeca(itemEscolhido))
-                    System.out.println(nomeItem + " equipado com sucesso!\n");
+                jogador.equipaItemCabeca(itemEscolhido);
                 break;
             case CORPO:
-                if (jogador.equipaItemCorpo(itemEscolhido))
-                    System.out.println(nomeItem + " equipado com sucesso!\n");
+                jogador.equipaItemCorpo(itemEscolhido);
                 break;
             case ACESSORIO:
-                if (jogador.equipaItemAcessorio(itemEscolhido))
-                    System.out.println(nomeItem + " equipado com sucesso!\n");
+                jogador.equipaItemAcessorio(itemEscolhido);
                 break;
             case MAO:
-                if (jogador.verificaItemPodeSerEquipado(itemEscolhido)) {
-                    System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
-                    System.out.println("1 - Mão direita");
-                    System.out.println("2 - Mão esquerda");
-                    System.out.print("Opção escolhida: ");
-                    int maoEscolhida = Integer.parseInt(scanner.nextLine());
-    
-                    if (maoEscolhida == 1) {
-                        jogador.setItemMaoDireita(itemEscolhido);
-                    } else  {
-                        jogador.setItemMaoEsquerda(itemEscolhido);
-                    }
+                System.out.println("Deseja colocar o item " + nomeItem + " em qual das mãos?");
+                System.out.println("1 - Mão direita");
+                System.out.println("2 - Mão esquerda");
+                System.out.print("Opção escolhida: ");
+                int maoEscolhida = Integer.parseInt(scanner.nextLine());
 
-                    System.out.println(nomeItem + " equipado com sucesso!\n");
+                if (maoEscolhida == 1) {
+                    jogador.equipaItemMaoDireita(itemEscolhido);
+                } else  {
+                    jogador.equipaItemMaoEsquerda(itemEscolhido);
                 }
                 break;
             case PE:
-                if (jogador.equipaItemPe(itemEscolhido))
-                    System.out.println(nomeItem + " equipado com sucesso!\n");
+                jogador.equipaItemPe(itemEscolhido);
                 break;
         }
     }
 
     // Getters e setters dos aributos
-    private List<Jogador> getJogadores() {
+    private List<JogadorController> getJogadores() {
         return this.jogadores;
     }
 
-    public void setJogadores(List<Jogador> jogadores) {
+    public void setJogadores(List<JogadorController> jogadores) {
         this.jogadores = jogadores;
     }
     
