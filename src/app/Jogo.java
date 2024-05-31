@@ -1,7 +1,7 @@
 package app;
 
 import controller.JogadorController;
-import model.Masmorra;
+import controller.MasmorraController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,12 +12,12 @@ import java.util.Scanner;
 public class Jogo {
     private static Scanner scanner = new Scanner(System.in);
     private List<JogadorController> jogadores;
-    private Masmorra masmorra;
+    private MasmorraController masmorra;
     private int numeroDaRodada;
     private int indiceJogadorAtual;
     private boolean jogadorAtualFoiDerrotado;
 
-    public Jogo(Masmorra masmorra) {
+    public Jogo(MasmorraController masmorra) {
         this.setMasmorra(masmorra);
 
         ArrayList<JogadorController> ListaJogadores = new ArrayList<JogadorController>(6);
@@ -129,7 +129,7 @@ public class Jogo {
     // Imprime as acoes que o jogador pode tomar, e retorna a acao escolhida
     private int retornaAcaoJogador(JogadorController jogadorAtual, String identificadorAcao) {
 
-        System.out.println("Rodada " + this.getNumeroDaRodada() + " - JogadorController " + jogadorAtual.getNome());
+        System.out.println("Rodada " + this.getNumeroDaRodada() + " - Jogador " + jogadorAtual.getNome());
         System.out.println("O que você deseja fazer?");
 
         System.out.println("1 - Listar itens do inventário");
@@ -263,11 +263,11 @@ public class Jogo {
         this.jogadores = jogadores;
     }
     
-    public Masmorra getMasmorra() {
+    public MasmorraController getMasmorra() {
         return this.masmorra;
     }
 
-    private void setMasmorra(Masmorra masmorra) {
+    private void setMasmorra(MasmorraController masmorra) {
         this.masmorra = masmorra;
     }
 

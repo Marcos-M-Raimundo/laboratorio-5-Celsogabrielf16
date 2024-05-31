@@ -91,26 +91,28 @@ public class Jogador {
             int novoNivel = this.getNivel() + (valorTotalItens / 1000);
             setNivel(novoNivel);
             
-            mensagem = "Os itens foram vendidos! O jogador " + this.getNome() + " foi para o nível " + this.getNivel() + "!\n";
+            mensagem = "Os itens foram vendidos! O jogador " + this.getNome() + " foi para o nível " + this.getNivel() + "!";
         } else {
-            mensagem = "Valor total dos itens insuficiente para a venda!\n";
+            mensagem = "Valor total dos itens insuficiente para a venda!";
         }
 
         return mensagem;
     }
 
     public String equipaItemCabeca (Item itemCabeca) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemCabeca);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemCabeca() != null)
+            if (this.getItemCabeca() != null) {
                 this.getInventario().adicionarItem(this.getItemCabeca());
+                mensagem = "O item " + this.getItemCabeca().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemCabeca.getNome());
             this.setItemCabeca(itemCabeca);
 
-            mensagem = this.getItemCabeca().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemCabeca().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
@@ -119,17 +121,19 @@ public class Jogador {
     }
 
     public String equipaItemCorpo (Item itemCorpo) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemCorpo);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemCorpo() != null)
+            if (this.getItemCorpo() != null) {
                 this.getInventario().adicionarItem(this.getItemCorpo());
+                mensagem = "O item " + this.getItemCorpo().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemCorpo.getNome());
             this.setItemCorpo(itemCorpo);
 
-            mensagem = this.getItemCorpo().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemCorpo().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
@@ -138,17 +142,19 @@ public class Jogador {
     }
 
     public String equipaItemAcessorio (Item itemAcessorio) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemAcessorio);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemAcessorio() != null)
+            if (this.getItemAcessorio() != null) {
                 this.getInventario().adicionarItem(this.getItemAcessorio());
+                mensagem = "O item " + this.getItemAcessorio().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemAcessorio.getNome());
             this.setItemAcessorio(itemAcessorio);
 
-            mensagem = this.getItemAcessorio().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemAcessorio().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
@@ -157,17 +163,19 @@ public class Jogador {
     }
 
     public String equipaItemMaoDireita (Item itemMaoDireita) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemMaoDireita);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemMaoDireita() != null)
+            if (this.getItemMaoDireita() != null) {
                 this.getInventario().adicionarItem(this.getItemMaoDireita());
+                mensagem = "O item " + this.getItemMaoDireita().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemMaoDireita.getNome());
             this.setItemMaoDireita(itemMaoDireita);
 
-            mensagem = this.getItemMaoDireita().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemMaoDireita().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
@@ -176,17 +184,19 @@ public class Jogador {
     }
 
     public String equipaItemMaoEsquerda (Item itemMaoEsquerda) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemMaoEsquerda);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemMaoEsquerda() != null)
+            if (this.getItemMaoEsquerda() != null) {
                 this.getInventario().adicionarItem(this.getItemMaoEsquerda());
+                mensagem = "O item " + this.getItemMaoEsquerda().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemMaoEsquerda.getNome());
             this.setItemMaoEsquerda(itemMaoEsquerda);
 
-            mensagem = this.getItemMaoEsquerda().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemMaoEsquerda().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
@@ -195,17 +205,19 @@ public class Jogador {
     }
 
     public String equipaItemPe (Item itemPe) {
-        String mensagem;
+        String mensagem = "";
 
         String mensagemVerificacao = verificaItemPodeSerEquipado(itemPe);
         if (mensagemVerificacao.equals("O item é válido!")) {
-            if (this.getItemPe() != null)
+            if (this.getItemPe() != null) {
                 this.getInventario().adicionarItem(this.getItemPe());
+                mensagem = "O item " + this.getItemPe().getNome() + " estava equipado e foi devolvido ao inventário! ";
+            }
 
             this.getInventario().removerItem(itemPe.getNome());
             this.setItemPe(itemPe);
 
-            mensagem = this.getItemPe().getNome() + " equipado com sucesso!\n";
+            mensagem = mensagem + this.getItemPe().getNome() + " equipado com sucesso!\n";
         } else {
             mensagem = mensagemVerificacao;
         }
