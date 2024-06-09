@@ -62,7 +62,7 @@ public class Masmorra {
 
                 break;
             case FUGA:
-                mensagem = "O jogador " + jogador.getNome() + " conseguiu fugiu da batalha contra o monstro " + montroEscolhido.getNome() + "!\n";
+                mensagem = "O jogador " + jogador.getNome() + " conseguiu fugir da batalha contra o monstro " + montroEscolhido.getNome() + "!\n";
                 break;
             case DERROTA:
                 int novoNivelJogador = jogador.getNivel() - montroEscolhido.getNiveisPerdidos();
